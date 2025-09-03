@@ -1,0 +1,9 @@
+.venv/
+models/
+!models/.gitkeep
+wavs/
+!wavs/**/.gitkeep
+.server_pid
+__pycache__/
+*.pyc
+.env
