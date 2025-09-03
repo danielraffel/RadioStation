@@ -1,9 +1,19 @@
 # RadioStation
 
-Simple prototype described by Spec.md: downloads audio, processes into WAVs and hosts a FastAPI web interface.
+RadioStation is a small prototype that automatically builds themed audio sample banks from YouTube. When you run the pipeline it:
 
-The pipeline curates **24 samples per bank** across **16 themed banks** for a
-total of 384 clips. Each clip is **2 seconds** long by default.
+* searches YouTube for audio matching up to **16** user-defined themes
+* downloads each result and trims it into short **2-second** WAV clips
+* uses the [CLAP](https://github.com/laion-ai/CLAP) model to score each clip and sort it into the most relevant theme
+
+Running `python manage.py run` fills **16 folders** in `wavs/themed/`. Each folder corresponds to a theme and contains **24 samples**, giving you **384 clips** ready for use.
+
+## How it works
+
+1. The `run` command pulls audio from YouTube using [`yt-dlp`](https://github.com/yt-dlp/yt-dlp).
+2. Each download is trimmed to two seconds with [`ffmpeg`](https://ffmpeg.org/) and converted to WAV.
+3. The CLAP model ranks the clip against your theme prompts.
+4. The clip is stored in `wavs/themed/<THEME>/` until every theme folder holds 24 samples.
 
 ## Setup
 
