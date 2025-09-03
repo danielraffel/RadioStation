@@ -16,7 +16,11 @@ _run_status = {
     "running": False,
     "last_result": None,
     "last_error": None,
+    "progress": None,
 }
+_stop_event = threading.Event()
+_logs: list[str] = []
+_max_logs = 200
 
 
 @app.get('/', response_class=HTMLResponse)
@@ -45,8 +49,20 @@ def trigger_run():
         def _worker():
             _run_status["running"] = True
             _run_status["last_error"] = None
+            _run_status["progress"] = None
+            _logs.clear()
             try:
-                result = run_pipeline()
+                def _progress_cb(p):
+                    # Update shared progress snapshot
+                    _run_status["progress"] = p
+                def _log_cb(msg: str):
+                    _logs.append(msg)
+                    if len(_logs) > _max_logs:
+                        del _logs[: len(_logs) - _max_logs]
+
+                result = run_pipeline(stop_cb=_stop_event.is_set, progress_cb=_progress_cb, log_cb=_log_cb)
+                if _stop_event.is_set():
+                    result = {**(result or {}), "stopped": True}
                 _run_status["last_result"] = result
             except Exception as exc:  # noqa: BLE001
                 _run_status["last_error"] = {
@@ -56,7 +72,9 @@ def trigger_run():
                 }
             finally:
                 _run_status["running"] = False
+                _stop_event.clear()
 
+        _stop_event.clear()
         _run_thread = threading.Thread(target=_worker, daemon=True)
         _run_thread.start()
         return {"status": "started"}
@@ -65,7 +83,18 @@ def trigger_run():
 @app.get('/run/status')
 def run_status():
     """Return current run status and last result/error."""
-    return JSONResponse(_run_status)
+    payload = {**_run_status, "logs": list(_logs)}
+    return JSONResponse(payload)
+
+
+@app.post('/run/stop')
+def stop_run():
+    """Signal the background pipeline to stop."""
+    with _run_lock:
+        if not _run_status["running"]:
+            return {"status": "not_running"}
+        _stop_event.set()
+        return {"status": "stopping"}
 
 
 @app.post('/config')

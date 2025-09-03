@@ -12,7 +12,7 @@ Running `python manage.py run` fills **16 folders** in `wavs/themed/`. Each fold
 
 1. The `run` command pulls audio from YouTube using [`yt-dlp`](https://github.com/yt-dlp/yt-dlp).
 2. Each download is trimmed to two seconds with [`ffmpeg`](https://ffmpeg.org/) and converted to WAV.
-3. The CLAP model ranks the clip against your theme prompts.
+3. Optional: the CLAP model ranks the clip against your theme prompts (enable in settings).
 4. The clip is stored in `wavs/themed/<THEME>/` until every theme folder holds 24 samples.
 
 ## Quick Start
@@ -36,7 +36,9 @@ python3 manage.py start
 # visit http://127.0.0.1:8000
 ```
 
-From the web page you can edit settings and click “Run pipeline” to kick it off. A status panel shows whether it’s running and the last result/error.
+From the web page you can edit settings and click “Run pipeline” to kick it off. A status panel shows whether it’s running and the last result/error. Use the “Stop” button to cancel a running job.
+
+By default, the pipeline fills each theme bank up to `SAMPLES_PER_BANK` (24) using up to `SEARCH_RESULTS_PER_THEME` results per iteration.
 
 ## Setup
 
@@ -74,7 +76,7 @@ python manage.py start
 ```
 Visit [http://127.0.0.1:8000](http://127.0.0.1:8000). The page includes:
 - a form to edit config and prompts
-- a “Run pipeline” button and a status panel
+- a “Run pipeline” button, a Stop button, and a status panel
 
 ### Stop the web server
 
@@ -106,7 +108,7 @@ many unmatched downloads are attempted before giving up.
 ## Run the pipeline (Web)
 
 - Start the server (`python manage.py start`) and open http://127.0.0.1:8000
-- Click “Run pipeline”; use “Refresh status” to view progress/errors
+- Click “Run pipeline”; use “Refresh status” to view progress/errors. Click “Stop” to cancel.
 
 ## Demo: generate WAV and move files
 
@@ -153,6 +155,16 @@ Runtime settings live in the `.env` file and are exposed on the web page at
 | `SAMPLES_PER_BANK` | `24` | number of samples to collect for each theme |
 | `NUM_BANKS` | `16` | how many themed banks are used |
 | `MAX_RETRIES_PER_THEME` | `0` | unmatched downloads to attempt before stopping (`0` = run until complete) |
+| `SEARCH_RESULTS_PER_THEME` | `32` | how many search results to process per iteration |
+| `DOWNLOAD_WORKERS` | `4` | concurrent downloads per theme batch |
+| `ARIA2C_ENABLED` | `1` | use `aria2c` as external downloader for speed |
+| `ARIA2C_CONN_PER_SERVER` | `16` | aria2c `-x` connections per server |
+| `ARIA2C_SPLIT` | `16` | aria2c `-s` split count |
+| `ARIA2C_CHUNK_SIZE` | `1M` | aria2c chunk size `-k` |
+| `SLICES_PER_VIDEO` | `1` | number of 2s clips to slice from each video |
+| `SLICE_STRIDE_SECONDS` | `2` | step between slices (seconds) |
+| `SCORING_ENABLED` | `0` | enable CLAP scoring and routing |
+| `CLAP_MODEL_PATH` | `''` | override path to CLAP checkpoint (otherwise auto-detected under `models/`) |
 | `THEME1`..`THEME16` | *(varies)* | search terms used for YouTube downloads and themed folders |
 
 The web UI lets you edit these values, the 16 theme search terms, and the theme prompts. Saving the form writes updates back to `.env` and `app/prompts.json` so future runs use them.
@@ -163,9 +175,20 @@ See `Spec.md` for the full vision.
 
 - Python 3.12+
 - `ffmpeg` installed and on your `PATH`. Example (macOS): `brew install ffmpeg`
+- Optional: [`aria2`](https://aria2.github.io/) for faster downloads. Example (macOS): `brew install aria2`
+- Optional (for CLAP scoring): install PyTorch + laion-clap. Example:
+
+```bash
+# macOS/CPU quick start (adjust for your platform/GPU)
+uv pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+uv pip install laion-clap
+export SCORING_ENABLED=1
+# ensure a .pt checkpoint exists in models/ or set CLAP_MODEL_PATH
+```
 
 ## Troubleshooting
 
 - ModuleNotFoundError (e.g., `yt_dlp`): run the CLI via `uv` (`uv run python manage.py run`) or activate `.venv` first. Running `python manage.py run` with the system Python can’t see the project’s venv packages.
 - HTTP 401/403 on model download: export a Hugging Face token, or use a public URL, or skip model download during setup.
 - ffmpeg not found: install via your package manager and ensure it’s on `PATH`.
+- CLAP not used: enable `SCORING_ENABLED=1` and install PyTorch + `laion-clap`; also ensure the checkpoint file exists in `models/`.

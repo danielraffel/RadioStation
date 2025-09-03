@@ -221,6 +221,10 @@ def main():
     p_run = sub.add_parser("run", help="Run sample pipeline")
     p_run.set_defaults(func=run_pipeline_cmd)
 
+    # help command to print available subcommands
+    p_help = sub.add_parser("help", help="Show help for commands")
+    p_help.set_defaults(func=lambda args, p=parser: p.print_help())
+
     args = parser.parse_args()
     if hasattr(args, "func"):
         args.func(args)

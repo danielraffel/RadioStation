@@ -11,6 +11,24 @@ DEFAULT_ENV = {
     'SAMPLES_PER_BANK': '24',
     'NUM_BANKS': '16',
     'MAX_RETRIES_PER_THEME': '0',  # 0 means run until complete
+    'SEARCH_RESULTS_PER_THEME': '32',
+    'DOWNLOAD_WORKERS': '4',
+    'SLICES_PER_VIDEO': '1',
+    'SLICE_STRIDE_SECONDS': '2',
+    # Downloader acceleration (aria2c via yt-dlp)
+    'ARIA2C_ENABLED': '1',
+    'ARIA2C_CONN_PER_SERVER': '16',
+    'ARIA2C_SPLIT': '16',
+    'ARIA2C_CHUNK_SIZE': '1M',
+    # yt-dlp controls
+    'YTDLP_USE_SECTIONS': '1',
+    'YTDLP_FORMAT': 'bestaudio[filesize<10M]/bestaudio/best',
+    'CONCURRENT_FRAGMENT_DOWNLOADS': '4',
+    # Scoring (CLAP)
+    'SCORING_ENABLED': '1',
+    # Optional explicit model path for CLAP
+    'CLAP_MODEL_PATH': '',
+    'SCORING_MIN_SIMILARITY': '0.0',
     'THEME1': 'Soft',
     'THEME2': 'Loud',
     'THEME3': 'Bumpy',
@@ -89,4 +107,3 @@ def get_config() -> dict:
     config['themes'] = [os.environ[f'THEME{i}'] for i in range(1, 17)]
     config['prompts'] = load_prompts()
     return config
-
