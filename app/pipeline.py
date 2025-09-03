@@ -1,42 +1,24 @@
 """Simple placeholder pipeline for filling themed banks."""
 
 import os
-from random import choice
-from pathlib import Path
 
 from .config import load_env, load_prompts
+from .downloader import download_and_process
 
 
 def run_pipeline():
-    """Run a dummy pipeline that fills banks with simulated samples."""
+    """Download and organize clips for each theme term."""
     load_env()
     prompts = load_prompts()
-    clip_seconds = int(os.environ['CLIP_SECONDS'])
-    samples_per_bank = int(os.environ['SAMPLES_PER_BANK'])
-    num_banks = int(os.environ['NUM_BANKS'])
-    max_retries = int(os.environ['MAX_RETRIES_PER_THEME'])
+    clip_ms = int(os.environ['CLIP_SECONDS']) * 1000
+    themes = [os.environ[f'THEME{i}'] for i in range(1, 17)]
 
-    counts = [0] * num_banks
-    retries = 0
-    downloads = 0
-
-    while min(counts) < samples_per_bank:
-        if max_retries > 0 and retries >= max_retries:
-            break
-        downloads += 1
-        # In real code, download and score sample with CLAP. Here, randomly assign to a theme or None.
-        assigned = choice(list(range(num_banks)) + [None])
-        if assigned is None:
-            retries += 1
-            continue
-        counts[assigned] += 1
+    for term in themes:
+        download_and_process(term, term, clip_ms=clip_ms)
 
     return {
-        'counts': counts,
-        'downloads': downloads,
-        'retries': retries,
-        'complete': min(counts) >= samples_per_bank,
-        'clip_seconds': clip_seconds,
+        'themes': themes,
+        'clip_ms': clip_ms,
         'prompts': prompts,
     }
 

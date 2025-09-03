@@ -10,7 +10,7 @@ total of 384 clips. Each clip is **2 seconds** long by default.
 ```bash
 python manage.py setup
 ```
-This checks for [uv](https://github.com/astral-sh/uv), installs it if missing, installs Python requirements and downloads the CLAP model into `models/`.
+This checks for [uv](https://github.com/astral-sh/uv), installs it if missing, installs Python requirements and downloads the CLAP model into `models/`.  The audio pipeline relies on [yt-dlp](https://github.com/yt-dlp/yt-dlp), [pydub](https://github.com/jiaaro/pydub) and a system `ffmpeg` binary for trimming and format conversion.
 
 ## Start the web server
 
@@ -72,8 +72,8 @@ Runtime settings live in the `.env` file and are exposed on the web page at
 | `SAMPLES_PER_BANK` | `24` | number of samples to collect for each theme |
 | `NUM_BANKS` | `16` | how many themed banks are used |
 | `MAX_RETRIES_PER_THEME` | `0` | unmatched downloads to attempt before stopping (`0` = run until complete) |
+| `THEME1`..`THEME16` | *(varies)* | search terms used for YouTube downloads and themed folders |
 
-The web UI lets you edit these values and the theme prompts. Saving the form
-writes updates back to `.env` and `app/prompts.json` so future runs use them.
+The web UI lets you edit these values, the 16 theme search terms, and the theme prompts. Saving the form writes updates back to `.env` and `app/prompts.json` so future runs use them.
 
 See `Spec.md` for the full vision.

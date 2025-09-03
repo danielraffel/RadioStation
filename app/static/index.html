@@ -11,6 +11,7 @@
     <label>Samples per bank <input id="SAMPLES_PER_BANK" type="number" /></label><br />
     <label>Number of banks <input id="NUM_BANKS" type="number" /></label><br />
     <label>Max retries per theme (0 = until complete) <input id="MAX_RETRIES_PER_THEME" type="number" /></label><br />
+    <div id="themes"></div>
     <label>Prompts (name: prompt per line)<br />
       <textarea id="prompts" rows="20" cols="80"></textarea>
     </label><br />
@@ -23,6 +24,17 @@
       for (const key of ['CLIP_SECONDS','SAMPLES_PER_BANK','NUM_BANKS','MAX_RETRIES_PER_THEME']) {
         document.getElementById(key).value = cfg[key];
       }
+      const themesDiv = document.getElementById('themes');
+      cfg.themes.forEach((t, idx) => {
+        const label = document.createElement('label');
+        label.textContent = `Theme ${idx+1} `;
+        const input = document.createElement('input');
+        input.id = `THEME${idx+1}`;
+        input.value = t;
+        label.appendChild(input);
+        themesDiv.appendChild(label);
+        themesDiv.appendChild(document.createElement('br'));
+      });
       document.getElementById('prompts').value = cfg.prompts.map(p => `${p.name}: ${p.prompt}`).join('\n');
     }
     async function save() {
@@ -30,6 +42,11 @@
       for (const key of ['CLIP_SECONDS','SAMPLES_PER_BANK','NUM_BANKS','MAX_RETRIES_PER_THEME']) {
         payload[key] = document.getElementById(key).value;
       }
+      const themes = [];
+      for (let i=1; i<=16; i++) {
+        themes.push(document.getElementById(`THEME${i}`).value);
+      }
+      payload.themes = themes;
       const lines = document.getElementById('prompts').value.split('\n').filter(l => l.trim());
       payload.prompts = lines.map(line => {
         const [name, ...rest] = line.split(':');
