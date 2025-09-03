@@ -5,6 +5,7 @@ import os
 import shutil
 import subprocess
 import sys
+import importlib
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
@@ -40,6 +41,31 @@ def install_requirements():
         print("No requirements.txt found; skipping dependency install.")
 
 
+def ensure_package(package: str, module: str | None = None, cli: str | None = None):
+    """Ensure a Python module or CLI tool is installed."""
+    if module:
+        try:
+            importlib.import_module(module)
+        except ImportError:
+            print(f"{package} not found; installing...")
+            run(["uv", "pip", "install", package])
+        else:
+            print(f"{package} already installed.")
+    elif cli:
+        if shutil.which(cli) is None:
+            print(f"{cli} not found; installing {package}...")
+            run(["uv", "pip", "install", package])
+        else:
+            print(f"{cli} already installed.")
+
+
+def ensure_deps():
+    """Ensure required third-party packages are installed."""
+    ensure_package("yt-dlp", cli="yt-dlp")
+    ensure_package("pydub", module="pydub")
+    ensure_package("laion-clap", module="laion_clap")
+
+
 def download_model(url: str):
     from urllib.request import urlopen
 
@@ -63,6 +89,7 @@ def setup(args):
     """Setup project: ensure uv, install deps, download model, create dirs."""
     ensure_uv()
     install_requirements()
+    ensure_deps()
     download_model(args.model_url)
     for path in ["wavs/raw", "wavs/processed/candidates", "wavs/themed"]:
         (BASE_DIR / path).mkdir(parents=True, exist_ok=True)
