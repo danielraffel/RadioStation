@@ -29,5 +29,9 @@ async def update_config(request: Request):
     prompts = data.get('prompts')
     if prompts is not None:
         save_prompts(prompts)
+    themes = data.get('themes')
+    if themes is not None:
+        for idx, term in enumerate(themes, start=1):
+            data[f'THEME{idx}'] = term
     save_env(data)
     return get_config()

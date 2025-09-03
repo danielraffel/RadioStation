@@ -11,6 +11,22 @@ DEFAULT_ENV = {
     'SAMPLES_PER_BANK': '24',
     'NUM_BANKS': '16',
     'MAX_RETRIES_PER_THEME': '0',  # 0 means run until complete
+    'THEME1': 'Soft',
+    'THEME2': 'Loud',
+    'THEME3': 'Bumpy',
+    'THEME4': 'Smooth',
+    'THEME5': 'Harsh',
+    'THEME6': 'Warm',
+    'THEME7': 'Bright',
+    'THEME8': 'Dark',
+    'THEME9': 'Metallic',
+    'THEME10': 'Woody',
+    'THEME11': 'Airy',
+    'THEME12': 'Noisy',
+    'THEME13': 'Percussive',
+    'THEME14': 'Sustained',
+    'THEME15': 'Glitchy',
+    'THEME16': 'Eerie',
 }
 
 DEFAULT_PROMPTS = [
@@ -70,6 +86,7 @@ def save_prompts(prompts: list) -> None:
 def get_config() -> dict:
     load_env()
     config = {k: os.environ[k] for k in DEFAULT_ENV}
+    config['themes'] = [os.environ[f'THEME{i}'] for i in range(1, 17)]
     config['prompts'] = load_prompts()
     return config
 
