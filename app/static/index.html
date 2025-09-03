@@ -6,6 +6,39 @@
 </head>
 <body>
   <h1>Radio Station</h1>
-  <p>Server is running.</p>
+  <form id="configForm">
+    <label>Clip seconds <input id="CLIP_SECONDS" type="number" /></label><br />
+    <label>Samples per bank <input id="SAMPLES_PER_BANK" type="number" /></label><br />
+    <label>Number of banks <input id="NUM_BANKS" type="number" /></label><br />
+    <label>Max retries per theme (0 = until complete) <input id="MAX_RETRIES_PER_THEME" type="number" /></label><br />
+    <label>Prompts (name: prompt per line)<br />
+      <textarea id="prompts" rows="20" cols="80"></textarea>
+    </label><br />
+    <button type="button" onclick="save()">Save</button>
+  </form>
+  <script>
+    async function load() {
+      const resp = await fetch('/config');
+      const cfg = await resp.json();
+      for (const key of ['CLIP_SECONDS','SAMPLES_PER_BANK','NUM_BANKS','MAX_RETRIES_PER_THEME']) {
+        document.getElementById(key).value = cfg[key];
+      }
+      document.getElementById('prompts').value = cfg.prompts.map(p => `${p.name}: ${p.prompt}`).join('\n');
+    }
+    async function save() {
+      const payload = {};
+      for (const key of ['CLIP_SECONDS','SAMPLES_PER_BANK','NUM_BANKS','MAX_RETRIES_PER_THEME']) {
+        payload[key] = document.getElementById(key).value;
+      }
+      const lines = document.getElementById('prompts').value.split('\n').filter(l => l.trim());
+      payload.prompts = lines.map(line => {
+        const [name, ...rest] = line.split(':');
+        return {name: name.trim(), prompt: rest.join(':').trim()};
+      });
+      await fetch('/config', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+      alert('Saved');
+    }
+    load();
+  </script>
 </body>
 </html>

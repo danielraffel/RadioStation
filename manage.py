@@ -142,6 +142,15 @@ def demo(args):
     print(f"Moved to {themed_path}")
 
 
+def run_pipeline_cmd(args):
+    """Run the sample generation pipeline."""
+    from app.pipeline import run_pipeline
+
+    result = run_pipeline()
+    print("Pipeline result:")
+    print(result)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Radio Station management script")
     sub = parser.add_subparsers(dest="cmd")
@@ -159,6 +168,9 @@ def main():
 
     p_demo = sub.add_parser("demo", help="Generate wav and move files")
     p_demo.set_defaults(func=demo)
+
+    p_run = sub.add_parser("run", help="Run sample pipeline")
+    p_run.set_defaults(func=run_pipeline_cmd)
 
     args = parser.parse_args()
     if hasattr(args, "func"):
