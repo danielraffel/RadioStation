@@ -17,6 +17,12 @@
     </label><br />
     <button type="button" onclick="save()">Save</button>
   </form>
+  <hr />
+  <div>
+    <button type="button" onclick="runPipeline()">Run pipeline</button>
+    <button type="button" onclick="refreshStatus()">Refresh status</button>
+    <pre id="status"></pre>
+  </div>
   <script>
     async function load() {
       const resp = await fetch('/config');
@@ -54,6 +60,17 @@
       });
       await fetch('/config', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
       alert('Saved');
+    }
+    async function runPipeline() {
+      const resp = await fetch('/run', { method:'POST' });
+      const data = await resp.json();
+      alert('Run: ' + data.status);
+      refreshStatus();
+    }
+    async function refreshStatus() {
+      const resp = await fetch('/run/status');
+      const data = await resp.json();
+      document.getElementById('status').textContent = JSON.stringify(data, null, 2);
     }
     load();
   </script>

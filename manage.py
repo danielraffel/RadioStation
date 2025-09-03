@@ -9,7 +9,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
 DEFAULT_MODEL_URL = (
-    "https://huggingface.co/kennethdang/clap-mini/resolve/main/dummy.pt?download=1"
+    "https://huggingface.co/lukewys/laion_clap/resolve/main/music_speech_audioset_epoch_15_esc_89.98.pt"
 )
 
 
@@ -41,7 +41,19 @@ def install_requirements():
 
 
 def download_model(url: str):
-    from urllib.request import urlopen
+    """Download model file with optional Hugging Face auth.
+
+    - Supports env tokens: HF_TOKEN, HUGGINGFACE_TOKEN,
+      HUGGINGFACEHUB_API_TOKEN, HUGGINGFACE_HUB_TOKEN
+    - Gracefully skips on 401/403 with guidance.
+    """
+    from urllib.request import urlopen, Request
+    import urllib.error as urlerr
+
+    # Allow opting out via a sentinel value
+    if not url or url.lower() in {"skip", "none"}:
+        print("Skipping model download (per --model-url).")
+        return
 
     models_dir = BASE_DIR / "models"
     models_dir.mkdir(exist_ok=True)
@@ -49,21 +61,55 @@ def download_model(url: str):
     if target.exists():
         print(f"Model already exists at {target}")
         return
+
+    # Collect possible Hugging Face tokens
+    token = (
+        os.getenv("HF_TOKEN")
+        or os.getenv("HUGGINGFACE_TOKEN")
+        or os.getenv("HUGGINGFACEHUB_API_TOKEN")
+        or os.getenv("HUGGINGFACE_HUB_TOKEN")
+    )
+
+    headers = {}
+    if token and "huggingface.co" in url:
+        headers["Authorization"] = f"Bearer {token}"
+
     print(f"Downloading model from {url} ...")
-    with urlopen(url) as r, open(target, "wb") as f:
-        while True:
-            chunk = r.read(8192)
-            if not chunk:
-                break
-            f.write(chunk)
-    print(f"Model downloaded to {target}")
+    try:
+        req = Request(url, headers=headers)
+        with urlopen(req) as r, open(target, "wb") as f:
+            while True:
+                chunk = r.read(8192)
+                if not chunk:
+                    break
+                f.write(chunk)
+        print(f"Model downloaded to {target}")
+    except urlerr.HTTPError as e:
+        if e.code in (401, 403):
+            print(
+                "Model download unauthorized. If this is a private or gated Hugging Face repo, set "
+                "an access token via one of: HF_TOKEN, HUGGINGFACE_HUB_TOKEN, "
+                "HUGGINGFACEHUB_API_TOKEN, or HUGGINGFACE_TOKEN. Alternatively, pass a public "
+                "URL with --model-url, or pass --model-url skip to bypass."
+            )
+            print(f"Server returned HTTP {e.code}: {e.reason}")
+            # Do not fail setup on auth errors; proceed without model
+            return
+        print(f"HTTP error while downloading model: {e}")
+        return
+    except urlerr.URLError as e:
+        print(f"Network error while downloading model: {e}")
+        return
 
 
 def setup(args):
     """Setup project: ensure uv, install deps, download model, create dirs."""
     ensure_uv()
     install_requirements()
-    download_model(args.model_url)
+    if getattr(args, "skip_model", False):
+        print("Skipping model download (--skip-model).")
+    else:
+        download_model(args.model_url)
     for path in ["wavs/raw", "wavs/processed/candidates", "wavs/themed"]:
         (BASE_DIR / path).mkdir(parents=True, exist_ok=True)
     print("Setup complete.")
@@ -156,7 +202,10 @@ def main():
     sub = parser.add_subparsers(dest="cmd")
 
     p_setup = sub.add_parser("setup", help="Install deps and download model")
-    p_setup.add_argument("--model-url", default=DEFAULT_MODEL_URL)
+    p_setup.add_argument("--model-url", default=DEFAULT_MODEL_URL,
+                         help="Model URL to download, or 'skip' to bypass")
+    p_setup.add_argument("--skip-model", action="store_true",
+                         help="Skip downloading the model")
     p_setup.set_defaults(func=setup)
 
     p_start = sub.add_parser("start", help="Start web server")
