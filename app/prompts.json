@@ -1,0 +1,18 @@
+[
+  {"name": "Soft", "prompt": "Quiet, gentle, low-intensity sound like a whisper or fabric brushing. Smooth, not harsh or piercing."},
+  {"name": "Loud", "prompt": "Booming, powerful, high-volume sound that dominates space. Strong transients and presence."},
+  {"name": "Bumpy", "prompt": "Uneven, jolting, irregular percussive texture like a train on rough tracks; not smooth."},
+  {"name": "Smooth", "prompt": "Continuous, flowing, connected sound without rough edges. Even dynamics and rounded timbre."},
+  {"name": "Harsh", "prompt": "Rough, grating, distorted or metallic noise; aggressive highs. Unpleasant or biting character."},
+  {"name": "Warm", "prompt": "Full, rounded low-mids, gentle highs; cozy and intimate. Not thin or brittle."},
+  {"name": "Bright", "prompt": "Emphasized highs and detail; crisp and shiny. Not dark or muffled."},
+  {"name": "Dark", "prompt": "Subdued highs, weight in lows/low-mids; shadowy or muted. Not bright or sparkly."},
+  {"name": "Metallic", "prompt": "Ringing, resonant metal tones; clangs, scrapes, chimes. Distinct overtones and sheen."},
+  {"name": "Woody", "prompt": "Organic, resonant wood timbre like knocks, taps, or acoustic bodies. Warm transients."},
+  {"name": "Airy", "prompt": "Breath, wind, or subtle high-frequency shimmer. Light, spacious, and diffuse."},
+  {"name": "Noisy", "prompt": "Broadband or narrow-band noise textures (hiss, static). Texture over pitch."},
+  {"name": "Percussive", "prompt": "Short, transient-rich hits or sequences; clear onsets. Minimal sustain."},
+  {"name": "Sustained", "prompt": "Long, held tones or pads with steady energy. Minimal transient emphasis."},
+  {"name": "Glitchy", "prompt": "Digital artifacts, stutters, buffer errors, granular pops. Non-linear rhythm."},
+  {"name": "Eerie", "prompt": "Unsettling, mysterious ambience; dissonant or hollow. Suggests tension or space."}
+]
