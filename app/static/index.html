@@ -789,14 +789,19 @@
       }
 
       async function continuePipeline() {
+        console.log('Continue button clicked');
         const resp = await fetch('/continue', { method:'POST' });
         const data = await resp.json();
+        console.log('Continue response:', data);
         if (data.status === 'continued') {
           startAutoRefresh();
           // Hide continue button when continuing
           document.getElementById('continueBtn').classList.add('hidden');
+          console.log('Continuing session:', data.session_id);
         } else if (data.status === 'no_session_to_continue') {
           alert('No session available to continue');
+        } else if (data.status === 'already_running') {
+          alert('Pipeline is already running');
         }
         refreshStatus();
       }
@@ -821,6 +826,17 @@
                                       progress.percent !== undefined &&
                                       progress.percent < 100 &&
                                       progress.session_id;
+
+        // Debug logging
+        if (!running && !stopping && progress) {
+          console.log('Continue button check:', {
+            running,
+            stopping,
+            percent: progress?.percent,
+            session_id: progress?.session_id,
+            wasStoppedIncomplete
+          });
+        }
         if (stopping) {
           runBtn.textContent = 'Stopping…';
           runBtn.disabled = true;
