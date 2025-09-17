@@ -87,6 +87,68 @@ def trigger_run():
         return {"status": "started"}
 
 
+@app.post('/continue')
+def continue_run():
+    """Continue a stopped pipeline session."""
+    global _run_thread
+    with _run_lock:
+        if _run_status["running"]:
+            return {"status": "already_running"}
+
+        # Get the last session ID from progress
+        session_id = None
+        if _run_status.get("progress") and _run_status["progress"].get("session_id"):
+            session_id = _run_status["progress"]["session_id"]
+        elif _run_status.get("last_result") and _run_status["last_result"].get("session_id"):
+            session_id = _run_status["last_result"]["session_id"]
+
+        if not session_id:
+            return {"status": "no_session_to_continue"}
+
+        def _worker():
+            _run_status["running"] = True
+            _run_status["last_error"] = None
+            # Keep existing progress so UI shows where we left off
+            _run_status["stopping"] = False
+            # Don't clear logs, just mark where continuation starts
+            _logs.append("="*50)
+            _logs.append(f"CONTINUING SESSION: {session_id}")
+            _logs.append("="*50)
+            try:
+                def _progress_cb(p):
+                    # Update shared progress snapshot
+                    _run_status["progress"] = p
+                def _log_cb(msg: str):
+                    _logs.append(msg)
+                    if len(_logs) > _max_logs:
+                        del _logs[: len(_logs) - _max_logs]
+
+                result = run_pipeline(
+                    stop_cb=_stop_event.is_set,
+                    progress_cb=_progress_cb,
+                    log_cb=_log_cb,
+                    continue_session=session_id
+                )
+                if _stop_event.is_set():
+                    result = {**(result or {}), "stopped": True}
+                _run_status["last_result"] = result
+            except Exception as exc:  # noqa: BLE001
+                _run_status["last_error"] = {
+                    "type": type(exc).__name__,
+                    "message": str(exc),
+                    "traceback": traceback.format_exc(),
+                }
+            finally:
+                _run_status["running"] = False
+                _stop_event.clear()
+                _run_status["stopping"] = False
+
+        _stop_event.clear()
+        _run_thread = threading.Thread(target=_worker, daemon=True)
+        _run_thread.start()
+        return {"status": "continued", "session_id": session_id}
+
+
 @app.get('/run/status')
 def run_status():
     """Return current run status and last result/error."""
