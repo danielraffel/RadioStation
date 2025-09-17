@@ -33,11 +33,13 @@ Running `python3 manage.py run` fills your theme folders in `wavs/sessions/{sess
 ```bash
 git clone https://github.com/danielraffel/RadioStation.git
 cd RadioStation
+cp .env.example .env
 python3 manage.py setup
 ```
 
 This will:
 
+- create your configuration file from the example template
 - create a local virtual environment in `.venv` using `uv`
 - install Python dependencies
 - download the CLAP model into `models/` (see Model Auth below)
@@ -390,4 +392,4 @@ The web UI updates the `.env` file, but shell exports take precedence. Best prac
 ## License
 
 This project is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
-See the LICENSE file for details.
+See the [LICENSE](LICENSE.txt) file for details.
