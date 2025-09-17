@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+yt-dlp
+pydub
+openai
+psutil
+requests
+laion-clap
+torch
+torchvision

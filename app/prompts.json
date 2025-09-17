@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Soft",
+    "prompt": "Quiet gentle whisper voice speaking softly"
+  },
+  {
+    "name": "Loud",
+    "prompt": "Loud explosive booming powerful sound"
+  },
+  {
+    "name": "Bumpy",
+    "prompt": "Bumpy train on tracks irregular rattling sound"
+  },
+  {
+    "name": "Smooth",
+    "prompt": "Smooth flowing water continuous stream"
+  },
+  {
+    "name": "Harsh",
+    "prompt": "Harsh rough chainsaw grinding cutting sound"
+  },
+  {
+    "name": "Warm",
+    "prompt": "Warm cozy fireplace crackling fire sound"
+  },
+  {
+    "name": "Bright",
+    "prompt": "Bright clear bell ringing chime sound"
+  },
+  {
+    "name": "Dark",
+    "prompt": "Dark deep cave echoing mysterious sound"
+  },
+  {
+    "name": "Metallic",
+    "prompt": "Metallic hammer hitting metal ringing sound"
+  },
+  {
+    "name": "Woody",
+    "prompt": "Wooden knock tapping on wood sound"
+  },
+  {
+    "name": "Airy",
+    "prompt": "Airy wind blowing breeze whooshing sound"
+  },
+  {
+    "name": "Noisy",
+    "prompt": "Noisy static hiss white noise sound"
+  },
+  {
+    "name": "Percussive",
+    "prompt": "Percussive drum hit beating rhythmic sound"
+  },
+  {
+    "name": "Sustained",
+    "prompt": "Sustained drone humming continuous tone"
+  },
+  {
+    "name": "Glitchy",
+    "prompt": "Glitchy digital error stuttering broken sound"
+  },
+  {
+    "name": "Eerie",
+    "prompt": "Eerie ghost haunting spooky mysterious sound"
+  }
+]

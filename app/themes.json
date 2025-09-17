@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Soft",
+    "search": "Soft rain falling, Gentle piano melodies, Ocean waves softly crashing, Calm wind in trees, Quiet crackling fireplace, Whispering stream sounds, Soft humming meditation tones, Subtle Tibetan singing bowls, Gentle white noise for sleep, Soft lullaby instrumental, Light bird songs in morning, Calm heartbeat sound, Soft flute music, Gentle thunderstorm ambience, Quiet night forest sounds, Soft ASMR tapping",
+    "prompt": "Quiet gentle whisper voice speaking softly"
+  },
+  {
+    "name": "Loud",
+    "search": "Thunderstorm sounds, Loud city traffic, Rock concert crowd noise, Heavy rain on metal roof, Airplane takeoff roar, Fireworks exploding, Train passing by, Loud waterfall, Stadium cheering, Drumline performance, Car engine revving, Chainsaw cutting wood, Gunfire sounds, Sirens blaring, Industrial factory noise, Ocean waves crashing hard",
+    "prompt": "Loud explosive booming powerful sound"
+  },
+  {
+    "name": "Bumpy",
+    "search": "Bumpy dirt road sounds, Bumpy car ride interior noise, Bumpy bus journey ambience, Bumpy train track clatter, Bumpy airplane turbulence sounds, Bumpy wooden roller coaster, Bumpy bicycle ride on gravel, Bumpy skateboard ride on pavement, Bumpy stroller ride, Bumpy wagon on cobblestones, Bumpy horse carriage sounds, Bumpy tractor ride in a field, Bumpy cart on uneven floor, Bumpy wheelchair ride, Bumpy go-kart racing track, Bumpy jeep off-road adventure",
+    "prompt": "Bumpy train on tracks irregular rattling sound"
+  },
+  {
+    "name": "Smooth",
+    "search": "Smooth jazz music, Smooth ocean waves, Smooth driving sounds, Smooth saxophone melodies, Smooth piano chill, Smooth rainfall ambience, Smooth guitar strumming, Smooth lo-fi beats, Smooth train ride sounds, Smooth wind chimes, Smooth meditation tones, Smooth ambient synths, Smooth water flowing, Smooth night breeze, Smooth coffee shop ambience, Smooth cello music",
+    "prompt": "Smooth flowing water continuous stream"
+  },
+  {
+    "name": "Harsh",
+    "search": "Harsh wind howling, Harsh alarm buzzing, Harsh static noise, Harsh metal scraping, Harsh dog barking, Harsh baby crying, Harsh car horn, Harsh microphone feedback, Harsh construction drilling, Harsh screaming crowd, Harsh chalk on board, Harsh whistle blowing, Harsh glass breaking, Harsh police siren, Harsh coughing fit, Harsh thunder crack",
+    "prompt": "Harsh rough chainsaw grinding cutting sound"
+  },
+  {
+    "name": "Warm",
+    "search": "Warm fireplace sounds, Warm guitar strumming, Warm vinyl crackle, Warm summer night ambience, Warm cello tones, Warm morning birdsong, Warm lo-fi beats, Warm ocean breeze, Warm piano chords, Warm rainfall on roof, Warm jazz saxophone, Warm candle crackling, Warm ambient synths, Warm campfire night, Warm coffee shop chatter, Warm harp melodies",
+    "prompt": "Warm cozy fireplace crackling fire sound"
+  },
+  {
+    "name": "Bright",
+    "search": "Bright morning birds, Bright piano melodies, Bright guitar strumming, Bright wind chimes, Bright laughter sounds, Bright trumpet notes, Bright ocean surf, Bright flute music, Bright sunrise ambience, Bright children playing, Bright bells ringing, Bright synth tones, Bright jazz ensemble, Bright sparkling water, Bright meadow ambience, Bright ukulele strumming",
+    "prompt": "Bright clear bell ringing chime sound"
+  },
+  {
+    "name": "Dark",
+    "search": "Dark ambient drones, Dark cave sounds, Dark storm ambience, Dark synth tones, Dark forest night, Dark ritual chanting, Dark piano chords, Dark dungeon atmosphere, Dark wind howling, Dark heartbeat sound, Dark rainstorm, Dark cello music, Dark thunder rumble, Dark cavern echoes, Dark industrial noise, Dark whispering voices",
+    "prompt": "Dark deep cave echoing mysterious sound"
+  },
+  {
+    "name": "Metallic",
+    "search": "Metallic clanging, Metallic scraping, Metallic hammering, Metallic footsteps, Metallic door creak, Metallic chains rattling, Metallic grinding, Metallic crash, Metallic pipe sounds, Metallic tapping, Metallic echo, Metallic ringing, Metallic thud, Metallic machine noise, Metallic wind chime, Metallic vibration",
+    "prompt": "Metallic hammer hitting metal ringing sound"
+  },
+  {
+    "name": "Woody",
+    "search": "Woody knocking, Woody tapping, Woody creaking floor, Woody footsteps, Woody drum beat, Woody chair scrape, Woody clatter, Woody crack, Woody stick hits, Woody door closing, Woody rattle, Woody knock echo, Woody percussion, Woody plank drop, Woody hollow thump, Woody tapping rhythm",
+    "prompt": "Wooden knock tapping on wood sound"
+  },
+  {
+    "name": "Airy",
+    "search": "Airy flute music, Airy wind chimes, Airy synth pads, Airy whispering voices, Airy ambient drones, Airy ocean breeze, Airy pan flute, Airy soft vocals, Airy forest wind, Airy hollow tones, Airy atmospheric sounds, Airy echoing bells, Airy breath sounds, Airy crystal bowls, Airy sky ambience, Airy rainfall",
+    "prompt": "Airy wind blowing breeze whooshing sound"
+  },
+  {
+    "name": "Noisy",
+    "search": "Noisy street traffic, Noisy restaurant chatter, Noisy construction site, Noisy crowd cheering, Noisy factory floor, Noisy school cafeteria, Noisy subway station, Noisy children playing, Noisy shopping mall, Noisy rainstorm, Noisy festival music, Noisy airplane cabin, Noisy nightclub, Noisy arcade, Noisy marketplace, Noisy fireworks",
+    "prompt": "Noisy static hiss white noise sound"
+  },
+  {
+    "name": "Percussive",
+    "search": "Percussive drum beats, Percussive hand claps, Percussive woodblocks, Percussive bongos, Percussive tabla rhythms, Percussive conga grooves, Percussive snare rolls, Percussive hi-hat patterns, Percussive maracas, Percussive caj\u00f3n sounds, Percussive rimshots, Percussive djembe rhythms, Percussive cowbell hits, Percussive shaker sounds, Percussive tom fills, Percussive tambourine jingles",
+    "prompt": "Percussive drum hit beating rhythmic sound"
+  },
+  {
+    "name": "Sustained",
+    "search": "Sustained violin note, Sustained piano chord, Sustained synth pad, Sustained gong sound, Sustained flute tone, Sustained organ chord, Sustained ambient drone, Sustained cello note, Sustained choir voices, Sustained cymbal roll, Sustained trumpet tone, Sustained string ensemble, Sustained wind sound, Sustained electric guitar feedback, Sustained rain ambience, Sustained harmonic overtone",
+    "prompt": "Sustained drone humming continuous tone"
+  },
+  {
+    "name": "Glitchy",
+    "search": "Glitchy electronic beats, Glitchy synth loops, Glitchy static noise, Glitchy video game sounds, Glitchy vocal effects, Glitchy radio tuning, Glitchy tape distortion, Glitchy computer errors, Glitchy ambient textures, Glitchy drum patterns, Glitchy phone interference, Glitchy digital clicks, Glitchy circuit bending, Glitchy robot voices, Glitchy data corruption, Glitchy modem sounds",
+    "prompt": "Glitchy digital error stuttering broken sound"
+  },
+  {
+    "name": "Eerie",
+    "search": "Eerie wind howling, Eerie whispers in the dark, Eerie ambient drones, Eerie footsteps echoing, Eerie haunted house sounds, Eerie violin screech, Eerie cave dripping water, Eerie child laughter, Eerie ghostly wails, Eerie forest at night, Eerie church organ, Eerie clock ticking, Eerie heartbeat, Eerie chanting voices, Eerie storm ambience, Eerie metallic creaks",
+    "prompt": "Eerie ghost haunting spooky mysterious sound"
+  }
+]

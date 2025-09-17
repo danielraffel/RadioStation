@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html class="h-full" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Radio Station</title>
+    <script>
+      // Apply theme before page renders
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      // Configure Tailwind
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = { darkMode: 'class' };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .tooltip {
+        position: relative;
+        display: inline-block;
+      }
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 280px;
+        background-color: #333;
+        color: #fff;
+        text-align: left;
+        border-radius: 6px;
+        padding: 8px 10px;
+        position: absolute;
+        z-index: 1000;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -140px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+      .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #333 transparent transparent transparent;
+      }
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+      }
+      .info-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: #6b7280;
+        color: white;
+        font-size: 10px;
+        font-weight: bold;
+        cursor: help;
+        margin-left: 4px;
+      }
+      .dark .info-icon {
+        background-color: #9ca3af;
+        color: #1f2937;
+      }
+    </style>
+  </head>
+  <body class="h-full bg-gray-50 text-gray-800 dark:bg-slate-900 dark:text-slate-100">
+    <div class="min-h-full max-w-7xl mx-auto p-4">
+      <header class="flex items-center justify-between mb-4">
+        <h1 class="text-2xl font-semibold">Radio Station</h1>
+        <div class="flex items-center gap-2">
+          <button id="themeToggle" onclick="toggleDarkMode()" class="px-3 py-1 rounded border border-gray-400 bg-white dark:bg-slate-800 dark:border-slate-600">Light</button>
+          <button id="runBtn" class="px-3 py-1 rounded bg-blue-600 text-white hover:bg-blue-700" onclick="runPipeline()">Run</button>
+          <button id="stopBtn" class="px-3 py-1 rounded bg-rose-600 text-white hover:bg-rose-700" onclick="stopPipeline()">Stop</button>
+          <button id="refreshBtn" class="px-3 py-1 rounded border border-gray-400 bg-white dark:bg-slate-800 dark:border-slate-600" onclick="refreshStatus()">Refresh</button>
+        </div>
+      </header>
+
+      <section class="mb-6">
+        <div class="mb-2 flex items-center justify-between">
+          <h2 class="text-lg font-medium">Overall Status</h2>
+          <span id="runBadge" class="text-sm px-2 py-0.5 rounded border border-slate-300 dark:border-slate-600">Idle</span>
+        </div>
+        <div class="h-3 w-full bg-gray-200 dark:bg-slate-700 rounded">
+          <div id="overallBar" class="h-3 bg-emerald-500 rounded" style="width:0%"></div>
+        </div>
+        <div class="text-sm mt-1" id="overallText">0% (0 / 0)</div>
+        <div class="mt-2 text-sm opacity-75" id="sessionInfo"></div>
+      </section>
+
+      <!-- Tabbed interface -->
+      <div class="mb-8">
+        <div class="border-b border-gray-300 dark:border-slate-700 mb-4">
+          <nav class="flex space-x-4">
+            <button onclick="switchTab('themes')" class="tab-btn px-3 py-2 text-sm font-medium border-b-2 border-blue-500" data-tab="themes">Themes</button>
+            <button onclick="switchTab('pipeline')" class="tab-btn px-3 py-2 text-sm font-medium border-b-2 border-transparent" data-tab="pipeline">Pipeline</button>
+            <button onclick="switchTab('advanced')" class="tab-btn px-3 py-2 text-sm font-medium border-b-2 border-transparent" data-tab="advanced">Advanced</button>
+            <button onclick="switchTab('progress')" class="tab-btn px-3 py-2 text-sm font-medium border-b-2 border-transparent" data-tab="progress">Progress</button>
+          </nav>
+        </div>
+
+        <!-- Themes Tab -->
+        <div id="themesTab" class="tab-content">
+          <div class="p-4 rounded border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="font-medium">Theme Configuration</h3>
+              <button onclick="expandAllThemes()" class="text-sm px-2 py-1 rounded border border-gray-400 bg-white dark:bg-slate-800 dark:border-slate-600">Expand All</button>
+            </div>
+            <div id="themesList" class="space-y-2"></div>
+          </div>
+        </div>
+
+        <!-- Pipeline Tab -->
+        <div id="pipelineTab" class="tab-content hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-4 rounded border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700">
+              <h3 class="font-medium mb-3">Basic Settings</h3>
+              <div class="space-y-3">
+                <label class="block text-sm">Clip duration (seconds) <span id="clip-duration-info"></span><input id="CLIP_SECONDS" type="number" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" onchange="validateChunkSize()" /></label>
+                <label class="block text-sm">Segment download size (seconds) <span id="segment-size-info"></span><input id="DOWNLOAD_CHUNK_SECONDS" type="number" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" onchange="validateChunkSize()" /></label>
+                <label class="block text-sm">Samples per theme <span id="samples-per-theme-info"></span><input id="SAMPLES_PER_BANK" type="number" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" /></label>
+                <label class="block text-sm">Number of themes <span id="num-themes-info"></span><input id="NUM_BANKS" type="number" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" /></label>
+                <label class="block text-sm">Search results per theme <span id="search-results-info"></span><input id="SEARCH_RESULTS_PER_THEME" type="number" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" /></label>
+                <label class="block text-sm">Max retries per theme <span id="max-retries-info"></span><input id="MAX_RETRIES_PER_THEME" type="number" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" /></label>
+              </div>
+            </div>
+
+            <div class="p-4 rounded border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700">
+              <h3 class="font-medium mb-3">Processing Settings</h3>
+              <div class="space-y-3">
+                <label class="block text-sm">Download workers <span id="download-workers-info"></span><input id="DOWNLOAD_WORKERS" type="number" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" /></label>
+                <label class="block text-sm">Slices per video <span id="slices-per-video-info"></span><input id="SLICES_PER_VIDEO" type="number" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" /></label>
+                <label class="block text-sm">Slice stride (seconds) <span id="slice-stride-info"></span><input id="SLICE_STRIDE_SECONDS" type="number" step="0.1" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" /></label>
+                <label class="block text-sm">Audio Quality <span id="audio-quality-info"></span>
+                  <select id="AUDIO_QUALITY" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" onchange="updateAudioQualityInfo()">
+                    <option value="best">Best Quality</option>
+                    <option value="worst">Worst Quality</option>
+                  </select>
+                </label>
+                <div id="audioQualitySizes" class="text-xs opacity-75 mt-1">
+                  <!-- Dynamic size info will be shown here -->
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700">
+              <h3 class="font-medium mb-3">Session Management</h3>
+              <div class="space-y-3">
+                <label class="block text-sm">Session ID (leave empty for auto-generate) <input id="SESSION_ID" type="text" placeholder="Auto-generated" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" /></label>
+                <button onclick="newSession()" class="px-3 py-1 rounded border border-gray-400 bg-white dark:bg-slate-800 dark:border-slate-600">New Session</button>
+              </div>
+            </div>
+
+            <div class="p-4 rounded border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700">
+              <h3 class="font-medium mb-3">OpenAI Integration</h3>
+              <div class="space-y-3">
+                <label class="inline-flex items-center gap-2 text-sm">
+                  <input id="USE_OPENAI_EXPANSION" type="checkbox" class="rounded" /> 
+                  Enable search term expansion <span id="openai-expand-info"></span>
+                </label>
+                <label class="block text-sm">
+                  API Key <span id="openai-key-info"></span>
+                  <input id="OPENAI_API_KEY" type="password" placeholder="From shell environment" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" />
+                </label>
+              </div>
+            </div>
+
+            <div class="p-4 rounded border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700">
+              <h3 class="font-medium mb-3">Words List Mode</h3>
+              <div class="space-y-3">
+                <label class="inline-flex items-center gap-2 text-sm">
+                  <input id="USE_WORDS_LIST" type="checkbox" class="rounded" onchange="toggleWordsListMode()" /> 
+                  Use words.txt for search terms <span id="words-list-info"></span>
+                </label>
+                <div id="wordsListStatus" class="text-xs opacity-75 hidden"></div>
+                <div id="wordsListOptions" class="space-y-2 hidden">
+                  <div class="text-sm">Search mode:</div>
+                  <label class="inline-flex items-center gap-2 text-sm ml-4">
+                    <input type="radio" name="wordsMode" value="one_per_theme" checked /> 
+                    One word per theme (same word for all samples in theme)
+                  </label>
+                  <label class="inline-flex items-center gap-2 text-sm ml-4">
+                    <input type="radio" name="wordsMode" value="unique_per_query" /> 
+                    Unique word per query (different word for each sample)
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Advanced Tab -->
+        <div id="advancedTab" class="tab-content hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-4 rounded border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700">
+              <h3 class="font-medium mb-3">Downloader Configuration</h3>
+              <div class="space-y-3">
+                <label class="block text-sm">Download Method
+                  <select id="DOWNLOAD_METHOD" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" onchange="updateDownloaderInfo()">
+                    <option value="smart">Smart (Auto-select)</option>
+                    <option value="segment">Segment Mode (ffmpeg)</option>
+                    <option value="aria2c">Full Download (aria2c)</option>
+                  </select>
+                </label>
+                <div id="downloaderInfo" class="text-sm p-2 rounded bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+                  <!-- Dynamic info will be shown here -->
+                </div>
+                <div id="aria2cSettings" class="mt-3">
+                  <h4 class="text-sm font-medium mb-2 opacity-75 border-t border-gray-200 dark:border-gray-700 pt-3">aria2c Accelerator Settings</h4>
+                  <label class="inline-flex items-center gap-2 text-sm mb-2"><input id="ARIA2C_ENABLED" type="checkbox" class="rounded" /> Enable aria2c acceleration</label>
+                  <label class="block text-sm">Connections per server <span id="aria2c-conn-info"></span><input id="ARIA2C_CONN_PER_SERVER" type="number" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" /></label>
+                  <label class="block text-sm">Split <span id="aria2c-split-info"></span><input id="ARIA2C_SPLIT" type="number" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" /></label>
+                  <label class="block text-sm">Chunk size <span id="aria2c-chunk-info"></span><input id="ARIA2C_CHUNK_SIZE" type="text" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" /></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700">
+              <h3 class="font-medium mb-3">Scoring (CLAP) <span id="clap-info"></span></h3>
+              <div class="space-y-3">
+                <label class="inline-flex items-center gap-2 text-sm">
+                  <input id="SCORING_ENABLED" type="checkbox" class="rounded" /> 
+                  Enable CLAP scoring
+                </label>
+                <label class="block text-sm">
+                  Model path <span id="model-path-info"></span>
+                  <input id="CLAP_MODEL_PATH" type="text" placeholder="models/music_speech_audioset_epoch_15_esc_89.98.pt" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" />
+                </label>
+                <label class="block text-sm">
+                  Minimum similarity <span id="min-sim-info"></span>
+                  <input id="SCORING_MIN_SIMILARITY" type="number" step="0.01" min="0" max="1" value="0.2" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" />
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Tab -->
+        <div id="progressTab" class="tab-content hidden">
+          <div class="p-4 rounded border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700">
+            <h3 class="font-medium mb-3">Per-Theme Progress</h3>
+            <div id="perTheme"></div>
+            <div class="mt-6">
+              <div class="flex justify-between items-center mb-2">
+                <h4 class="font-medium">Recent Activity</h4>
+                <div class="flex gap-2">
+                  <span id="logsLink"></span>
+                  <button onclick="toggleActivityExpand()" id="expandBtn" class="px-2 py-1 text-xs rounded border border-gray-400 bg-white dark:bg-slate-800 dark:border-slate-600">
+                    <span id="expandIcon">⛶</span> <span id="expandText">Expand</span>
+                  </button>
+                </div>
+              </div>
+              <div id="logList" class="text-xs space-y-1 max-h-48 overflow-auto border border-gray-300 dark:border-slate-700 rounded p-2 bg-gray-100 dark:bg-slate-800/40 transition-all duration-300"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <button type="button" onclick="save()" class="px-4 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-700">Save Configuration</button>
+      </div>
+    </div>
+
+    <script>
+      let statusTimer = null;
+      let currentThemes = [];
+      let activityExpanded = false;
+
+      function infoIcon(tooltipText) {
+        return `<span class="tooltip">
+          <span class="info-icon">?</span>
+          <span class="tooltiptext">${tooltipText}</span>
+        </span>`;
+      }
+
+      function toggleActivityExpand() {
+        activityExpanded = !activityExpanded;
+        const logList = document.getElementById('logList');
+        const expandBtn = document.getElementById('expandBtn');
+        const expandText = document.getElementById('expandText');
+        const expandIcon = document.getElementById('expandIcon');
+        
+        if (activityExpanded) {
+          // Expand to nearly full screen
+          logList.classList.remove('max-h-48');
+          logList.classList.add('fixed', 'inset-4', 'z-50', 'max-h-none');
+          logList.style.height = 'calc(100vh - 2rem)';
+          
+          // Update button
+          expandText.textContent = 'Collapse';
+          expandIcon.textContent = '⛉';
+          expandBtn.classList.add('fixed', 'top-8', 'right-8', 'z-50');
+          
+          // Add backdrop with higher opacity
+          const backdrop = document.createElement('div');
+          backdrop.id = 'activityBackdrop';
+          backdrop.className = 'fixed inset-0 bg-black bg-opacity-75 z-40';
+          backdrop.onclick = toggleActivityExpand;
+          document.body.appendChild(backdrop);
+          
+          // Add collapse button at the top of log viewer
+          const topCollapseBtn = document.createElement('button');
+          topCollapseBtn.id = 'topCollapseBtn';
+          topCollapseBtn.className = 'fixed top-6 left-1/2 transform -translate-x-1/2 z-50 px-4 py-2 bg-gray-800 text-white rounded shadow-lg hover:bg-gray-700';
+          topCollapseBtn.textContent = 'Collapse Logs';
+          topCollapseBtn.onclick = toggleActivityExpand;
+          document.body.appendChild(topCollapseBtn);
+          
+          // Prevent background scrolling
+          document.body.style.overflow = 'hidden';
+        } else {
+          // Collapse back to normal
+          logList.classList.add('max-h-48');
+          logList.classList.remove('fixed', 'inset-4', 'z-50', 'max-h-none');
+          logList.style.height = '';
+          
+          // Update button
+          expandText.textContent = 'Expand';
+          expandIcon.textContent = '⛶';
+          expandBtn.classList.remove('fixed', 'top-8', 'right-8', 'z-50');
+          
+          // Remove backdrop
+          const backdrop = document.getElementById('activityBackdrop');
+          if (backdrop) backdrop.remove();
+          
+          // Remove top collapse button
+          const topCollapseBtn = document.getElementById('topCollapseBtn');
+          if (topCollapseBtn) topCollapseBtn.remove();
+          
+          // Re-enable background scrolling
+          document.body.style.overflow = '';
+        }
+      }
+
+      function toggleDarkMode() {
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) {
+          document.documentElement.classList.remove('dark');
+          localStorage.theme = 'light';
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.theme = 'dark';
+        }
+        updateThemeButton();
+      }
+
+      function updateThemeButton() {
+        const btn = document.getElementById('themeToggle');
+        if (!btn) return;
+        const isDark = document.documentElement.classList.contains('dark');
+        btn.textContent = isDark ? 'Dark' : 'Light';
+      }
+
+      function switchTab(tabName) {
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+          btn.classList.remove('border-blue-500');
+          btn.classList.add('border-transparent');
+        });
+        document.getElementById(tabName + 'Tab').classList.remove('hidden');
+        document.querySelector(`[data-tab="${tabName}"]`).classList.remove('border-transparent');
+        document.querySelector(`[data-tab="${tabName}"]`).classList.add('border-blue-500');
+
+        // Update URL hash
+        window.location.hash = tabName;
+      }
+
+      function expandAllThemes() {
+        document.querySelectorAll('.theme-details').forEach(el => {
+          el.classList.remove('hidden');
+        });
+      }
+
+      function toggleThemeDetails(idx) {
+        const details = document.getElementById(`theme-details-${idx}`);
+        details.classList.toggle('hidden');
+      }
+
+      function newSession() {
+        document.getElementById('SESSION_ID').value = '';
+        alert('New session will be created on next run');
+      }
+
+      function renderThemes() {
+        const container = document.getElementById('themesList');
+        container.innerHTML = '';
+        
+        const useWordsList = document.getElementById('USE_WORDS_LIST').checked;
+        
+        currentThemes.forEach((theme, idx) => {
+          const isObject = typeof theme === 'object';
+          const name = isObject ? theme.name : theme;
+          const search = isObject ? theme.search : theme;
+          const prompt = isObject ? theme.prompt : '';
+          
+          const div = document.createElement('div');
+          div.className = 'border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700 rounded p-3';
+          
+          let searchFieldHtml = '';
+          if (useWordsList) {
+            searchFieldHtml = `
+              <div class="space-y-2">
+                <label class="inline-flex items-center gap-2 text-sm">
+                  <input type="checkbox" id="theme-use-words-${idx}" checked onchange="toggleThemeWordsUsage(${idx})">
+                  Use words list for this theme
+                </label>
+                <label class="block text-sm" id="search-field-${idx}">
+                  Search terms ${infoIcon('Currently using random words from words.txt instead of custom search terms')}
+                  <input id="theme-search-${idx}" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-gray-100 dark:bg-transparent p-1 opacity-50" value="${search}" disabled>
+                </label>
+              </div>
+            `;
+          } else {
+            searchFieldHtml = `
+              <label class="block text-sm">
+                Search terms ${infoIcon('YouTube search query. Use commas for multiple searches (e.g., "ambient music, nature sounds"). Each term will be searched and optionally expanded with AI.')}
+                <input id="theme-search-${idx}" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" value="${search}">
+              </label>
+            `;
+          }
+          
+          div.innerHTML = `
+            <div class="flex justify-between items-center cursor-pointer" onclick="toggleThemeDetails(${idx});">
+              <span class="font-medium">Theme ${idx + 1}: <span id="theme-name-display-${idx}">${name}</span></span>
+              <span class="text-sm opacity-75">▼</span>
+            </div>
+            <div id="theme-details-${idx}" class="theme-details hidden mt-3 space-y-2">
+              <label class="block text-sm">Name ${infoIcon('Folder name where samples will be saved for this theme')}
+                <input id="theme-name-${idx}" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1" value="${name}" onchange="updateThemeName(${idx})">
+              </label>
+              ${searchFieldHtml}
+              <label class="block text-sm">
+                CLAP prompt ${infoIcon('Describes desired sound characteristics. CLAP scores how well each clip matches this description. Clips are assigned to the theme with the highest score.')}
+                <textarea id="theme-prompt-${idx}" rows="2" class="mt-1 w-full rounded border border-gray-400 dark:border-slate-600 bg-white dark:bg-transparent p-1">${prompt}</textarea>
+              </label>
+            </div>
+          `;
+          container.appendChild(div);
+        });
+      }
+
+      function updateThemeName(idx) {
+        const newName = document.getElementById(`theme-name-${idx}`).value;
+        document.getElementById(`theme-name-display-${idx}`).textContent = newName;
+      }
+
+      function toggleWordsListMode() {
+        const isEnabled = document.getElementById('USE_WORDS_LIST').checked;
+        const optionsDiv = document.getElementById('wordsListOptions');
+        const statusDiv = document.getElementById('wordsListStatus');
+        
+        if (isEnabled) {
+          optionsDiv.classList.remove('hidden');
+          statusDiv.classList.remove('hidden');
+          checkWordsListAvailable();
+        } else {
+          optionsDiv.classList.add('hidden');
+          statusDiv.classList.add('hidden');
+          // Reset all opt-outs when disabling words list
+          for (let i = 0; i < 16; i++) {
+            const checkbox = document.getElementById(`theme-use-words-${i}`);
+            if (checkbox) checkbox.checked = true;
+          }
+        }
+        
+        // Re-render themes to update search field states
+        renderThemes();
+      }
+
+      function toggleThemeWordsUsage(idx) {
+        const isChecked = document.getElementById(`theme-use-words-${idx}`).checked;
+        const searchField = document.getElementById(`theme-search-${idx}`);
+        
+        if (isChecked) {
+          searchField.disabled = true;
+          searchField.classList.add('opacity-50', 'bg-gray-100', 'dark:bg-gray-800');
+          searchField.classList.remove('bg-white', 'dark:bg-transparent');
+        } else {
+          searchField.disabled = false;
+          searchField.classList.remove('opacity-50', 'bg-gray-100', 'dark:bg-gray-800');
+          searchField.classList.add('bg-white', 'dark:bg-transparent');
+        }
+      }
+
+      async function checkWordsListAvailable() {
+        try {
+          const resp = await fetch('/words/status');
+          const data = await resp.json();
+          const statusDiv = document.getElementById('wordsListStatus');
+          if (data.available) {
+            statusDiv.textContent = `Words list loaded: ${data.count} words available`;
+            statusDiv.classList.remove('text-red-500');
+            statusDiv.classList.add('text-green-600', 'dark:text-green-400');
+          } else {
+            statusDiv.textContent = 'Words list not found (expected in app/words.txt)';
+            statusDiv.classList.add('text-red-500');
+            statusDiv.classList.remove('text-green-600', 'dark:text-green-400');
+          }
+        } catch (error) {
+          const statusDiv = document.getElementById('wordsListStatus');
+          statusDiv.textContent = 'Error checking words list availability';
+          statusDiv.classList.add('text-red-500');
+        }
+      }
+
+      function renderPerTheme(progress) {
+        const container = document.getElementById('perTheme');
+        container.innerHTML = '';
+        if (!progress) return;
+        const { themes, filled, target_per_bank } = progress;
+        themes.forEach(t => {
+          const cnt = filled?.[t] || 0;
+          const pct = Math.min(100, Math.round(100 * cnt / (target_per_bank || 1)));
+          const row = document.createElement('div');
+          row.className = 'mb-3';
+          row.innerHTML = `
+            <div class="flex justify-between text-sm mb-1"><span>${t}</span><span>${cnt} / ${target_per_bank} (${pct}%)</span></div>
+            <div class="h-2 w-full bg-gray-200 dark:bg-slate-700 rounded">
+              <div class="h-2 bg-blue-500 rounded" style="width:${pct}%"></div>
+            </div>`;
+          container.appendChild(row);
+        });
+      }
+
+      function renderOverall(progress, running, sessionDir) {
+        const badge = document.getElementById('runBadge');
+        badge.textContent = running ? 'Running' : 'Idle';
+        badge.className = 'text-sm px-2 py-0.5 rounded ' + (running ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300' : 'border border-gray-400 bg-white dark:bg-slate-800 dark:border-slate-600');
+
+        const sessionInfoEl = document.getElementById('sessionInfo');
+        const logsLinkEl = document.getElementById('logsLink');
+
+        if (progress && progress.session_id) {
+          if (sessionDir) {
+            const rawDir = sessionDir.replace('/sessions/', '/raw/');
+            const processedDir = sessionDir.replace('/sessions/', '/processed/candidates/');
+            sessionInfoEl.innerHTML = `
+              Session: ${progress.session_id}
+              <span class="ml-3">
+                [<a href="#" onclick="copyPath('${sessionDir}'); return false;" class="underline hover:text-blue-500 cursor-pointer" title="Session logs">Logs</a>]
+                [<a href="#" onclick="copyPath('${rawDir}'); return false;" class="underline hover:text-blue-500 cursor-pointer" title="Raw downloads">Raw Audio</a>]
+                [<a href="#" onclick="copyPath('${processedDir}'); return false;" class="underline hover:text-blue-500 cursor-pointer" title="Processed candidates">Processed</a>]
+              </span>`;
+
+            // Also add logs link next to Expand button
+            logsLinkEl.innerHTML = `[<a href="#" onclick="copyPath('${sessionDir}'); return false;" class="underline hover:text-blue-500 cursor-pointer text-xs" title="Open full logs in external viewer">Logs</a>]`;
+          } else {
+            sessionInfoEl.textContent = `Session: ${progress.session_id}`;
+            logsLinkEl.innerHTML = '';
+          }
+        } else {
+          logsLinkEl.innerHTML = '';
+        }
+        
+        if (!progress) {
+          document.getElementById('overallBar').style.width = '0%';
+          document.getElementById('overallText').textContent = '0% (0 / 0)';
+          return;
+        }
+        const pct = progress.percent || 0;
+        const filled = progress.overall_filled || 0;
+        const target = progress.overall_target || 0;
+        document.getElementById('overallBar').style.width = pct + '%';
+        document.getElementById('overallText').textContent = `${pct}% (${filled} / ${target})`;
+      }
+
+      function updateAudioQualityInfo() {
+        const quality = document.getElementById('AUDIO_QUALITY').value;
+        const sizesDiv = document.getElementById('audioQualitySizes');
+
+        if (quality === 'best') {
+          sizesDiv.innerHTML = '👍 Best Audio Format: ~0.06 MB per 5 seconds of audio';
+        } else {
+          sizesDiv.innerHTML = '👎 Worst Audio Format: ~0.03 MB per 5 seconds of audio';
+        }
+      }
+
+      function validateChunkSize() {
+        const clipSeconds = parseInt(document.getElementById('CLIP_SECONDS').value) || 2;
+        let chunkSeconds = parseInt(document.getElementById('DOWNLOAD_CHUNK_SECONDS').value);
+
+        // Default to 10 if empty or invalid
+        if (isNaN(chunkSeconds) || chunkSeconds <= 0) {
+          chunkSeconds = 10;
+          document.getElementById('DOWNLOAD_CHUNK_SECONDS').value = chunkSeconds;
+        }
+
+        // Ensure chunk size is at least as large as clip duration
+        if (chunkSeconds < clipSeconds) {
+          document.getElementById('DOWNLOAD_CHUNK_SECONDS').value = clipSeconds;
+          // Flash a warning message
+          const chunkInput = document.getElementById('DOWNLOAD_CHUNK_SECONDS');
+          chunkInput.style.backgroundColor = '#fee';
+          setTimeout(() => {
+            chunkInput.style.backgroundColor = '';
+          }, 500);
+        }
+
+        // Always update the downloader info to reflect threshold changes
+        updateDownloaderInfo();
+      }
+
+      function updateDownloaderInfo() {
+        const method = document.getElementById('DOWNLOAD_METHOD').value;
+        const infoDiv = document.getElementById('downloaderInfo');
+        const aria2cSettings = document.getElementById('aria2cSettings');
+        const segmentSize = document.getElementById('DOWNLOAD_CHUNK_SECONDS')?.value || '10';
+        const aria2cEnabled = document.getElementById('ARIA2C_ENABLED')?.checked;
+
+        if (method === 'smart') {
+          const aria2cInfo = aria2cEnabled
+            ? 'uses aria2c accelerator for faster downloads'
+            : 'uses yt-dlp native downloader';
+          infoDiv.innerHTML = `🔄 <strong>Smart mode</strong>: Automatically selects best method. Videos >${segmentSize}s: Downloads only a ${segmentSize}-second segment from center using ffmpeg. Videos ≤${segmentSize}s: Downloads entire file (${aria2cInfo}).`;
+          aria2cSettings.style.opacity = '1';
+          aria2cSettings.querySelectorAll('input').forEach(input => input.disabled = false);
+        } else if (method === 'segment') {
+          infoDiv.innerHTML = '✂️ <strong>Segment mode</strong>: Always downloads segments from the center of videos using ffmpeg. Downloads exactly the "Segment download size" amount. Most efficient for long videos. Note: aria2c cannot be used with segments.';
+          aria2cSettings.style.opacity = '0.5';
+          aria2cSettings.querySelectorAll('input').forEach(input => input.disabled = true);
+        } else if (method === 'aria2c') {
+          infoDiv.innerHTML = '⚠️ <strong>Full download mode</strong>: Forces aria2c accelerator for all downloads. Always downloads entire video files then trims to clip length. Fast download speeds but inefficient for long videos - can download 100s of MB per video! Only use for short videos or when speed is critical.';
+          aria2cSettings.style.opacity = '1';
+          aria2cSettings.querySelectorAll('input').forEach(input => input.disabled = false);
+        }
+      }
+
+      async function load() {
+        const resp = await fetch('/config');
+        const cfg = await resp.json();
+
+        // Add info icons dynamically
+        // Basic Settings tooltips
+        document.getElementById('clip-duration-info').innerHTML = infoIcon('Length of each audio sample in seconds. Used for final output regardless of download method.');
+        document.getElementById('segment-size-info').innerHTML = infoIcon('Controls two things: (1) How much to download when using segments, and (2) The threshold for Smart mode - videos longer than this will use segment downloading, shorter videos will be downloaded entirely. Default is 10 seconds. Automatically adjusted to be at least as long as your clip duration. Example: With 10-second segments, you can extract multiple 2-second clips from different positions.');
+        document.getElementById('samples-per-theme-info').innerHTML = infoIcon('Number of audio samples to collect for each theme/bank.');
+        document.getElementById('num-themes-info').innerHTML = infoIcon('Total number of theme categories to generate samples for.');
+        document.getElementById('search-results-info').innerHTML = infoIcon('Maximum YouTube search results to process per theme.');
+        document.getElementById('max-retries-info').innerHTML = infoIcon('Number of retry attempts if a theme doesn\'t get enough samples. 0 = no retries, 1+ = retry that many times with new searches.');
+
+        // Processing Settings tooltips
+        document.getElementById('download-workers-info').innerHTML = infoIcon('Number of parallel download threads. Applies to all download methods. Higher = faster but more resource intensive. Max: 10, Recommended: 4.');
+        document.getElementById('slices-per-video-info').innerHTML = infoIcon('Number of segments to extract from each video. Applies to all methods. Creates multiple samples (e.g., _s1, _s2) from same video for variety. Max: 20.');
+        document.getElementById('slice-stride-info').innerHTML = infoIcon('Time offset between slice start positions in seconds. Applies to all methods. Controls overlap between segments.');
+        document.getElementById('audio-quality-info').innerHTML = infoIcon('Audio quality affects file size. Best: higher quality, Worst: smaller files but lower quality.');
+
+        // Words List tooltip
+        document.getElementById('words-list-info').innerHTML = infoIcon('Uses a file with 466,550+ search terms that are randomly selected. Edit app/words.txt to customize the word list.');
+
+        // CLAP and OpenAI tooltips
+        document.getElementById('clap-info').innerHTML = infoIcon('CLAP (Contrastive Language-Audio Pretraining) scores how well audio matches text descriptions. Higher scores = better match.');
+        document.getElementById('model-path-info').innerHTML = infoIcon('Path to CLAP model file. Default: models/music_speech_audioset_epoch_15_esc_89.98.pt. Leave empty to use default.');
+        document.getElementById('min-sim-info').innerHTML = infoIcon('Score threshold (0-1). Clips scoring BELOW this are discarded. 0 = keep all, 0.2 = light filtering (default), 0.5 = moderate filtering, 1 = impossible to match.');
+        document.getElementById('openai-expand-info').innerHTML = infoIcon('Uses OpenAI to generate variations of search terms for better results.');
+        document.getElementById('openai-key-info').innerHTML = infoIcon('OpenAI API key. If empty, uses OPENAI_API_KEY from shell environment.');
+
+        // Add aria2c info icons
+        document.getElementById('aria2c-conn-info').innerHTML = infoIcon('Max connections to each server. Default: 4 (aria2c max: 16). Set to 4 to balance speed with safety - avoids triggering YouTube rate limiting while maintaining reasonable download speeds.');
+        document.getElementById('aria2c-split-info').innerHTML = infoIcon('Parallel connections per file. Default: 4 (aria2c max: 16). Set to 4 to minimize concurrent connections - prevents detection as automated traffic while still enabling acceleration.');
+        document.getElementById('aria2c-chunk-info').innerHTML = infoIcon('Download chunk size. Default: 10M (aria2c default: 1M). Larger chunks (10M) mean fewer server requests, reducing the chance of being flagged as a bot while improving efficiency.');
+        
+        // Load basic settings
+        const numericKeys = ['CLIP_SECONDS','SAMPLES_PER_BANK','NUM_BANKS','MAX_RETRIES_PER_THEME','SEARCH_RESULTS_PER_THEME','DOWNLOAD_WORKERS','SLICES_PER_VIDEO','SLICE_STRIDE_SECONDS','ARIA2C_CONN_PER_SERVER','ARIA2C_SPLIT','SCORING_MIN_SIMILARITY'];
+        for (const key of numericKeys) {
+          const el = document.getElementById(key);
+          if (el) el.value = cfg[key];
+        }
+        
+        // Load text fields
+        document.getElementById('ARIA2C_CHUNK_SIZE').value = cfg['ARIA2C_CHUNK_SIZE'];
+        document.getElementById('CLAP_MODEL_PATH').value = cfg['CLAP_MODEL_PATH'] || 'models/music_speech_audioset_epoch_15_esc_89.98.pt';
+        document.getElementById('SESSION_ID').value = cfg['SESSION_ID'] || '';
+        document.getElementById('OPENAI_API_KEY').value = cfg['OPENAI_API_KEY'] || '';
+
+        // Load new fields
+        document.getElementById('AUDIO_QUALITY').value = cfg['AUDIO_QUALITY'] || 'best';
+        document.getElementById('DOWNLOAD_METHOD').value = cfg['DOWNLOAD_METHOD'] || 'smart';
+        document.getElementById('DOWNLOAD_CHUNK_SECONDS').value = cfg['DOWNLOAD_CHUNK_SECONDS'] || '10';
+        updateAudioQualityInfo();  // Update audio quality size info
+
+        // Set default for minimum similarity if not set
+        if (!cfg['SCORING_MIN_SIMILARITY']) {
+          document.getElementById('SCORING_MIN_SIMILARITY').value = '0.2';
+        }
+
+        // Load checkboxes
+        document.getElementById('ARIA2C_ENABLED').checked = cfg['ARIA2C_ENABLED'] === '1';
+        document.getElementById('SCORING_ENABLED').checked = cfg['SCORING_ENABLED'] === '1';
+        document.getElementById('USE_OPENAI_EXPANSION').checked = cfg['USE_OPENAI_EXPANSION'] === '1';
+
+        // Validate chunk size and update displays AFTER checkboxes are loaded
+        validateChunkSize();
+
+        // Update tooltip when aria2c checkbox changes
+        document.getElementById('ARIA2C_ENABLED').addEventListener('change', updateDownloaderInfo);
+        
+        // Load words list settings
+        document.getElementById('USE_WORDS_LIST').checked = cfg['USE_WORDS_LIST'] === '1';
+        if (cfg['WORDS_MODE']) {
+          document.querySelector(`input[name="wordsMode"][value="${cfg['WORDS_MODE']}"]`).checked = true;
+        }
+        if (cfg['USE_WORDS_LIST'] === '1') {
+          toggleWordsListMode();
+        }
+        
+        // Load themes with new structure support
+        currentThemes = cfg.themes || [];
+        renderThemes();
+        
+        refreshStatus();
+      }
+
+      async function save() {
+        const payload = {};
+        
+        // Save numeric fields
+        const numericKeys = ['CLIP_SECONDS','SAMPLES_PER_BANK','NUM_BANKS','MAX_RETRIES_PER_THEME','SEARCH_RESULTS_PER_THEME','DOWNLOAD_WORKERS','SLICES_PER_VIDEO','SLICE_STRIDE_SECONDS','DOWNLOAD_CHUNK_SECONDS','ARIA2C_CONN_PER_SERVER','ARIA2C_SPLIT','SCORING_MIN_SIMILARITY'];
+        for (const key of numericKeys) {
+          const el = document.getElementById(key);
+          if (el) payload[key] = el.value;
+        }
+        
+        // Save text fields
+        payload['ARIA2C_CHUNK_SIZE'] = document.getElementById('ARIA2C_CHUNK_SIZE').value;
+        payload['CLAP_MODEL_PATH'] = document.getElementById('CLAP_MODEL_PATH').value;
+        payload['SESSION_ID'] = document.getElementById('SESSION_ID').value;
+        payload['OPENAI_API_KEY'] = document.getElementById('OPENAI_API_KEY').value;
+
+        // Save new fields
+        payload['AUDIO_QUALITY'] = document.getElementById('AUDIO_QUALITY').value;
+        payload['DOWNLOAD_METHOD'] = document.getElementById('DOWNLOAD_METHOD').value;
+        
+        // Save checkboxes
+        payload['ARIA2C_ENABLED'] = document.getElementById('ARIA2C_ENABLED').checked ? '1' : '0';
+        payload['SCORING_ENABLED'] = document.getElementById('SCORING_ENABLED').checked ? '1' : '0';
+        payload['USE_OPENAI_EXPANSION'] = document.getElementById('USE_OPENAI_EXPANSION').checked ? '1' : '0';
+        
+        // Save words list settings
+        payload['USE_WORDS_LIST'] = document.getElementById('USE_WORDS_LIST').checked ? '1' : '0';
+        payload['WORDS_MODE'] = document.querySelector('input[name="wordsMode"]:checked').value;
+        
+        // Save theme-specific words list opt-outs
+        const themeWordsOptOut = [];
+        for (let i = 0; i < currentThemes.length; i++) {
+          const checkbox = document.getElementById(`theme-use-words-${i}`);
+          if (checkbox && !checkbox.checked) {
+            const nameEl = document.getElementById(`theme-name-${i}`);
+            if (nameEl) themeWordsOptOut.push(nameEl.value);
+          }
+        }
+        payload['THEME_WORDS_OPT_OUT'] = themeWordsOptOut.join(',');
+        
+        // Save themes with new structure
+        const themes = [];
+        for (let i = 0; i < 16; i++) {
+          const nameEl = document.getElementById(`theme-name-${i}`);
+          const searchEl = document.getElementById(`theme-search-${i}`);
+          const promptEl = document.getElementById(`theme-prompt-${i}`);
+          
+          if (nameEl && searchEl && promptEl) {
+            themes.push({
+              name: nameEl.value,
+              search: searchEl.value,
+              prompt: promptEl.value
+            });
+          }
+        }
+        payload.themes = themes;
+        
+        await fetch('/config', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+        alert('Configuration saved');
+      }
+
+      async function runPipeline() {
+        const resp = await fetch('/run', { method:'POST' });
+        const data = await resp.json();
+        if (data.status === 'started' || data.status === 'already_running') startAutoRefresh();
+        refreshStatus();
+      }
+
+      function startAutoRefresh() {
+        if (statusTimer) return;
+        statusTimer = setInterval(refreshStatus, 1500);
+      }
+
+      function stopAutoRefresh() {
+        if (statusTimer) { clearInterval(statusTimer); statusTimer = null; }
+      }
+
+      function updateRunControls(running, stopping) {
+        const runBtn = document.getElementById('runBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const refreshBtn = document.getElementById('refreshBtn');
+        if (stopping) {
+          runBtn.textContent = 'Stopping…';
+          runBtn.disabled = true;
+          stopBtn.textContent = 'Stopping (finishing current downloads)…';
+          stopBtn.disabled = true;
+          stopBtn.className = 'px-3 py-1 rounded bg-orange-600 text-white cursor-not-allowed opacity-75';
+          refreshBtn.disabled = false;
+        } else if (running) {
+          runBtn.textContent = 'Running…';
+          runBtn.disabled = true;
+          stopBtn.textContent = 'Stop';
+          stopBtn.disabled = false;
+          stopBtn.className = 'px-3 py-1 rounded bg-rose-600 text-white hover:bg-rose-700';
+          refreshBtn.disabled = false;
+        } else {
+          runBtn.textContent = 'Run';
+          runBtn.disabled = false;
+          stopBtn.textContent = 'Stop';
+          stopBtn.disabled = true;
+          stopBtn.className = 'px-3 py-1 rounded bg-gray-500 text-white cursor-not-allowed';
+          refreshBtn.disabled = false;
+        }
+      }
+
+      async function refreshStatus() {
+        const resp = await fetch('/run/status');
+        const data = await resp.json();
+        const running = !!data.running;
+        const stopping = !!data.stopping;
+        const progress = data.progress || data.last_result;
+        renderOverall(progress, running, data.session_dir);
+        renderPerTheme(progress);
+        const logDiv = document.getElementById('logList');
+        logDiv.innerHTML = '';
+        (data.logs || []).slice(-200).forEach(line => {
+          const div = document.createElement('div');
+          // First decode HTML entities
+          let decoded = line
+            .replace(/&amp;/g, '&')
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&quot;/g, '"')
+            .replace(/&#x27;/g, "'")
+            .replace(/&#x2F;/g, '/')
+            .replace(/&#x22;/g, '"')
+            .replace(/&#x5C;/g, '\\');
+
+          // Strip ANSI escape codes (color codes from terminal output)
+          decoded = decoded.replace(/\x1b\[[0-9;]*m/g, '');
+          // Also remove any Unicode replacement characters that might appear
+          decoded = decoded.replace(/\uFFFD/g, '');
+
+          div.textContent = decoded;
+          logDiv.appendChild(div);
+        });
+        updateRunControls(running, stopping);
+        if (!running) stopAutoRefresh(); else startAutoRefresh();
+      }
+
+      async function stopPipeline() {
+        const resp = await fetch('/run/stop', { method:'POST' });
+        await resp.json();
+        refreshStatus();
+      }
+
+      function copyPath(path) {
+        // Clean the path of any file:// prefix
+        const cleanPath = path.replace(/^file:\/?\/?/, '');
+        
+        // Copy to clipboard
+        navigator.clipboard.writeText(cleanPath).then(() => {
+          // Show temporary notification
+          const existing = document.querySelector('.copy-notification');
+          if (existing) existing.remove();
+          
+          const notification = document.createElement('div');
+          notification.className = 'copy-notification fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded shadow-lg z-50';
+          notification.textContent = 'Path copied! Paste in Finder with Cmd+Shift+G';
+          document.body.appendChild(notification);
+          
+          setTimeout(() => {
+            notification.remove();
+          }, 3000);
+        }).catch(err => {
+          alert('Path: ' + cleanPath);
+        });
+      }
+      
+      // Add keyboard shortcut for closing expanded activity
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && activityExpanded) {
+          toggleActivityExpand();
+        }
+      });
+
+      load();
+      updateThemeButton();
+
+      // Handle initial URL hash
+      window.addEventListener('DOMContentLoaded', () => {
+        const hash = window.location.hash.slice(1);
+        if (hash && ['themes', 'pipeline', 'advanced', 'progress'].includes(hash)) {
+          switchTab(hash);
+        }
+      });
+
+      // Handle hash changes (e.g., browser back/forward)
+      window.addEventListener('hashchange', () => {
+        const hash = window.location.hash.slice(1);
+        if (hash && ['themes', 'pipeline', 'advanced', 'progress'].includes(hash)) {
+          switchTab(hash);
+        }
+      });
+    </script>
+  </body>
+</html>
