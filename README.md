@@ -383,6 +383,24 @@ unset SLICES_PER_VIDEO
 
 The web UI updates the `.env` file, but shell exports take precedence. Best practice: Don't export RadioStation variables in your shell.
 
+## Screenshots
+
+### Themes  
+Configure download folders, search terms, and CLAP prompts<br>
+<img src="https://github.com/user-attachments/assets/3107b6e3-9789-41ff-8853-1cd280a7c2a2" alt="Themes" width="600" />
+
+### Pipeline  
+Set up core application settings<br>
+<img src="https://github.com/user-attachments/assets/cd5dc5f2-8344-4f3f-b952-df4a929026fc" alt="Pipeline" width="600" />
+
+### Advanced  
+Fine-tune download options and choose whether to verify audio with CLAP<br>
+<img src="https://github.com/user-attachments/assets/70ecbe4f-1443-4f81-9e11-30b153540831" alt="Advanced" width="600" />
+
+### Progress  
+Track folder activity and review detailed logs<br>
+<img src="https://github.com/user-attachments/assets/eb489687-f50a-487f-ad38-2923fd024ed1" alt="Progress" width="600" />
+
 ## License
 
 This project is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
