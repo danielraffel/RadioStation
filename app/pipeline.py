@@ -92,26 +92,22 @@ def _assign_with_scoring(wav_path: Path, themes: List[str], prompts: list, min_s
     return themes[0], None
 
 
-def run_pipeline(stop_cb=None, progress_cb=None, log_cb=None):
+def run_pipeline(stop_cb=None, progress_cb=None, log_cb=None, continue_session=None):
     """Download, score, and organize clips until banks are filled.
 
     stop_cb: optional callable returning True when a stop has been requested.
     progress_cb: optional callable receiving a dict of live progress.
+    log_cb: optional log callback function
+    continue_session: optional session_id to continue from a previous run
     """
     load_env()
-    
-    # CRITICAL: Clear session-wide URL tracking at start of new pipeline run
-    # This ensures no URL can be used twice within this session, even across themes
-    clear_session_urls()
-    if log_cb:
-        log_cb("Cleared session-wide URL tracking for duplicate prevention")
-    
+
     # Load themes with new structure
     theme_objects = load_themes()
     theme_names = [t['name'] for t in theme_objects]
     theme_search_map = {t['name']: t['search'] for t in theme_objects}
     theme_prompts = [{'name': t['name'], 'prompt': t['prompt']} for t in theme_objects]
-    
+
     clip_ms = int(os.environ['CLIP_SECONDS']) * 1000
     samples_per_bank = int(os.environ['SAMPLES_PER_BANK'])
     max_retries = int(os.environ.get('MAX_RETRIES_PER_THEME', '0'))
@@ -120,7 +116,7 @@ def run_pipeline(stop_cb=None, progress_cb=None, log_cb=None):
     slices_per_video = int(os.environ.get('SLICES_PER_VIDEO', '1'))
     slice_stride_ms = int(float(os.environ.get('SLICE_STRIDE_SECONDS', os.environ['CLIP_SECONDS'])) * 1000)
     min_sim = float(os.environ.get('SCORING_MIN_SIMILARITY', '0.0'))
-    
+
     # Words list configuration
     use_words_list = os.environ.get('USE_WORDS_LIST', '0') == '1'
     words_mode = os.environ.get('WORDS_MODE', 'one_per_theme')  # 'one_per_theme' or 'unique_per_query'
@@ -133,11 +129,36 @@ def run_pipeline(stop_cb=None, progress_cb=None, log_cb=None):
             if log_cb:
                 log_cb("Warning: Words list enabled but not available")
             use_words_list = False
-    
-    # Session management
-    session_id = os.environ.get('SESSION_ID') or _generate_session_id()
-    session_dir = SESSIONS_DIR / session_id
+
+    # Session management - continue existing or create new
+    if continue_session:
+        session_id = continue_session
+        session_dir = SESSIONS_DIR / session_id
+        if not session_dir.exists():
+            if log_cb:
+                log_cb(f"Session {session_id} not found, starting fresh")
+            session_id = _generate_session_id()
+            session_dir = SESSIONS_DIR / session_id
+            continue_session = None  # Reset flag since we're starting fresh
+        else:
+            if log_cb:
+                log_cb(f"Continuing session {session_id}")
+    else:
+        session_id = os.environ.get('SESSION_ID') or _generate_session_id()
+        session_dir = SESSIONS_DIR / session_id
+
     session_dir.mkdir(parents=True, exist_ok=True)
+
+    # Only clear URLs for new sessions, not continuations
+    if not continue_session:
+        # CRITICAL: Clear session-wide URL tracking at start of new pipeline run
+        # This ensures no URL can be used twice within this session, even across themes
+        clear_session_urls()
+        if log_cb:
+            log_cb("Cleared session-wide URL tracking for duplicate prevention")
+    else:
+        if log_cb:
+            log_cb("Continuing session - preserving URL tracking to avoid re-downloading")
     
     # Set up session-specific log file
     log_file = session_dir / f"session_{session_id}.log"
@@ -167,6 +188,18 @@ def run_pipeline(stop_cb=None, progress_cb=None, log_cb=None):
     
     results = {t: _count_in_bank(t, session_dir) for t in theme_names}
     retries = {t: 0 for t in theme_names}
+
+    # When continuing, log the current state
+    if continue_session and local_log:
+        local_log("Current progress:")
+        for theme in theme_names:
+            count = results[theme]
+            if count >= samples_per_bank:
+                local_log(f"  {theme}: COMPLETE ({count}/{samples_per_bank})")
+            else:
+                local_log(f"  {theme}: {count}/{samples_per_bank}")
+        completed = sum(1 for c in results.values() if c >= samples_per_bank)
+        local_log(f"Completed themes: {completed}/{len(theme_names)}")
     
     # Pre-generate all search queries using batch expansion
     if local_log:
@@ -270,7 +303,13 @@ def run_pipeline(stop_cb=None, progress_cb=None, log_cb=None):
         theme_name = theme_obj['name']
         search_term = theme_obj['search']
         theme_prompt = theme_obj['prompt']
-        
+
+        # Skip already completed themes when continuing
+        if results[theme_name] >= samples_per_bank:
+            if local_log:
+                local_log(f"Skipping {theme_name} - already complete ({results[theme_name]}/{samples_per_bank})")
+            continue
+
         # Check if this theme should use words list
         use_words_for_theme = use_words_list and theme_name not in theme_words_opt_out
         
