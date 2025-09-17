@@ -399,6 +399,11 @@ Fine-tune download options and choose whether to verify audio with CLAP<br>
 Track folder activity and review detailed logs<br>
 <img src="https://github.com/user-attachments/assets/eb489687-f50a-487f-ad38-2923fd024ed1" alt="Progress" width="600" />
 
+## Known Issues
+
+- Light/Dark mode respects system setting but toggle doesn't work.
+- CLAP hasn't been optimized and may not be very useful in current state.
+
 ## License
 
 This project is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
