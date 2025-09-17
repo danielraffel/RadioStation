@@ -1,6 +1,6 @@
 # RadioStation
 
-RadioStation helps you create custom audio sample banks for music production by harvesting and organizing clips from YouTube. Define your own search terms and themes to build personalized sound libraries tailored to your creative needs.
+RadioStation helps you create custom audio sample banks. Define your own search terms and themes to build personalized sound libraries tailored to your creative needs.
 
 The pipeline automatically:
 
