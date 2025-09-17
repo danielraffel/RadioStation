@@ -284,8 +284,6 @@ When `SLICES_PER_VIDEO` is greater than 1, the system extracts multiple segments
 
 These slice indicators are only used during processing. Final files in theme folders are numbered sequentially (e.g., `Soft_001.wav`, `Soft_002.wav`).
 
-See `Spec.md` for the full vision.
-
 ## Prerequisites
 
 - Python 3.12+
