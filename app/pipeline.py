@@ -191,6 +191,7 @@ def run_pipeline(stop_cb=None, progress_cb=None, log_cb=None, continue_session=N
 
     # When continuing, log the current state
     if continue_session and local_log:
+        local_log(f"Continuing session: {session_id}")
         local_log("Current progress:")
         for theme in theme_names:
             count = results[theme]
@@ -200,6 +201,8 @@ def run_pipeline(stop_cb=None, progress_cb=None, log_cb=None, continue_session=N
                 local_log(f"  {theme}: {count}/{samples_per_bank}")
         completed = sum(1 for c in results.values() if c >= samples_per_bank)
         local_log(f"Completed themes: {completed}/{len(theme_names)}")
+        total_samples = sum(results.values())
+        local_log(f"Total samples collected: {total_samples}/{samples_per_bank * len(theme_names)}")
     
     # Pre-generate all search queries using batch expansion
     if local_log:
