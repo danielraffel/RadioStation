@@ -80,6 +80,7 @@
         <div class="flex items-center gap-2">
           <button id="themeToggle" onclick="toggleDarkMode()" class="px-3 py-1 rounded border border-gray-400 bg-white dark:bg-slate-800 dark:border-slate-600">Light</button>
           <button id="runBtn" class="px-3 py-1 rounded bg-blue-600 text-white hover:bg-blue-700" onclick="runPipeline()">Run</button>
+          <button id="continueBtn" class="px-3 py-1 rounded bg-green-600 text-white hover:bg-green-700 hidden" onclick="continuePipeline()">Continue</button>
           <button id="stopBtn" class="px-3 py-1 rounded bg-rose-600 text-white hover:bg-rose-700" onclick="stopPipeline()">Stop</button>
           <button id="refreshBtn" class="px-3 py-1 rounded border border-gray-400 bg-white dark:bg-slate-800 dark:border-slate-600" onclick="refreshStatus()">Refresh</button>
         </div>
@@ -787,6 +788,19 @@
         refreshStatus();
       }
 
+      async function continuePipeline() {
+        const resp = await fetch('/continue', { method:'POST' });
+        const data = await resp.json();
+        if (data.status === 'continued') {
+          startAutoRefresh();
+          // Hide continue button when continuing
+          document.getElementById('continueBtn').classList.add('hidden');
+        } else if (data.status === 'no_session_to_continue') {
+          alert('No session available to continue');
+        }
+        refreshStatus();
+      }
+
       function startAutoRefresh() {
         if (statusTimer) return;
         statusTimer = setInterval(refreshStatus, 1500);
@@ -796,13 +810,21 @@
         if (statusTimer) { clearInterval(statusTimer); statusTimer = null; }
       }
 
-      function updateRunControls(running, stopping) {
+      function updateRunControls(running, stopping, progress) {
         const runBtn = document.getElementById('runBtn');
         const stopBtn = document.getElementById('stopBtn');
+        const continueBtn = document.getElementById('continueBtn');
         const refreshBtn = document.getElementById('refreshBtn');
+
+        // Show continue button only when stopped before completion
+        const wasStoppedIncomplete = !running && !stopping && progress &&
+                                      progress.percent !== undefined &&
+                                      progress.percent < 100 &&
+                                      progress.session_id;
         if (stopping) {
           runBtn.textContent = 'Stopping…';
           runBtn.disabled = true;
+          continueBtn.classList.add('hidden');
           stopBtn.textContent = 'Stopping (finishing current downloads)…';
           stopBtn.disabled = true;
           stopBtn.className = 'px-3 py-1 rounded bg-orange-600 text-white cursor-not-allowed opacity-75';
@@ -810,6 +832,7 @@
         } else if (running) {
           runBtn.textContent = 'Running…';
           runBtn.disabled = true;
+          continueBtn.classList.add('hidden');
           stopBtn.textContent = 'Stop';
           stopBtn.disabled = false;
           stopBtn.className = 'px-3 py-1 rounded bg-rose-600 text-white hover:bg-rose-700';
@@ -817,6 +840,15 @@
         } else {
           runBtn.textContent = 'Run';
           runBtn.disabled = false;
+
+          // Show/hide continue button based on incomplete session
+          if (wasStoppedIncomplete) {
+            continueBtn.classList.remove('hidden');
+            continueBtn.disabled = false;
+          } else {
+            continueBtn.classList.add('hidden');
+          }
+
           stopBtn.textContent = 'Stop';
           stopBtn.disabled = true;
           stopBtn.className = 'px-3 py-1 rounded bg-gray-500 text-white cursor-not-allowed';
@@ -855,7 +887,7 @@
           div.textContent = decoded;
           logDiv.appendChild(div);
         });
-        updateRunControls(running, stopping);
+        updateRunControls(running, stopping, progress);
         if (!running) stopAutoRefresh(); else startAutoRefresh();
       }
 
