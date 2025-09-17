@@ -212,7 +212,7 @@ Runtime settings live in the `.env` file and are exposed on the web page at
 | `MAX_RETRIES_PER_THEME` | `0` | unmatched downloads to attempt before stopping (`0` = run until complete) |
 | `SEARCH_RESULTS_PER_THEME` | `32` | how many search results to process per iteration |
 | `DOWNLOAD_WORKERS` | `4` | concurrent downloads per theme batch (max: 10) |
-| `SLICES_PER_VIDEO` | `5` | number of clips to extract from each video (creates _s1, _s2, etc.) |
+| `SLICES_PER_VIDEO` | `1` | number of clips to extract from each video (creates _s1, _s2, etc.) |
 | `SLICE_STRIDE_SECONDS` | `1` | step between slices (seconds) |
 | `DOWNLOAD_CHUNK_SECONDS` | `10` | segment size in seconds; also the threshold for smart mode |
 | `AUDIO_QUALITY` | `best` | audio quality: `best` or `worst` |
@@ -221,7 +221,7 @@ Runtime settings live in the `.env` file and are exposed on the web page at
 | `ARIA2C_CONN_PER_SERVER` | `4` | aria2c `-x` connections per server (max: 16, conservative default) |
 | `ARIA2C_SPLIT` | `4` | aria2c `-s` split count (max: 16, conservative default) |
 | `ARIA2C_CHUNK_SIZE` | `10M` | aria2c chunk size `-k` (larger = fewer requests) |
-| `SCORING_ENABLED` | `1` | enable CLAP scoring and routing |
+| `SCORING_ENABLED` | `0` | disable CLAP scoring and routing |
 | `CLAP_MODEL_PATH` | `''` | override path to CLAP checkpoint (otherwise auto-detected under `models/`) |
 | `THEME1`..`THEME16` | *(varies)* | search terms used for YouTube downloads and themed folders |
 
