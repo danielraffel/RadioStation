@@ -2,12 +2,15 @@
 models/
 !models/.gitkeep
 wavs/
+data/
 !wavs/**/.gitkeep
 .server_pid
 __pycache__/
 *.pyc
 .env
 .DS_Store
+.server.log
+.server_pid
 
 # Test files in root (should be in tests/ folder)
 /test_*.py

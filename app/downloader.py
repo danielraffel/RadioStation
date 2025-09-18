@@ -832,6 +832,8 @@ def download_candidates_for_term(
     theme_prompt: str = None,
     original_search: str = None,
     expanded_search: List[str] = None,
+    search_index: int = None,
+    total_search_terms: int = None,
 ) -> List[Path]:
     """Download up to max_results items in parallel and return candidate slice paths."""
     RAW_DIR.mkdir(parents=True, exist_ok=True)
@@ -856,9 +858,9 @@ def download_candidates_for_term(
                 log_cb("ERROR: " + str(msg))
         logger = YDLLogger()
     
-    # Get more search results than needed in case some are too short or already used
-    search_multiplier = 3  # Get 3x results to account for filtering and short videos
-    items = _extract_search(term, max_results * search_multiplier, logger=logger, theme_name=theme_name)
+    # Get extra search results to account for filtering, but not too many to waste API calls
+    search_multiplier = 2  # Get 2x results to account for filtering and short videos
+    items = _extract_search(term, min(96, max_results * search_multiplier), logger=logger, theme_name=theme_name)  # Cap at 96 to avoid excessive API calls
     candidates: List[Path] = []
     if not items:
         return candidates
@@ -869,9 +871,17 @@ def download_candidates_for_term(
     if theme_prompt:
         extra_metadata['theme_prompt'] = theme_prompt
     if original_search:
-        extra_metadata['original_search'] = original_search
+        extra_metadata['search_term'] = original_search  # The actual term being searched
     if expanded_search:
+        # Only include if this was actually AI-expanded
         extra_metadata['expanded_search'] = expanded_search
+        extra_metadata['is_ai_expanded'] = True
+    else:
+        extra_metadata['is_ai_expanded'] = False
+    if search_index is not None:
+        extra_metadata['search_index'] = search_index
+    if total_search_terms is not None:
+        extra_metadata['total_search_terms'] = total_search_terms
     
     workers = max(1, int(download_workers))
     successful_downloads = 0

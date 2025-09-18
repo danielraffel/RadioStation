@@ -329,19 +329,31 @@ def run_pipeline(stop_cb=None, progress_cb=None, log_cb=None, continue_session=N
             if ',' in search_term:
                 # Split comma-separated search terms
                 individual_searches = [s.strip() for s in search_term.split(',') if s.strip()]
-                # Repeat the list to fill up to samples_per_bank
+                num_unique = len(individual_searches)
+
+                # Intelligent distribution: ensure all search terms get used
+                # Calculate how many times each search should be used
+                base_uses = samples_per_bank // num_unique  # Each term used at least this many times
+                extra_uses = samples_per_bank % num_unique   # First N terms get one extra use
+
+                # Build search plan with even distribution
                 searches_for_theme = []
-                while len(searches_for_theme) < samples_per_bank:
-                    searches_for_theme.extend(individual_searches)
-                # Trim to exact number needed
-                searches_for_theme = searches_for_theme[:samples_per_bank]
+                for i in range(num_unique):
+                    # Each search gets base_uses, plus one extra for the first 'extra_uses' searches
+                    uses = base_uses + (1 if i < extra_uses else 0)
+                    searches_for_theme.extend([individual_searches[i]] * uses)
+
                 if local_log:
-                    local_log(f"Split '{search_term[:50]}...' into {len(individual_searches)} individual searches for {theme_name}")
+                    local_log(f"Split '{search_term[:50]}...' into {num_unique} unique searches for {theme_name}")
+                    if base_uses > 0:
+                        local_log(f"Each search will be used {base_uses}-{base_uses+1} times for {samples_per_bank} total samples")
+                    else:
+                        local_log(f"Using first {samples_per_bank} of {num_unique} searches")
             else:
-                # Single search term - repeat it
+                # Single search term - use it for all samples
                 searches_for_theme = [search_term] * samples_per_bank
                 if local_log:
-                    local_log(f"Using original search term '{search_term}' for {theme_name}")
+                    local_log(f"Using single search term '{search_term}' for {theme_name}")
         
         if local_log:
             local_log(f"Starting to process theme: {theme_name}")
@@ -350,60 +362,69 @@ def run_pipeline(stop_cb=None, progress_cb=None, log_cb=None, continue_session=N
             break
         target_theme = theme_name
         
-        # Track successful downloads to move to next search query
-        downloads_with_current_search = 0
-        max_per_search = max(1, search_batch // 4)  # Try to spread across queries
-        
-        while results[target_theme] < samples_per_bank:
+        # Smart batching: Process our pre-planned search distribution
+        search_cache = {}  # Cache extra results from searches
+        unique_searches = list(dict.fromkeys(searches_for_theme))  # Preserve order but remove duplicates
+        unique_searches_count = len(unique_searches)
+
+        # Process each planned search
+        for search_idx, current_search in enumerate(searches_for_theme):
+            if results[target_theme] >= samples_per_bank:
+                break
             if stop_cb and stop_cb():
                 break
             if max_retries and retries[target_theme] >= max_retries:
                 break
-            
-            # Get next search query
-            if search_idx >= len(searches_for_theme):
-                # We've used all queries, wrap around
-                search_idx = 0
-            
-            current_search = searches_for_theme[search_idx]
-            
-            # Move to next search after using it a few times or on failure
-            if downloads_with_current_search >= max_per_search:
-                search_idx += 1
-                downloads_with_current_search = 0
-                if local_log and search_idx < len(searches_for_theme):
-                    local_log(f"Moving to next search query for {theme_name}")
-            
-            if local_log:
-                local_log(f"Downloading candidates for '{theme_name}' using search: '{current_search}'")
-            
-            # download candidates for this term
-            candidates = download_candidates_for_term(
-                current_search,
-                clip_ms=clip_ms,
-                max_results=search_batch,
-                download_workers=download_workers,
-                slices_per_video=slices_per_video,
-                slice_stride_ms=slice_stride_ms,
-                log_cb=local_log,
-                theme_name=theme_name,
-                theme_prompt=theme_prompt,
-                original_search=search_term,
-                expanded_search=[current_search] if current_search != search_term else None,
-            )
-            if not candidates:
-                # nothing new came in; try next search query
+
+            # Check cache first
+            cache_key = current_search
+            if cache_key in search_cache and search_cache[cache_key]:
+                # Use cached results
+                candidates = search_cache[cache_key][:1]  # Take one at a time from cache
+                search_cache[cache_key] = search_cache[cache_key][1:]
                 if local_log:
-                    local_log(f"No results for '{current_search}', trying next query")
-                search_idx += 1
-                downloads_with_current_search = 0
-                if search_idx >= len(searches_for_theme):
+                    local_log(f"Using cached result for '{current_search}' ({len(search_cache[cache_key])} remaining in cache)")
+            else:
+                # Perform new search
+                if local_log:
+                    actual_idx = unique_searches.index(current_search)
+                    local_log(f"Searching '{theme_name}' with term {actual_idx+1}/{unique_searches_count}: '{current_search}'")
+
+                # Calculate how many results we might need from this search
+                remaining_needed = samples_per_bank - results[target_theme]
+                expected_from_search = searches_for_theme.count(current_search) - searches_for_theme[:search_idx].count(current_search)
+
+                # Get more results if this search will be used multiple times
+                smart_batch_size = min(search_batch, max(1, expected_from_search * 3))  # Get 3x what we expect to need
+
+                candidates = download_candidates_for_term(
+                    current_search,
+                    clip_ms=clip_ms,
+                    max_results=smart_batch_size,
+                    download_workers=download_workers,
+                    slices_per_video=slices_per_video,
+                    slice_stride_ms=slice_stride_ms,
+                    log_cb=local_log,
+                    theme_name=theme_name,
+                    theme_prompt=theme_prompt,
+                    original_search=current_search,
+                    expanded_search=expanded_searches.get(theme_name) if expanded_searches else None,
+                    search_index=unique_searches.index(current_search),
+                    total_search_terms=unique_searches_count,
+                )
+
+                if not candidates:
                     if local_log:
-                        local_log(f"Exhausted all search queries for {theme_name}")
-                    break
-                continue
-            
-            downloads_with_current_search += len(candidates)
+                        local_log(f"No results for '{current_search}'")
+                    retries[target_theme] += 1
+                    continue
+
+                # Cache extra results if we got more than one
+                if len(candidates) > 1:
+                    search_cache[cache_key] = candidates[1:]
+                    if local_log:
+                        local_log(f"Got {len(candidates)} candidates, using 1 and caching {len(candidates)-1}")
+                    candidates = candidates[:1]  # Use just one for this iteration
             if local_log:
                 local_log(f"Got {len(candidates)} candidates for {theme_name} using '{current_search}'")
             for cand in candidates:
