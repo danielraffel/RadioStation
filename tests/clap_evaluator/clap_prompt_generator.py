@@ -10,6 +10,10 @@ from pathlib import Path
 from typing import List, Dict, Optional
 from datetime import datetime
 import logging
+from dotenv import load_dotenv
+
+# Load .env file from project root
+load_dotenv(Path(__file__).parent.parent.parent / '.env')
 
 logger = logging.getLogger(__name__)
 
@@ -38,6 +42,10 @@ def load_evaluator_config() -> Dict:
                 default_config.update(saved_config)
         except Exception as e:
             logger.error(f"Error loading config: {e}")
+
+    # Always override with environment variable if present
+    if os.environ.get('OPENAI_API_KEY'):
+        default_config['openai_api_key'] = os.environ.get('OPENAI_API_KEY')
 
     return default_config
 

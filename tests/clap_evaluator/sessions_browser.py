@@ -685,13 +685,14 @@ async def save_settings(request: Request):
     # Load existing config
     existing = load_evaluator_config()
 
-    # Update with new values (preserve API key if not changed)
+    # Never save API key to config file - it should only come from .env
     if 'openai_api_key' in data:
-        if '...' in data['openai_api_key']:
-            # Key was masked, don't update
-            data['openai_api_key'] = existing.get('openai_api_key', '')
+        del data['openai_api_key']  # Remove API key from data to save
 
     existing.update(data)
+    # Ensure API key is never saved to file
+    if 'openai_api_key' in existing:
+        del existing['openai_api_key']
 
     # Save to file
     try:
