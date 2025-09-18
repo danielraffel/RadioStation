@@ -30,12 +30,12 @@ Running `python3 manage.py run` fills your theme folders in `wavs/sessions/{sess
 
 ## Quick Start
 
+### Install and Setup 
 ```bash
 git clone https://github.com/danielraffel/RadioStation.git
 cd RadioStation
 cp .env.example .env
 python3 manage.py setup
-python3 manage.py start
 ```
 
 This will:
@@ -44,6 +44,13 @@ This will:
 - create a local virtual environment in `.venv` using `uv`
 - install Python dependencies
 - download the CLAP model into `models/` (see Model Auth below)
+
+### Start the Server
+```bash
+python3 manage.py start
+```
+
+This will
 - start the server and open the UI: http://127.0.0.1:8000
 
 From the web page you can edit settings and click “Run pipeline” to kick it off. A status panel shows whether it’s running and the last result/error. Use the “Stop” button to cancel a running job.
