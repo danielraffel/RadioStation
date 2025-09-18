@@ -266,7 +266,10 @@
         </div>
       </div>
 
-      <div class="flex justify-end">
+      <div class="flex justify-between items-center">
+        <div id="version-info" class="text-sm text-gray-500 dark:text-gray-400">
+          <!-- Version will be loaded here -->
+        </div>
         <button type="button" onclick="save()" class="px-4 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-700">Save Configuration</button>
       </div>
     </div>
@@ -984,6 +987,30 @@
           switchTab(hash);
         }
       });
+
+      // Load version info
+      async function loadVersion() {
+        try {
+          const response = await fetch('/api/version');
+          if (response.ok) {
+            const data = await response.json();
+            const versionDiv = document.getElementById('version-info');
+            if (versionDiv) {
+              versionDiv.innerHTML = `<a href="https://github.com/danielraffel/RadioStation" target="_blank" class="hover:text-gray-700 dark:hover:text-gray-300 transition-colors">RadioStation v${data.version}</a>`;
+            }
+          }
+        } catch (error) {
+          console.error('Failed to load version:', error);
+          // Fallback to static version if API fails
+          const versionDiv = document.getElementById('version-info');
+          if (versionDiv) {
+            versionDiv.innerHTML = `<a href="https://github.com/danielraffel/RadioStation" target="_blank" class="hover:text-gray-700 dark:hover:text-gray-300 transition-colors">RadioStation</a>`;
+          }
+        }
+      }
+
+      // Load version on page load
+      loadVersion();
     </script>
   </body>
 </html>

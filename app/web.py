@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, JSONResponse
 from pathlib import Path
+import json
 import threading
 import traceback
 from typing import Optional
@@ -38,6 +39,19 @@ def index():
 def read_config():
     """Return current configuration and prompts."""
     return get_config()
+
+
+@app.get('/api/version')
+def get_version():
+    """Return the application version from version.json."""
+    version_file = Path(__file__).parent.parent / 'version.json'
+    if version_file.exists():
+        try:
+            with open(version_file, 'r') as f:
+                return json.load(f)
+        except Exception as e:
+            return {"version": "unknown", "error": str(e)}
+    return {"version": "unknown"}
 
 
 @app.post('/run')

@@ -1,5 +1,7 @@
 # RadioStation
 
+**Version 0.0.1**
+
 RadioStation helps you create custom audio sample banks. Define your own search terms and themes to build personalized sound libraries tailored to your creative needs.
 
 The pipeline automatically:
