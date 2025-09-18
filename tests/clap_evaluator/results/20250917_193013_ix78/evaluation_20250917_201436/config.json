@@ -1,0 +1,40 @@
+{
+  "test_runs": [
+    {
+      "name": "Configuration 1",
+      "prompts": {
+        "Harsh": "Harsh rough chainsaw grinding cutting sound",
+        "Loud": "Loud explosive booming powerful sound",
+        "Smooth": "Smooth flowing water continuous stream",
+        "Bumpy": "Bumpy train on tracks irregular rattling sound",
+        "Soft": "Quiet gentle whisper voice speaking softly",
+        "Warm": "Warm cozy fireplace crackling fire sound"
+      },
+      "threshold": 0.4
+    },
+    {
+      "name": "Configuration 2",
+      "prompts": {
+        "Harsh": "Harsh rough chainsaw grinding cutting sound clear distinct characteristic",
+        "Loud": "Loud explosive booming powerful sound clear distinct characteristic",
+        "Smooth": "Smooth flowing water continuous stream clear distinct characteristic",
+        "Bumpy": "Bumpy train on tracks irregular rattling sound clear distinct characteristic",
+        "Soft": "Quiet gentle whisper voice speaking softly clear distinct characteristic",
+        "Warm": "Warm cozy fireplace crackling fire sound clear distinct characteristic"
+      },
+      "threshold": 0.5
+    },
+    {
+      "name": "Configuration 3",
+      "prompts": {
+        "Harsh": "harsh",
+        "Loud": "loud",
+        "Smooth": "smooth",
+        "Bumpy": "bumpy",
+        "Soft": "soft",
+        "Warm": "warm"
+      },
+      "threshold": 0.2
+    }
+  ]
+}

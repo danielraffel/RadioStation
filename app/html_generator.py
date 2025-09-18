@@ -95,6 +95,16 @@ def generate_html_content(title: str, samples: List[Dict[str, Any]], base_path: 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
     <style>
+        /* Safari-specific performance optimizations */
+        @supports (-webkit-touch-callout: none) {{
+            .sample-item {{
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+            }}
+            audio {{
+                -webkit-transform: translateZ(0);
+            }}
+        }}
         body {{
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             max-width: 1200px;
@@ -266,7 +276,9 @@ def generate_html_content(title: str, samples: List[Dict[str, Any]], base_path: 
             if 'search_term' in metadata:
                 # Add JSON link on same line as search term
                 json_filename = sample['filename'].replace('.wav', '.json')
-                meta_lines.append(f"Search: {metadata['search_term']} <a href='{base_path}{json_filename}' target='_blank' style='color: #9E9E9E; text-decoration: none;' title='View metadata JSON'>📄</a>")
+                # Use the same path as the audio file, just replace extension
+                json_path = sample['path'].replace('.wav', '.json')
+                meta_lines.append(f"Search: {metadata['search_term']} <a href='{base_path}{json_path}' target='_blank' style='color: #9E9E9E; text-decoration: none;' title='View metadata JSON'>📄</a>")
             if 'clap_score' in metadata and metadata['clap_score'] is not None:
                 meta_lines.append(f"CLAP Score: {metadata['clap_score']:.3f}")
             if 'duration' in metadata:
@@ -322,6 +334,7 @@ def generate_html_content(title: str, samples: List[Dict[str, Any]], base_path: 
         let playMode = 'sequential'; // 'sequential' or 'shuffle'
         let shuffledIndices = [];
         let loopEnabled = false;
+        let currentAudio = null; // Safari optimization: track current audio
         const totalSamples = """ + str(len(samples)) + """;
 
         // Load loop preference from localStorage
@@ -365,11 +378,13 @@ def generate_html_content(title: str, samples: List[Dict[str, Any]], base_path: 
             const audio = document.getElementById(`audio-${index}`);
             const item = document.getElementById(`sample-${index}`);
 
+            currentAudio = audio; // Safari optimization
             currentIndex = index;
             isPlaying = true;
 
-            // Update visual state
-            document.querySelectorAll('.sample-item').forEach(el => el.classList.remove('playing'));
+            // Update visual state - Safari optimization: more efficient
+            const prevPlaying = document.querySelector('.sample-item.playing');
+            if (prevPlaying) prevPlaying.classList.remove('playing');
             item.classList.add('playing');
 
             // Update button states
@@ -420,15 +435,18 @@ def generate_html_content(title: str, samples: List[Dict[str, Any]], base_path: 
         }
 
         function stopCurrentAudio() {
-            // Stop all audio elements without resetting playMode
-            for (let i = 0; i < totalSamples; i++) {
-                const audio = document.getElementById(`audio-${i}`);
-                audio.pause();
-                audio.currentTime = 0;
+            // Safari optimization: only stop the current audio
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                currentAudio = null;
             }
 
-            // Remove all playing states
-            document.querySelectorAll('.sample-item').forEach(el => el.classList.remove('playing'));
+            // Remove playing state
+            const playingItem = document.querySelector('.sample-item.playing');
+            if (playingItem) {
+                playingItem.classList.remove('playing');
+            }
         }
         
         function playNext() {
@@ -486,15 +504,18 @@ def generate_html_content(title: str, samples: List[Dict[str, Any]], base_path: 
         }
         
         function stopAll() {
-            // Stop all audio elements
-            for (let i = 0; i < totalSamples; i++) {
-                const audio = document.getElementById(`audio-${i}`);
-                audio.pause();
-                audio.currentTime = 0;
+            // Safari optimization: stop current audio first
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                currentAudio = null;
             }
 
-            // Remove all playing states
-            document.querySelectorAll('.sample-item').forEach(el => el.classList.remove('playing'));
+            // Remove playing state
+            const playingItem = document.querySelector('.sample-item.playing');
+            if (playingItem) {
+                playingItem.classList.remove('playing');
+            }
 
             isPlaying = false;
             playMode = 'single';

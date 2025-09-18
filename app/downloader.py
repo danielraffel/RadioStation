@@ -601,6 +601,8 @@ def _download_one(url: str, term: str, vid: str, clip_ms: int, logger=None, extr
             'duration': video_duration,
             'uploader': info.get('uploader', ''),
             'description': info.get('description', ''),
+            'tags': info.get('tags', []),  # Extract YouTube tags (empty list if none)
+            'categories': info.get('categories', []),  # Extract video categories (empty list if none)
             'upload_date': info.get('upload_date', ''),
             'view_count': info.get('view_count', 0),
             'like_count': info.get('like_count', 0),

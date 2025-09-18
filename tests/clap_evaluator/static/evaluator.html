@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html class="h-full" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CLAP Evaluation Tool</title>
+    <script>
+      // Apply theme before page renders - default to light mode
+      if (localStorage.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        // Default to light mode (no dark class)
+        document.documentElement.classList.remove('dark');
+        if (!('theme' in localStorage)) {
+          localStorage.theme = 'light';
+        }
+      }
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = { darkMode: 'class' };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .session-card {
+        transition: all 0.2s ease;
+      }
+      .session-card:hover {
+        transform: translateY(-2px);
+      }
+      .progress-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: .5; }
+      }
+      .log-entry {
+        font-family: 'Monaco', 'Courier New', monospace;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+      .notification-toast {
+        animation: slideIn 0.3s ease-out;
+      }
+      @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+    </style>
+</head>
+<body class="h-full bg-gray-50 text-gray-800 dark:bg-slate-900 dark:text-slate-100">
+    <div class="min-h-full max-w-7xl mx-auto p-4">
+        <!-- Header -->
+        <header class="flex items-center justify-between mb-6">
+            <div>
+                <h1 class="text-2xl font-semibold">CLAP Evaluation Tool</h1>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    Select a session to evaluate with different CLAP prompts and thresholds
+                </p>
+            </div>
+            <div class="flex items-center gap-2">
+                <button id="themeToggle" onclick="toggleDarkMode()"
+                        class="px-3 py-1 rounded border border-gray-400 bg-white dark:bg-slate-800 dark:border-slate-600">
+                    <span class="dark:hidden">☀️ Light</span>
+                    <span class="hidden dark:inline">🌙 Dark</span>
+                </button>
+                <button onclick="refreshSessions()"
+                        class="px-3 py-1 rounded border border-gray-400 bg-white dark:bg-slate-800 dark:border-slate-600">
+                    Refresh
+                </button>
+            </div>
+        </header>
+
+        <!-- Tab Navigation -->
+        <nav class="border-b border-gray-300 dark:border-gray-700 mb-6">
+            <div class="flex space-x-4">
+                <button onclick="switchTab('sessions')" class="tab-btn px-3 py-2 text-sm font-medium border-b-2 border-blue-500" data-tab="sessions">
+                    Sessions
+                </button>
+                <button onclick="switchTab('prompts')" class="tab-btn px-3 py-2 text-sm font-medium border-b-2 border-transparent" data-tab="prompts" id="promptsTabBtn" style="display: none;">
+                    AI Prompts
+                </button>
+                <button onclick="switchTab('settings')" class="tab-btn px-3 py-2 text-sm font-medium border-b-2 border-transparent" data-tab="settings">
+                    Settings
+                </button>
+            </div>
+        </nav>
+
+        <!-- Session Selection -->
+        <section id="sessionSelection" class="tab-content mb-6" data-content="sessions">
+            <h2 class="text-lg font-medium mb-4">Available Sessions</h2>
+            <div id="sessionsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Sessions will be loaded here -->
+            </div>
+        </section>
+
+        <!-- AI Prompts Tab -->
+        <section id="promptsTab" class="tab-content hidden mb-6" data-content="prompts">
+            <h2 class="text-lg font-medium mb-4">AI Generated Prompts</h2>
+            <div id="promptsContent" class="space-y-4">
+                <div class="text-center py-8 text-gray-400">
+                    <p>No AI prompts generated yet.</p>
+                    <p class="text-sm mt-2">Select a session and click "Generate AI Prompts" to create prompts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Tab -->
+        <section id="settingsTab" class="tab-content hidden mb-6" data-content="settings">
+            <div class="p-4 rounded border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700">
+                <h3 class="font-medium text-lg mb-4">AI Configuration</h3>
+
+                <div class="space-y-4">
+                    <label class="flex items-center">
+                        <input type="checkbox" id="enableAI" class="mr-2 rounded">
+                        <span>Enable AI Prompt Generation</span>
+                    </label>
+
+                    <div>
+                        <label class="block text-sm text-gray-600 dark:text-gray-400 mb-1">OpenAI API Key</label>
+                        <input type="password" id="openaiKey"
+                               placeholder="sk-..."
+                               class="w-full px-3 py-1 rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-transparent">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm text-gray-600 dark:text-gray-400 mb-1">Model</label>
+                        <select id="aiModel" class="w-full px-3 py-1 rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-transparent">
+                            <option value="gpt-4o-mini">GPT-4o Mini (Recommended)</option>
+                            <option value="gpt-4o">GPT-4o</option>
+                            <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm text-gray-600 dark:text-gray-400 mb-1">System Prompt</label>
+                        <textarea id="systemPrompt" rows="10"
+                                  class="w-full px-3 py-1 rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-transparent font-mono text-xs">
+                        </textarea>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-600 dark:text-gray-400 mb-1">
+                                Batch Size (samples per API call)
+                            </label>
+                            <input type="number" id="batchSize" value="10" min="1" max="50"
+                                   class="w-full px-3 py-1 rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-transparent">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-gray-600 dark:text-gray-400 mb-1">
+                                Temperature
+                            </label>
+                            <input type="number" id="temperature" value="0.7" min="0" max="2" step="0.1"
+                                   class="w-full px-3 py-1 rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-transparent">
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" id="useTags" class="mr-2 rounded" checked>
+                            <span class="text-sm">Use YouTube Tags</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" id="useDescription" class="mr-2 rounded" checked>
+                            <span class="text-sm">Use Description</span>
+                        </label>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <button onclick="saveSettings()"
+                                class="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">
+                            Save Settings
+                        </button>
+                        <button onclick="loadSettings()"
+                                class="px-4 py-2 rounded border border-gray-400 bg-white dark:bg-slate-800 dark:border-slate-600">
+                            Reload
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Evaluation Configuration -->
+        <section id="evaluationConfig" class="hidden mb-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-medium">Evaluate Session: <span id="selectedSession" class="text-blue-600 dark:text-blue-400"></span></h2>
+                <button onclick="backToSessions()"
+                        class="px-3 py-1 rounded border border-gray-400 bg-white dark:bg-slate-800 dark:border-slate-600">
+                    ← Back
+                </button>
+            </div>
+
+            <!-- Test Configurations -->
+            <div class="p-4 rounded border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700 mb-4">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-medium">Test Configurations</h3>
+                    <button onclick="addTestConfig()"
+                            class="px-3 py-1 rounded bg-green-600 text-white hover:bg-green-700">
+                        + Add Configuration
+                    </button>
+                </div>
+                <div id="testConfigs" class="space-y-4">
+                    <!-- Test configs will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-2">
+                <button id="runFullBtn" onclick="runFullEvaluation()"
+                        class="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">
+                    Run Full Evaluation
+                </button>
+                <button onclick="toggleDiscoveryMode()"
+                        class="px-4 py-2 rounded border border-gray-400 bg-white dark:bg-slate-800 dark:border-slate-600">
+                    Discovery Mode
+                </button>
+                <button onclick="generateAIPrompts()"
+                        class="px-4 py-2 rounded bg-green-600 text-white hover:bg-green-700">
+                    Generate AI Prompts
+                </button>
+                <button onclick="viewAIPrompts()"
+                        class="px-4 py-2 rounded bg-purple-600 text-white hover:bg-purple-700"
+                        id="viewPromptsBtn" style="display: none;">
+                    View AI Prompts
+                </button>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section id="progressSection" class="hidden mb-6">
+            <div class="p-4 rounded border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-medium">Evaluation Progress</h3>
+                    <span id="progressStatus" class="text-sm px-2 py-0.5 rounded border border-blue-300 dark:border-blue-600 text-blue-600 dark:text-blue-400 progress-pulse">
+                        Running
+                    </span>
+                </div>
+
+                <!-- Overall Progress -->
+                <div class="mb-4">
+                    <div class="flex justify-between text-sm mb-1">
+                        <span id="progressText">Initializing...</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                    <div class="h-3 w-full bg-gray-200 dark:bg-slate-700 rounded">
+                        <div id="progressBar" class="h-3 bg-blue-600 rounded transition-all duration-300" style="width:0%"></div>
+                    </div>
+                </div>
+
+                <!-- Current Theme Progress -->
+                <div id="themeProgress" class="mb-4 hidden">
+                    <div class="flex justify-between text-sm mb-1 text-gray-600 dark:text-gray-400">
+                        <span id="themeProgressText">Theme: Soft</span>
+                        <span id="themeProgressCount">0/0</span>
+                    </div>
+                    <div class="h-2 w-full bg-gray-200 dark:bg-slate-700 rounded">
+                        <div id="themeProgressBar" class="h-2 bg-emerald-500 rounded transition-all duration-300" style="width:0%"></div>
+                    </div>
+                </div>
+
+                <!-- Log Output -->
+                <div class="mt-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium">Log Output</span>
+                        <button onclick="clearLogs()" class="text-xs text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            Clear
+                        </button>
+                    </div>
+                    <div id="logOutput" class="bg-gray-900 dark:bg-black rounded p-3 h-48 overflow-y-auto">
+                        <!-- Logs will appear here -->
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="mt-4 flex gap-2">
+                    <button id="cancelBtn" onclick="cancelEvaluation()"
+                            class="px-3 py-1 rounded bg-rose-600 text-white hover:bg-rose-700">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="resultsSection" class="hidden">
+            <!-- Results will be loaded here -->
+        </section>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notificationToast" class="hidden fixed top-4 right-4 bg-green-600 text-white px-4 py-3 rounded-lg shadow-lg notification-toast max-w-md">
+        <div class="flex items-start">
+            <span class="text-xl mr-3">✓</span>
+            <div>
+                <div class="font-semibold">Evaluation Complete!</div>
+                <div id="notificationMessage" class="text-sm mt-1"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSession = null;
+        let testConfigs = [];
+        let evaluationEventSource = null;
+        let autoRefreshTimer = null;
+
+        // Dark mode toggle
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+
+        // Load sessions on page load
+        async function loadSessions() {
+            try {
+                const response = await fetch('/api/sessions');
+                const sessions = await response.json();
+                renderSessions(sessions);
+            } catch (error) {
+                console.error('Error loading sessions:', error);
+            }
+        }
+
+        function renderSessions(sessions) {
+            const grid = document.getElementById('sessionsGrid');
+            grid.innerHTML = sessions.map(session => `
+                <div class="session-card p-4 rounded-lg border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700 cursor-pointer hover:border-blue-500 dark:hover:border-blue-400"
+                     onclick="selectSession('${session.session_id}')">
+                    <div class="font-semibold text-blue-600 dark:text-blue-400 mb-2">${session.session_id}</div>
+                    <div class="text-sm space-y-1">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600 dark:text-gray-400">Samples:</span>
+                            <span class="font-medium">${session.total_samples}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600 dark:text-gray-400">Themes:</span>
+                            <span class="font-medium">${session.theme_count}</span>
+                        </div>
+                    </div>
+                    <div class="mt-3 flex flex-wrap gap-1">
+                        ${session.themes.map(theme => `
+                            <span class="text-xs px-2 py-1 rounded bg-gray-100 dark:bg-slate-700">
+                                ${theme.name} (${theme.count})
+                            </span>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function selectSession(sessionId) {
+            currentSession = sessionId;
+            document.getElementById('selectedSession').textContent = sessionId;
+
+            // Load session metadata
+            const response = await fetch(`/api/session/${sessionId}`);
+            const metadata = await response.json();
+
+            // Initialize with default test config
+            testConfigs = [{
+                name: 'Configuration 1',
+                threshold: 0.3,
+                prompts: {}
+            }];
+
+            // Set default prompts from metadata
+            for (const [themeName, themeData] of Object.entries(metadata.themes)) {
+                testConfigs[0].prompts[themeName] = themeData.original_prompt || `${themeName} sounds`;
+            }
+
+            renderTestConfigs();
+
+            // Show evaluation config section
+            document.getElementById('sessionSelection').classList.add('hidden');
+            document.getElementById('evaluationConfig').classList.remove('hidden');
+
+            // Check if AI prompts exist for this session
+            checkAIPromptsExist();
+        }
+
+        function backToSessions() {
+            currentSession = null;
+            document.getElementById('sessionSelection').classList.remove('hidden');
+            document.getElementById('evaluationConfig').classList.add('hidden');
+            document.getElementById('progressSection').classList.add('hidden');
+            document.getElementById('resultsSection').classList.add('hidden');
+        }
+
+        function renderTestConfigs() {
+            const container = document.getElementById('testConfigs');
+            container.innerHTML = testConfigs.map((config, idx) => `
+                <div class="p-4 border border-gray-200 dark:border-slate-600 rounded-lg">
+                    <div class="flex justify-between items-center mb-3">
+                        <input type="text" value="${config.name}"
+                               onchange="updateConfigName(${idx}, this.value)"
+                               class="font-medium bg-transparent border-b border-gray-300 dark:border-slate-600 focus:outline-none focus:border-blue-500">
+                        <div class="flex gap-2">
+                            <button onclick="testSingleConfig(${idx})"
+                                    class="px-2 py-1 text-sm rounded bg-blue-600 text-white hover:bg-blue-700">
+                                Test This
+                            </button>
+                            ${testConfigs.length > 1 ? `
+                                <button onclick="removeTestConfig(${idx})"
+                                        class="px-2 py-1 text-sm rounded bg-rose-600 text-white hover:bg-rose-700">
+                                    Remove
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="text-sm text-gray-600 dark:text-gray-400">
+                            Threshold:
+                            <input type="number" value="${config.threshold}" min="0" max="1" step="0.05"
+                                   onchange="updateConfigThreshold(${idx}, this.value)"
+                                   class="ml-2 w-20 px-2 py-1 rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-transparent">
+                        </label>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="text-sm font-medium text-gray-600 dark:text-gray-400">Prompts:</div>
+                        ${Object.entries(config.prompts).map(([theme, prompt]) => `
+                            <div class="flex gap-2 items-center">
+                                <span class="text-sm font-medium w-24">${theme}:</span>
+                                <input type="text" value="${prompt}"
+                                       onchange="updateConfigPrompt(${idx}, '${theme}', this.value)"
+                                       class="flex-1 px-2 py-1 text-sm rounded border border-gray-300 dark:border-slate-600 bg-white dark:bg-transparent">
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addTestConfig() {
+            const newConfig = JSON.parse(JSON.stringify(testConfigs[0]));
+            newConfig.name = `Configuration ${testConfigs.length + 1}`;
+            newConfig.threshold = 0.4;
+            testConfigs.push(newConfig);
+            renderTestConfigs();
+        }
+
+        function removeTestConfig(idx) {
+            testConfigs.splice(idx, 1);
+            renderTestConfigs();
+        }
+
+        function updateConfigName(idx, value) {
+            testConfigs[idx].name = value;
+        }
+
+        function updateConfigThreshold(idx, value) {
+            testConfigs[idx].threshold = parseFloat(value);
+        }
+
+        function updateConfigPrompt(idx, theme, value) {
+            testConfigs[idx].prompts[theme] = value;
+        }
+
+        async function runFullEvaluation() {
+            showProgress();
+
+            // Request notification permission
+            if ('Notification' in window && Notification.permission === 'default') {
+                await Notification.requestPermission();
+            }
+
+            // Start SSE connection for progress updates
+            evaluationEventSource = new EventSource(`/api/evaluate/${currentSession}/stream`);
+
+            evaluationEventSource.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                updateProgress(data);
+            };
+
+            evaluationEventSource.onerror = (error) => {
+                console.error('SSE error:', error);
+                evaluationEventSource.close();
+            };
+
+            // Send evaluation request
+            const response = await fetch('/api/evaluate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    session_id: currentSession,
+                    test_config: { test_runs: testConfigs }
+                })
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                console.log('Evaluation started');
+            } else {
+                alert('Error starting evaluation: ' + result.error);
+                hideProgress();
+            }
+        }
+
+        async function testSingleConfig(configIdx) {
+            showProgress();
+
+            const response = await fetch('/api/evaluate/single', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    session_id: currentSession,
+                    test_config: testConfigs[configIdx]
+                })
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                showQuickResults(result.results);
+            }
+            hideProgress();
+        }
+
+        function showQuickResults(results) {
+            // Create modal for quick results
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50';
+
+            const statsHtml = Object.entries(results.stats || {}).map(([theme, stat]) => `
+                <div class="p-2 bg-gray-700/50 rounded">
+                    <div class="font-medium">${theme}</div>
+                    <div class="text-sm text-gray-400">
+                        Passed: ${stat.passed}/${stat.total}
+                        (${((stat.passed/stat.total)*100).toFixed(1)}%)
+                    </div>
+                </div>
+            `).join('');
+
+            modal.innerHTML = `
+                <div class="bg-gray-800 rounded-lg p-6 max-w-md w-full">
+                    <h3 class="text-lg font-semibold mb-4">Quick Test Results</h3>
+                    <div class="mb-4">
+                        <div class="text-2xl font-bold text-blue-400">
+                            ${results.pass_rate.toFixed(1)}% Pass Rate
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        ${statsHtml}
+                    </div>
+                    <button onclick="this.closest('.fixed').remove()"
+                            class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                        Close
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function showProgress() {
+            document.getElementById('evaluationConfig').classList.add('hidden');
+            document.getElementById('progressSection').classList.remove('hidden');
+            document.getElementById('logOutput').innerHTML = '';
+        }
+
+        function hideProgress() {
+            document.getElementById('progressSection').classList.add('hidden');
+            if (evaluationEventSource) {
+                evaluationEventSource.close();
+                evaluationEventSource = null;
+            }
+        }
+
+        function updateProgress(data) {
+            if (data.type === 'progress') {
+                const percent = Math.round(data.percent);
+                document.getElementById('progressBar').style.width = `${percent}%`;
+                document.getElementById('progressPercent').textContent = `${percent}%`;
+                document.getElementById('progressText').textContent = data.message || 'Processing...';
+
+                if (data.theme_progress) {
+                    document.getElementById('themeProgress').classList.remove('hidden');
+                    document.getElementById('themeProgressText').textContent = `Theme: ${data.theme_progress.theme}`;
+                    document.getElementById('themeProgressCount').textContent =
+                        `${data.theme_progress.current}/${data.theme_progress.total}`;
+                    const themePercent = Math.round((data.theme_progress.current / data.theme_progress.total) * 100);
+                    document.getElementById('themeProgressBar').style.width = `${themePercent}%`;
+                }
+            } else if (data.type === 'log') {
+                addLogEntry(data.message);
+            } else if (data.type === 'complete') {
+                onEvaluationComplete(data);
+            }
+        }
+
+        function addLogEntry(message) {
+            const logOutput = document.getElementById('logOutput');
+            const entry = document.createElement('div');
+            entry.className = 'log-entry text-green-400';
+            entry.textContent = message;
+            logOutput.appendChild(entry);
+            logOutput.scrollTop = logOutput.scrollHeight;
+        }
+
+        function clearLogs() {
+            document.getElementById('logOutput').innerHTML = '';
+        }
+
+        function onEvaluationComplete(data) {
+            hideProgress();
+
+            // Show notification
+            showNotification('Evaluation complete!', `Overall pass rate: ${data.summary.overall_pass_rate}%`);
+
+            // Show browser notification
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification('CLAP Evaluation Complete', {
+                    body: `Pass rate: ${data.summary.overall_pass_rate}%\nClick to view results`,
+                    icon: '/favicon.ico'
+                });
+            }
+
+            // Load results
+            if (data.results_url) {
+                window.location.href = data.results_url;
+            }
+        }
+
+        function showNotification(title, message) {
+            const toast = document.getElementById('notificationToast');
+            document.getElementById('notificationMessage').textContent = message;
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 5000);
+        }
+
+        function cancelEvaluation() {
+            if (evaluationEventSource) {
+                evaluationEventSource.close();
+                evaluationEventSource = null;
+            }
+            hideProgress();
+            document.getElementById('evaluationConfig').classList.remove('hidden');
+        }
+
+        async function toggleDiscoveryMode() {
+            if (!currentSession) return;
+
+            showProgress();
+            document.getElementById('progressText').textContent = 'Running discovery analysis...';
+
+            try {
+                const response = await fetch(`/api/discovery/${currentSession}`, {
+                    method: 'POST'
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showDiscoveryResults(result.analysis);
+                } else {
+                    alert('Discovery analysis failed: ' + result.error);
+                }
+            } catch (error) {
+                alert('Error running discovery: ' + error);
+            }
+
+            hideProgress();
+        }
+
+        function showDiscoveryResults(analysis) {
+            const resultsHtml = `
+                <div class="p-4 rounded bg-gray-800">
+                    <h3 class="font-medium text-lg mb-4">Discovery Analysis Results</h3>
+
+                    <div class="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded">
+                        <h4 class="font-medium mb-2">Overall Recommendation</h4>
+                        ${analysis.overall_recommendation ? `
+                            <p class="text-sm">
+                                Recommended threshold: <strong>${analysis.overall_recommendation.threshold.toFixed(3)}</strong>
+                                <br><span class="text-gray-600 dark:text-gray-400">${analysis.overall_recommendation.reasoning}</span>
+                            </p>
+                        ` : '<p class="text-sm text-gray-500">Not enough data for recommendation</p>'}
+                    </div>
+
+                    <div class="space-y-4">
+                        ${Object.entries(analysis.themes).map(([theme, data]) => `
+                            <div class="p-3 border border-gray-200 dark:border-slate-600 rounded">
+                                <h4 class="font-medium mb-2">${theme}</h4>
+                                ${data.score_distribution && Object.keys(data.score_distribution).length > 0 ? `
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
+                                        <div>
+                                            <span class="text-gray-600 dark:text-gray-400">Mean:</span>
+                                            <span class="font-medium ml-1">${data.score_distribution.mean.toFixed(3)}</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-gray-600 dark:text-gray-400">Median:</span>
+                                            <span class="font-medium ml-1">${data.score_distribution.median.toFixed(3)}</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-gray-600 dark:text-gray-400">Min:</span>
+                                            <span class="font-medium ml-1">${data.score_distribution.min.toFixed(3)}</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-gray-600 dark:text-gray-400">Max:</span>
+                                            <span class="font-medium ml-1">${data.score_distribution.max.toFixed(3)}</span>
+                                        </div>
+                                    </div>
+                                ` : '<p class="text-sm text-gray-500">No score data available</p>'}
+
+                                ${data.best_prompts && data.best_prompts.length > 0 ? `
+                                    <div class="mt-3">
+                                        <span class="text-sm text-gray-600 dark:text-gray-400">Best performing prompt:</span>
+                                        <div class="text-sm font-mono bg-gray-100 dark:bg-slate-700 p-2 rounded mt-1">
+                                            ${data.best_prompts[0].prompt}
+                                        </div>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="mt-6">
+                        <button onclick="applyDiscoveryRecommendations(${JSON.stringify(analysis).replace(/"/g, '&quot;')})"
+                                class="px-4 py-2 rounded bg-green-600 text-white hover:bg-green-700">
+                            Apply Recommendations to Config
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Show in modal with proper backdrop
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50';
+            modal.innerHTML = `
+                <div class="bg-gray-900 rounded-lg max-w-4xl w-full max-h-[80vh] overflow-y-auto border border-gray-700">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-semibold">Discovery Mode Analysis</h2>
+                            <button onclick="this.closest('.fixed').remove()"
+                                    class="text-gray-400 hover:text-gray-200 text-2xl">✕</button>
+                        </div>
+                        ${resultsHtml}
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function applyDiscoveryRecommendations(analysis) {
+            // Apply recommended thresholds and prompts to the first config
+            if (analysis.overall_recommendation) {
+                testConfigs[0].threshold = analysis.overall_recommendation.threshold;
+            }
+
+            // Apply best prompts from discovery
+            for (const [theme, data] of Object.entries(analysis.themes)) {
+                if (data.best_prompts && data.best_prompts.length > 0) {
+                    if (testConfigs[0].prompts[theme]) {
+                        testConfigs[0].prompts[theme] = data.best_prompts[0].prompt;
+                    }
+                }
+            }
+
+            renderTestConfigs();
+            document.querySelector('.fixed').remove(); // Close modal
+            showNotification('Applied', 'Discovery recommendations applied to Configuration 1');
+        }
+
+        function refreshSessions() {
+            loadSessions();
+        }
+
+        // Tab switching
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                if (btn.dataset.tab === tabName) {
+                    btn.classList.add('border-blue-500');
+                    btn.classList.remove('border-transparent');
+                } else {
+                    btn.classList.remove('border-blue-500');
+                    btn.classList.add('border-transparent');
+                }
+            });
+
+            // Update content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                if (content.dataset.content === tabName) {
+                    content.classList.remove('hidden');
+                } else {
+                    content.classList.add('hidden');
+                }
+            });
+
+            // Load prompts when switching to prompts tab
+            if (tabName === 'prompts') {
+                loadAIPromptsTab();
+            }
+        }
+
+        // Settings management
+        async function loadSettings() {
+            try {
+                const response = await fetch('/api/settings');
+                const settings = await response.json();
+
+                document.getElementById('enableAI').checked = settings.ai_enabled || false;
+                document.getElementById('openaiKey').value = settings.openai_api_key || '';
+                document.getElementById('aiModel').value = settings.model || 'gpt-4o-mini';
+                document.getElementById('systemPrompt').value = settings.system_prompt || '';
+                document.getElementById('batchSize').value = settings.batch_size || 10;
+                document.getElementById('temperature').value = settings.temperature || 0.7;
+                document.getElementById('useTags').checked = settings.use_tags !== false;
+                document.getElementById('useDescription').checked = settings.use_description !== false;
+            } catch (error) {
+                console.error('Error loading settings:', error);
+            }
+        }
+
+        async function saveSettings() {
+            const settings = {
+                ai_enabled: document.getElementById('enableAI').checked,
+                openai_api_key: document.getElementById('openaiKey').value,
+                model: document.getElementById('aiModel').value,
+                system_prompt: document.getElementById('systemPrompt').value,
+                batch_size: parseInt(document.getElementById('batchSize').value),
+                temperature: parseFloat(document.getElementById('temperature').value),
+                use_tags: document.getElementById('useTags').checked,
+                use_description: document.getElementById('useDescription').checked
+            };
+
+            try {
+                const response = await fetch('/api/settings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(settings)
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    showNotification('Settings Saved', 'Your AI configuration has been saved.');
+                } else {
+                    alert('Failed to save settings: ' + result.error);
+                }
+            } catch (error) {
+                alert('Error saving settings: ' + error);
+            }
+        }
+
+        // AI Prompt Generation
+        async function generateAIPrompts() {
+            if (!currentSession) {
+                alert('Please select a session first');
+                return;
+            }
+
+            // Check if AI is enabled
+            const settings = await fetch('/api/settings').then(r => r.json());
+            if (!settings.ai_enabled) {
+                if (!confirm('AI is not enabled. Would you like to enable it and configure settings?')) {
+                    return;
+                }
+                switchTab('settings');
+                return;
+            }
+
+            // Create a dedicated progress modal for AI generation
+            const progressModal = document.createElement('div');
+            progressModal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50';
+            progressModal.innerHTML = `
+                <div class="bg-white dark:bg-slate-900 rounded-lg p-6 max-w-md w-full">
+                    <h3 class="text-lg font-semibold mb-4">Generating AI Prompts</h3>
+                    <div id="aiProgressText" class="text-sm mb-2">Initializing...</div>
+                    <div class="mt-4">
+                        <button onclick="cancelAIGeneration()" class="px-4 py-2 rounded bg-red-600 text-white hover:bg-red-700">Cancel</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(progressModal);
+            const progressText = document.getElementById('aiProgressText');
+            progressText.textContent = 'Initializing AI prompt generation...';
+
+            try {
+                // Use Server-Sent Events for real-time progress
+                const eventSource = new EventSource(`/api/generate-prompts-sse/${currentSession}`);
+
+                eventSource.onmessage = function(event) {
+                    const data = JSON.parse(event.data);
+
+                    switch(data.status) {
+                        case 'starting':
+                            progressText.innerHTML = `<div>${data.message}</div>`;
+                            break;
+
+                        case 'loaded':
+                            progressText.innerHTML = `<div>${data.message}</div>
+                                <div class="text-sm opacity-75 mt-1">Total samples: ${data.total_samples}</div>`;
+                            break;
+
+                        case 'info':
+                            progressText.innerHTML = `<div>Processing samples...</div>
+                                <div class="text-sm opacity-75 mt-1">${data.message}</div>`;
+                            break;
+
+                        case 'processing':
+                            progressText.innerHTML = `<div>${data.message}</div>
+                                <div class="text-sm opacity-75 mt-1">Progress: ${Math.round(data.progress)}%</div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: ${data.progress}%"></div>
+                                </div>`;
+                            break;
+
+                        case 'progress':
+                            progressText.innerHTML = `<div>Generating prompts...</div>
+                                <div class="text-sm opacity-75 mt-1">${data.completed} / ${data.total} samples (${Math.round(data.progress)}%)</div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-2">
+                                    <div class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: ${data.progress}%"></div>
+                                </div>`;
+                            break;
+
+                        case 'saving':
+                            progressText.innerHTML = `<div>${data.message}</div>
+                                <div class="text-sm opacity-75 mt-1">Almost done...</div>`;
+                            break;
+
+                        case 'complete':
+                            eventSource.close();
+                            progressModal.remove();
+                            showNotification('Prompts Generated!',
+                                `Successfully generated prompts for ${data.prompts_generated} samples`);
+                            // Show the AI prompts tab
+                            document.getElementById('promptsTabBtn').style.display = 'inline-block';
+                            // Switch to prompts tab
+                            switchTab('prompts');
+                            // Automatically reload the session to show new prompts
+                            selectSession(currentSession);
+                            break;
+
+                        case 'error':
+                            eventSource.close();
+                            progressModal.remove();
+                            alert('Error: ' + data.message);
+                            break;
+                    }
+                };
+
+                eventSource.onerror = function(error) {
+                    eventSource.close();
+                    progressModal.remove();
+                    alert('Connection error during prompt generation');
+                    console.error('SSE Error:', error);
+                };
+
+                // Store eventSource globally to allow cancellation
+                window.aiGenerationEventSource = eventSource;
+
+            } catch (error) {
+                if (progressModal) progressModal.remove();
+                alert('Error generating prompts: ' + error);
+            }
+        }
+
+        function cancelAIGeneration() {
+            if (window.aiGenerationEventSource) {
+                window.aiGenerationEventSource.close();
+                window.aiGenerationEventSource = null;
+            }
+            document.querySelector('.fixed.inset-0').remove();
+        }
+
+        async function viewAIPrompts() {
+            if (!currentSession) {
+                alert('Please select a session first');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/prompts/details/${currentSession}`);
+                const data = await response.json();
+
+                if (!data.samples || data.samples.length === 0) {
+                    alert('No AI prompts found. Please generate prompts first.');
+                    return;
+                }
+
+                // Create modal to display prompts
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50';
+
+                const samplesHtml = data.samples.map(sample => {
+                    const promptsList = sample.ai_prompts.map((p, i) =>
+                        `<li class="text-sm py-1">• ${p}</li>`
+                    ).join('');
+
+                    const blessedBadge = sample.has_blessed
+                        ? '<span class="text-xs bg-green-600 px-2 py-1 rounded">Blessed ✓</span>'
+                        : '<span class="text-xs bg-gray-600 px-2 py-1 rounded">Not Blessed</span>';
+
+                    return `
+                        <div class="bg-gray-800 p-3 rounded mb-2">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <span class="font-medium">${sample.sample_id}</span>
+                                    <span class="text-xs text-gray-400 ml-2">${sample.theme}</span>
+                                </div>
+                                ${blessedBadge}
+                            </div>
+                            <div class="text-xs text-gray-400 mb-2">${sample.title}</div>
+                            ${sample.tags.length > 0 ?
+                                `<div class="text-xs text-blue-400 mb-2">Tags: ${sample.tags.join(', ')}</div>` : ''}
+                            <div class="text-sm">
+                                <div class="text-gray-500 mb-1">AI Prompts:</div>
+                                <ul class="ml-2">${promptsList}</ul>
+                            </div>
+                            ${sample.best_prompt ?
+                                `<div class="text-xs text-green-400 mt-2">Best: ${sample.best_prompt}</div>` : ''}
+                        </div>
+                    `;
+                }).join('');
+
+                modal.innerHTML = `
+                    <div class="bg-gray-900 rounded-lg max-w-4xl w-full max-h-[80vh] overflow-hidden border border-gray-700">
+                        <div class="p-6 border-b border-gray-700">
+                            <div class="flex justify-between items-center">
+                                <h2 class="text-xl font-semibold">AI Generated Prompts</h2>
+                                <button onclick="this.closest('.fixed').remove()"
+                                        class="text-gray-400 hover:text-gray-200 text-2xl">×</button>
+                            </div>
+                            <div class="text-sm text-gray-400 mt-2">
+                                Total: ${data.total_samples} samples |
+                                With AI: ${data.with_ai_prompts} |
+                                Blessed: ${data.with_blessed}
+                            </div>
+                        </div>
+                        <div class="p-6 overflow-y-auto" style="max-height: calc(80vh - 120px);">
+                            ${samplesHtml}
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+
+            } catch (error) {
+                console.error('Error fetching prompt details:', error);
+                alert('Error loading prompt details');
+            }
+        }
+
+        // Check if AI prompts exist on session load
+        async function checkAIPromptsExist() {
+            if (!currentSession) return;
+
+            try {
+                const response = await fetch(`/api/prompts/details/${currentSession}`);
+                const data = await response.json();
+
+                if (data.with_ai_prompts > 0) {
+                    document.getElementById('promptsTabBtn').style.display = 'inline-block';
+                }
+            } catch (error) {
+                console.error('Error checking prompts:', error);
+            }
+        }
+
+        async function loadAIPromptsTab() {
+            if (!currentSession) {
+                document.getElementById('promptsContent').innerHTML = `
+                    <div class="text-center py-8 text-gray-400">
+                        <p>No session selected.</p>
+                        <p class="text-sm mt-2">Select a session first to view its AI prompts.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            document.getElementById('promptsContent').innerHTML = `
+                <div class="text-center py-4">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+                    <p class="text-sm mt-2 text-gray-400">Loading prompts...</p>
+                </div>
+            `;
+
+            try {
+                const response = await fetch(`/api/prompts/details/${currentSession}`);
+                const data = await response.json();
+
+                if (!data.samples || data.samples.length === 0) {
+                    document.getElementById('promptsContent').innerHTML = `
+                        <div class="text-center py-8 text-gray-400">
+                            <p>No AI prompts found for this session.</p>
+                            <button onclick="generateAIPrompts()" class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+                                Generate AI Prompts
+                            </button>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Group samples by theme
+                const samplesByTheme = {};
+                data.samples.forEach(sample => {
+                    if (!samplesByTheme[sample.theme]) {
+                        samplesByTheme[sample.theme] = [];
+                    }
+                    samplesByTheme[sample.theme].push(sample);
+                });
+
+                let html = `
+                    <div class="mb-4 p-4 bg-gray-100 dark:bg-gray-800 rounded">
+                        <div class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">AI Prompts Overview</div>
+                        <div class="text-sm text-gray-700 dark:text-gray-300">
+                            <span>Total: ${data.total_samples} samples</span>
+                            <span class="mx-2">|</span>
+                            <span>With AI: ${data.with_ai_prompts}</span>
+                            <span class="mx-2">|</span>
+                            <span>Blessed: ${data.with_blessed}</span>
+                        </div>
+                    </div>
+                `;
+
+                // Display samples by theme
+                Object.entries(samplesByTheme).forEach(([theme, samples]) => {
+                    html += `
+                        <div class="mb-6">
+                            <h3 class="text-lg font-semibold mb-3 text-blue-600 dark:text-blue-400">${theme} (${samples.length} samples)</h3>
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                    `;
+
+                    samples.forEach(sample => {
+                        const promptsList = sample.ai_prompts.map((p, i) =>
+                            `<li class="py-1 text-gray-800 dark:text-gray-100">${i+1}. ${p}</li>`
+                        ).join('');
+
+                        const blessedBadge = sample.has_blessed
+                            ? '<span class="text-xs bg-green-600 px-2 py-1 rounded text-white">Blessed ✓</span>'
+                            : '<span class="text-xs bg-gray-400 dark:bg-gray-600 px-2 py-1 rounded text-white dark:text-gray-200">Not Blessed</span>';
+
+                        html += `
+                            <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div>
+                                        <span class="font-medium text-gray-900 dark:text-white">${sample.sample_id}</span>
+                                    </div>
+                                    ${blessedBadge}
+                                </div>
+                                <div class="text-xs text-gray-600 dark:text-gray-300 mb-2 truncate" title="${sample.title || 'No title'}">
+                                    ${sample.title || 'No title'}
+                                </div>
+                                ${sample.tags && sample.tags.length > 0 ?
+                                    `<div class="text-xs text-blue-600 dark:text-blue-400 mb-2">Tags: ${sample.tags.join(', ')}</div>` : ''}
+                                <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded">
+                                    <div class="text-gray-500 dark:text-gray-400 mb-1 text-xs uppercase tracking-wide">AI Prompts:</div>
+                                    <ol class="ml-2 space-y-1 text-sm">${promptsList}</ol>
+                                </div>
+                                ${sample.best_prompt ?
+                                    `<div class="text-xs text-green-700 dark:text-green-400 mt-2 bg-green-100 dark:bg-green-900/20 p-2 rounded">
+                                        <span class="text-gray-600 dark:text-gray-400">Best:</span> ${sample.best_prompt}
+                                    </div>` : ''}
+                            </div>
+                        `;
+                    });
+
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                });
+
+                document.getElementById('promptsContent').innerHTML = html;
+
+            } catch (error) {
+                console.error('Error fetching prompt details:', error);
+                document.getElementById('promptsContent').innerHTML = `
+                    <div class="text-center py-8 text-red-400">
+                        <p>Error loading prompts.</p>
+                        <p class="text-sm mt-2">${error.toString()}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSessions();
+            loadSettings();
+        });
+    </script>
+</body>
+</html>

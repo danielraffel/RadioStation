@@ -1,0 +1,368 @@
+{
+  "session_id": "20250917_185054_l4rq",
+  "timestamp": "2025-09-17T20:13:06.658793",
+  "test_runs": [
+    {
+      "name": "Test Run",
+      "threshold": 0.4,
+      "prompts": {
+        "Loud": "Loud explosive booming powerful sound",
+        "Smooth": "Smooth flowing water continuous stream",
+        "Bumpy": "Bumpy train on tracks irregular rattling sound",
+        "Soft": "Quiet gentle whisper voice speaking softly"
+      },
+      "themes": {
+        "Loud": {
+          "passed": [],
+          "failed": [],
+          "cross_assigned": [
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_20.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.7482502428298394,
+              "all_scores": {
+                "Loud": 0.49352145776186246,
+                "Smooth": 0.7482502428298394,
+                "Bumpy": 0.3479445065251128,
+                "Soft": 0.5643362000307759
+              }
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_16.wav",
+              "original_theme": "Loud",
+              "best_theme": "Bumpy",
+              "best_score": 0.6431517063919319,
+              "all_scores": {
+                "Loud": 0.4572225941286709,
+                "Smooth": 0.22277625106329296,
+                "Bumpy": 0.6431517063919319,
+                "Soft": 0.3416176413186224
+              }
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_01.wav",
+              "original_theme": "Loud",
+              "best_theme": "Soft",
+              "best_score": 0.6540877700723451,
+              "all_scores": {
+                "Loud": 0.23746129024882728,
+                "Smooth": 0.6436979685614297,
+                "Bumpy": 0.36697316102110933,
+                "Soft": 0.6540877700723451
+              }
+            }
+          ]
+        },
+        "Smooth": {
+          "passed": [
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_03.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Smooth",
+              "best_score": 0.621304087446713,
+              "all_scores": {
+                "Loud": 0.3697496913746403,
+                "Smooth": 0.621304087446713,
+                "Bumpy": 0.6200781543891019,
+                "Soft": 0.509924660013934
+              }
+            }
+          ],
+          "failed": [],
+          "cross_assigned": [
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_02.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Bumpy",
+              "best_score": 0.6898958537317701,
+              "all_scores": {
+                "Loud": 0.5403499595665053,
+                "Smooth": 0.2093653362914389,
+                "Bumpy": 0.6898958537317701,
+                "Soft": 0.45527511449779173
+              }
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_05.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Loud",
+              "best_score": 0.680266853662815,
+              "all_scores": {
+                "Loud": 0.680266853662815,
+                "Smooth": 0.2208916269665488,
+                "Bumpy": 0.40314209398193956,
+                "Soft": 0.5103342481509108
+              }
+            }
+          ]
+        },
+        "Bumpy": {
+          "passed": [
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_01.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Bumpy",
+              "best_score": 0.6572217139135812,
+              "all_scores": {
+                "Loud": 0.3746047688398959,
+                "Smooth": 0.34121381216488134,
+                "Bumpy": 0.6572217139135812,
+                "Soft": 0.5841082660910584
+              }
+            }
+          ],
+          "failed": [],
+          "cross_assigned": [
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_21.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7730901650359665,
+              "all_scores": {
+                "Loud": 0.7730901650359665,
+                "Smooth": 0.3205731461433555,
+                "Bumpy": 0.37500825592002274,
+                "Soft": 0.6911786403637291
+              }
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_17.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.6207240687044167,
+              "all_scores": {
+                "Loud": 0.3434359464905964,
+                "Smooth": 0.6207240687044167,
+                "Bumpy": 0.5837847952097363,
+                "Soft": 0.21387633995203165
+              }
+            }
+          ]
+        },
+        "Soft": {
+          "passed": [],
+          "failed": [],
+          "cross_assigned": [
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_16.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.7544051550659929,
+              "all_scores": {
+                "Loud": 0.5091614695348485,
+                "Smooth": 0.7365670681896872,
+                "Bumpy": 0.7544051550659929,
+                "Soft": 0.4234100355583568
+              }
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_20.wav",
+              "original_theme": "Soft",
+              "best_theme": "Loud",
+              "best_score": 0.7406289607994956,
+              "all_scores": {
+                "Loud": 0.7406289607994956,
+                "Smooth": 0.7305203412428583,
+                "Bumpy": 0.5848981496349014,
+                "Soft": 0.6437781344430533
+              }
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_21.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.6948090840738422,
+              "all_scores": {
+                "Loud": 0.38586031916521835,
+                "Smooth": 0.37100837560820854,
+                "Bumpy": 0.6948090840738422,
+                "Soft": 0.3687171737272501
+              }
+            }
+          ]
+        }
+      },
+      "statistics": {
+        "Loud": {
+          "total": 3,
+          "passed": 0,
+          "failed": 0,
+          "cross_assigned": 3,
+          "pass_rate": 0.0
+        },
+        "Smooth": {
+          "total": 3,
+          "passed": 1,
+          "failed": 0,
+          "cross_assigned": 2,
+          "pass_rate": 0.3333333333333333
+        },
+        "Bumpy": {
+          "total": 3,
+          "passed": 1,
+          "failed": 0,
+          "cross_assigned": 2,
+          "pass_rate": 0.3333333333333333
+        },
+        "Soft": {
+          "total": 3,
+          "passed": 0,
+          "failed": 0,
+          "cross_assigned": 3,
+          "pass_rate": 0.0
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "session_id": "20250917_185054_l4rq",
+    "themes": {
+      "Loud": {
+        "sample_count": 26,
+        "original_prompt": "Loud explosive booming powerful sound",
+        "samples": [
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_20.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_20.json",
+            "search_term": "Sirens blaring",
+            "title": "ANNOYING SIREN!!! I bet you can't last 3 minutes!!"
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_16.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_16.json",
+            "search_term": "Drumline performance",
+            "title": "DRUMLINE  A&T   ATLANTA"
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_01.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_01.json",
+            "search_term": "Loud city traffic",
+            "title": "City Sounds - Mega City - Traffic, Horns, People, "
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_17.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_17.json",
+            "search_term": "Car engine revving",
+            "title": "Lamborghini Huracan Redline Reving Rev Limiter Exh"
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_21.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_21.json",
+            "search_term": "Industrial factory noise",
+            "title": "Industrial Factory Ambience | 10 Hours Industrial "
+          }
+        ]
+      },
+      "Smooth": {
+        "sample_count": 9,
+        "original_prompt": "Smooth flowing water continuous stream",
+        "samples": [
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_03.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_03.json",
+            "search_term": "Smooth ocean waves",
+            "title": "The Most Relaxing Waves Ever - Ocean Sounds to Sle"
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_02.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_02.json",
+            "search_term": "Smooth ocean waves",
+            "title": "All You Need To Fall Asleep - Ocean Sounds For Dee"
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_05.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_05.json",
+            "search_term": "Smooth ocean waves",
+            "title": "Sleep For 11 Hours Straight, High Quality Stereo O"
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_09.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_09.json",
+            "search_term": "Smooth driving sounds",
+            "title": "Volkswagen Polo Audio Upgrade | DHC Damping for Be"
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_08.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_08.json",
+            "search_term": "Smooth driving sounds",
+            "title": "How to drive a manual car SMOOTHLY. Driving stick "
+          }
+        ]
+      },
+      "Bumpy": {
+        "sample_count": 29,
+        "original_prompt": "Bumpy train on tracks irregular rattling sound",
+        "samples": [
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_21.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_21.json",
+            "search_term": "Bumpy car ride interior noise",
+            "title": "Quick suspension check in under 5 minutes! \ud83d\udd27"
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_17.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_17.json",
+            "search_term": "Bumpy horse carriage sounds",
+            "title": "Wagon sound"
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_01.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_01.json",
+            "search_term": "Bumpy car ride interior noise",
+            "title": "Going over speed bumps quickly can damage your car"
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_16.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_16.json",
+            "search_term": "Bumpy wagon on cobblestones",
+            "title": "Trying to write, on a bumpy road, LOL"
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_20.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_20.json",
+            "search_term": "Bumpy car ride interior noise",
+            "title": "Customer states put in new struts and now it clunk"
+          }
+        ]
+      },
+      "Soft": {
+        "sample_count": 24,
+        "original_prompt": "Quiet gentle whisper voice speaking softly",
+        "samples": [
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_16.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_16.json",
+            "search_term": "Soft lullaby instrumental",
+            "title": "Disney Deep Sleep Piano Collection, Sleep Meditati"
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_20.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_20.json",
+            "search_term": "Gentle thunderstorm ambience",
+            "title": "Rain Sounds for Sleeping No Ads - Heavy Rain and I"
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_21.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_21.json",
+            "search_term": "Quiet night forest sounds",
+            "title": "FOREST AT NIGHT - Crickets Owls Rain Wind in Trees"
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_01.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_01.json",
+            "search_term": "Gentle piano melodies",
+            "title": "Music for Studying - piano music, relaxing music, "
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_17.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_17.json",
+            "search_term": "Light bird songs in morning",
+            "title": "Relaxing Music with Birds Singing - Beautiful Pian"
+          }
+        ]
+      }
+    },
+    "total_samples": 88
+  }
+}

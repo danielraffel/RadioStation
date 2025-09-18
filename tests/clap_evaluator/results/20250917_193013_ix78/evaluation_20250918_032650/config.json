@@ -1,0 +1,26 @@
+{
+  "test_runs": [
+    {
+      "name": "Configuration 1",
+      "threshold": 0.3,
+      "prompts": {
+        "Metallic": "Metallic hammer hitting metal ringing sound",
+        "Glitchy": "Glitchy digital error stuttering broken sound",
+        "Bright": "Bright clear bell ringing chime sound",
+        "Harsh": "Harsh rough chainsaw grinding cutting sound",
+        "Loud": "Loud explosive booming powerful sound",
+        "Smooth": "Smooth flowing water continuous stream",
+        "Airy": "Airy wind blowing breeze whooshing sound",
+        "Woody": "Wooden knock tapping on wood sound",
+        "Bumpy": "Bumpy train on tracks irregular rattling sound",
+        "Eerie": "Eerie ghost haunting spooky mysterious sound",
+        "Soft": "Quiet gentle whisper voice speaking softly",
+        "Warm": "Warm cozy fireplace crackling fire sound",
+        "Noisy": "Noisy static hiss white noise sound",
+        "Dark": "Dark deep cave echoing mysterious sound",
+        "Percussive": "Percussive drum hit beating rhythmic sound",
+        "Sustained": "Sustained drone humming continuous tone"
+      }
+    }
+  ]
+}

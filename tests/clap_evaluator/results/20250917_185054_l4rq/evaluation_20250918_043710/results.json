@@ -1,0 +1,3615 @@
+{
+  "session_id": "20250917_185054_l4rq",
+  "timestamp": "2025-09-18T04:37:05.289721",
+  "test_runs": [
+    {
+      "name": "Configuration 1",
+      "threshold": 0.3,
+      "prompts": {
+        "Loud": "Loud explosive booming powerful sound",
+        "Smooth": "Smooth flowing water continuous stream",
+        "Bumpy": "Bumpy train on tracks irregular rattling sound",
+        "Soft": "Quiet gentle whisper voice speaking softly"
+      },
+      "themes": {
+        "Loud": {
+          "passed": [
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_12.wav",
+              "original_theme": "Loud",
+              "best_theme": "Loud",
+              "best_score": 0.7853513040344557,
+              "all_scores": {
+                "Loud": 0.7853513040344557,
+                "Smooth": 0.3252278381287706,
+                "Bumpy": 0.22518659072823388,
+                "Soft": 0.22611321216362543
+              },
+              "search_term": "Train passing by",
+              "title": "Amtraks Acela Express at top speed! | Acela express train 2252 at 150 MPH @ Mansfield,MA(4/22/23)"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_05.wav",
+              "original_theme": "Loud",
+              "best_theme": "Loud",
+              "best_score": 0.6423367088987038,
+              "all_scores": {
+                "Loud": 0.6423367088987038,
+                "Smooth": 0.5089063558006157,
+                "Bumpy": 0.5018585877990994,
+                "Soft": 0.21617236068991091
+              },
+              "search_term": "Heavy rain on metal roof",
+              "title": "\u25ba Hard Pouring Rain on a Tin Roof Metal Roof ~Heavy Rain Sounds for Sleeping 10 hours Lluvia"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_18.wav",
+              "original_theme": "Loud",
+              "best_theme": "Loud",
+              "best_score": 0.7707160335407439,
+              "all_scores": {
+                "Loud": 0.7707160335407439,
+                "Smooth": 0.5366792424256149,
+                "Bumpy": 0.5010276098935988,
+                "Soft": 0.6788051049080761
+              },
+              "search_term": "Chainsaw cutting wood",
+              "title": "Chainsaw Mill On Sassafras with A 2x6-Part 2"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_14.wav",
+              "original_theme": "Loud",
+              "best_theme": "Loud",
+              "best_score": 0.7300318785516575,
+              "all_scores": {
+                "Loud": 0.7300318785516575,
+                "Smooth": 0.6402061453865748,
+                "Bumpy": 0.6153742269893719,
+                "Soft": 0.3684970791170508
+              },
+              "search_term": "Loud waterfall",
+              "title": "Roaring Waterfall White Noise | Study, Relax or Sleep with Relaxing Water Sounds"
+            }
+          ],
+          "failed": [
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_11.wav",
+              "original_theme": "Loud",
+              "best_theme": "Bumpy",
+              "best_score": 0.2784623509861258,
+              "all_scores": {
+                "Loud": 0.2658967331003162,
+                "Smooth": 0.27338475519772243,
+                "Bumpy": 0.2784623509861258,
+                "Soft": 0.21374474632473853
+              },
+              "search_term": "Train passing by",
+              "title": "70 MPH BNSF Z TRAIN!!!"
+            }
+          ],
+          "cross_assigned": [
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_20.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.7482502428298394,
+              "all_scores": {
+                "Loud": 0.49352145776186246,
+                "Smooth": 0.7482502428298394,
+                "Bumpy": 0.3479445065251128,
+                "Soft": 0.5643362000307759
+              },
+              "search_term": "Sirens blaring",
+              "title": "ANNOYING SIREN!!! I bet you can't last 3 minutes!!!!!"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_16.wav",
+              "original_theme": "Loud",
+              "best_theme": "Bumpy",
+              "best_score": 0.6431517063919319,
+              "all_scores": {
+                "Loud": 0.4572225941286709,
+                "Smooth": 0.22277625106329296,
+                "Bumpy": 0.6431517063919319,
+                "Soft": 0.3416176413186224
+              },
+              "search_term": "Drumline performance",
+              "title": "DRUMLINE  A&T   ATLANTA"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_01.wav",
+              "original_theme": "Loud",
+              "best_theme": "Soft",
+              "best_score": 0.6540877700723451,
+              "all_scores": {
+                "Loud": 0.23746129024882728,
+                "Smooth": 0.6436979685614297,
+                "Bumpy": 0.36697316102110933,
+                "Soft": 0.6540877700723451
+              },
+              "search_term": "Loud city traffic",
+              "title": "City Sounds - Mega City - Traffic, Horns, People, Ambience"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_17.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.5387920819375935,
+              "all_scores": {
+                "Loud": 0.2818296109809724,
+                "Smooth": 0.5387920819375935,
+                "Bumpy": 0.26147979371411106,
+                "Soft": 0.2941239886638477
+              },
+              "search_term": "Car engine revving",
+              "title": "Lamborghini Huracan Redline Reving Rev Limiter Exhaust Sounds"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_21.wav",
+              "original_theme": "Loud",
+              "best_theme": "Soft",
+              "best_score": 0.7149978904459637,
+              "all_scores": {
+                "Loud": 0.2713217107945802,
+                "Smooth": 0.5038281918914331,
+                "Bumpy": 0.6756547474530521,
+                "Soft": 0.7149978904459637
+              },
+              "search_term": "Industrial factory noise",
+              "title": "Industrial Factory Ambience | 10 Hours Industrial White Noise and Machine Sounds"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_10.wav",
+              "original_theme": "Loud",
+              "best_theme": "Soft",
+              "best_score": 0.6379005070265398,
+              "all_scores": {
+                "Loud": 0.3652820064091351,
+                "Smooth": 0.4032747473248622,
+                "Bumpy": 0.27122198957295,
+                "Soft": 0.6379005070265398
+              },
+              "search_term": "Fireworks exploding",
+              "title": "How Fireworks Explode \ud83e\udd28"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_06.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.7890378419014354,
+              "all_scores": {
+                "Loud": 0.2913193319543772,
+                "Smooth": 0.7890378419014354,
+                "Bumpy": 0.22920114859093682,
+                "Soft": 0.480163362419742
+              },
+              "search_term": "Heavy rain on metal roof",
+              "title": "\u25ba10 hours of hard rain on a metal roof (Rain Sleep Sounds) Rain Sounds for Sleeping. Rainfall.lluvia"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_26.wav",
+              "original_theme": "Loud",
+              "best_theme": "Soft",
+              "best_score": 0.735283571243059,
+              "all_scores": {
+                "Loud": 0.6274160934521928,
+                "Smooth": 0.7346313158029885,
+                "Bumpy": 0.38600557543864533,
+                "Soft": 0.735283571243059
+              },
+              "search_term": "Loud city traffic",
+              "title": "Open Window New York City Soundscape at Night (Midtown Manhattan City Sounds) 4k"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_07.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.6173596746731805,
+              "all_scores": {
+                "Loud": 0.49469454650844086,
+                "Smooth": 0.6173596746731805,
+                "Bumpy": 0.21514565861686163,
+                "Soft": 0.2423667819726512
+              },
+              "search_term": "Airplane takeoff roar",
+              "title": "The best airplane engine sound? Airbus A320 roaring takeoff"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_04.wav",
+              "original_theme": "Loud",
+              "best_theme": "Soft",
+              "best_score": 0.7396598416751972,
+              "all_scores": {
+                "Loud": 0.4494545173665029,
+                "Smooth": 0.5166264591833176,
+                "Bumpy": 0.5635221238989093,
+                "Soft": 0.7396598416751972
+              },
+              "search_term": "Rock concert crowd noise",
+              "title": "Stadium Crowd Sound Effects | One Hour | HQ"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_24.wav",
+              "original_theme": "Loud",
+              "best_theme": "Bumpy",
+              "best_score": 0.7646956436101435,
+              "all_scores": {
+                "Loud": 0.3587631099326719,
+                "Smooth": 0.6016648594905118,
+                "Bumpy": 0.7646956436101435,
+                "Soft": 0.3121457964497231
+              },
+              "search_term": "Loud city traffic",
+              "title": "Cities Aren't Loud: Cars Are Loud"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_08.wav",
+              "original_theme": "Loud",
+              "best_theme": "Bumpy",
+              "best_score": 0.7510650509639345,
+              "all_scores": {
+                "Loud": 0.3225241406121234,
+                "Smooth": 0.41934637054429064,
+                "Bumpy": 0.7510650509639345,
+                "Soft": 0.3743372484594649
+              },
+              "search_term": "Airplane takeoff roar",
+              "title": "GE9X ROAR! Boeing 777X First Takeoff at Everett Paine Field (JAN 25th 2020)"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_09.wav",
+              "original_theme": "Loud",
+              "best_theme": "Bumpy",
+              "best_score": 0.7322797066903417,
+              "all_scores": {
+                "Loud": 0.48421036674613455,
+                "Smooth": 0.36321037418069724,
+                "Bumpy": 0.7322797066903417,
+                "Soft": 0.6111755974234592
+              },
+              "search_term": "Fireworks exploding",
+              "title": "$1 vs $100,000 Firework!"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_25.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.7708717059626347,
+              "all_scores": {
+                "Loud": 0.6568060054270114,
+                "Smooth": 0.7708717059626347,
+                "Bumpy": 0.40271002692891966,
+                "Soft": 0.26824369911385704
+              },
+              "search_term": "Loud city traffic",
+              "title": "The BEST Sleepy Stories EVER \ud83d\ude34 | 2H Bedtime Tales by Alexandra Turney | Relaxing Storytime for Sleep"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_13.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.3147829246047853,
+              "all_scores": {
+                "Loud": 0.3119052853714657,
+                "Smooth": 0.3147829246047853,
+                "Bumpy": 0.30110997776957693,
+                "Soft": 0.31435710701095737
+              },
+              "search_term": "Loud waterfall",
+              "title": "Large Waterfall 10 Hours | Niagara Falls | Relaxing Nature Sounds"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_22.wav",
+              "original_theme": "Loud",
+              "best_theme": "Soft",
+              "best_score": 0.7466684561143087,
+              "all_scores": {
+                "Loud": 0.2575143558601862,
+                "Smooth": 0.62826203291863,
+                "Bumpy": 0.6273172633528836,
+                "Soft": 0.7466684561143087
+              },
+              "search_term": "Ocean waves crashing hard",
+              "title": "Sleep to Big Ocean Waves Crashing | Stormy White Noise Water Sounds 10 Hours"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_02.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.3001344395275545,
+              "all_scores": {
+                "Loud": 0.2899182228306188,
+                "Smooth": 0.3001344395275545,
+                "Bumpy": 0.27628922465953554,
+                "Soft": 0.2544349120747189
+              },
+              "search_term": "Loud city traffic",
+              "title": "City Sounds and Traffic Ambience ASMR for Sleep and Study | Relaxing City at Night"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_15.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.6153214469690111,
+              "all_scores": {
+                "Loud": 0.4205205584258951,
+                "Smooth": 0.6153214469690111,
+                "Bumpy": 0.47169670398671143,
+                "Soft": 0.21033638200870464
+              },
+              "search_term": "Stadium cheering",
+              "title": "How to start a stadium chant..."
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_03.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.6394348929279932,
+              "all_scores": {
+                "Loud": 0.3965671640311742,
+                "Smooth": 0.6394348929279932,
+                "Bumpy": 0.36393737764321576,
+                "Soft": 0.42662541277615695
+              },
+              "search_term": "Rock concert crowd noise",
+              "title": "Rock Concert Applause With Shouts Sound Effect"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_19.wav",
+              "original_theme": "Loud",
+              "best_theme": "Bumpy",
+              "best_score": 0.6975642142421608,
+              "all_scores": {
+                "Loud": 0.6623179647407269,
+                "Smooth": 0.352823388043478,
+                "Bumpy": 0.6975642142421608,
+                "Soft": 0.6557437246638114
+              },
+              "search_term": "Gunfire sounds",
+              "title": "AR 15 Gunfire Sound Effect"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_23.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.5977737587522476,
+              "all_scores": {
+                "Loud": 0.5667356825419343,
+                "Smooth": 0.5977737587522476,
+                "Bumpy": 0.5247458733422765,
+                "Soft": 0.2820614011984226
+              },
+              "search_term": "Loud city traffic",
+              "title": "Street City Sounds : Traffic, Conversations, and Urban Ambience"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_05.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Loud",
+              "best_score": 0.680266853662815,
+              "all_scores": {
+                "Loud": 0.680266853662815,
+                "Smooth": 0.2208916269665488,
+                "Bumpy": 0.40314209398193956,
+                "Soft": 0.5103342481509108
+              },
+              "search_term": "Smooth ocean waves",
+              "title": "Sleep For 11 Hours Straight, High Quality Stereo Ocean Sounds Of Rolling Waves For Deep Sleeping"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_01.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Loud",
+              "best_score": 0.7500590585522224,
+              "all_scores": {
+                "Loud": 0.7500590585522224,
+                "Smooth": 0.4972158270374016,
+                "Bumpy": 0.4350097461637496,
+                "Soft": 0.29715459073066963
+              },
+              "search_term": "Smooth jazz music",
+              "title": "\ud83c\udf41 Autumn Jazz Caf\u00e9 \u2013 Warm Coffee, Falling Leaves & Relaxing Jazz for Study, Work & Chill \ud83c\udfb6\u2615"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_21.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7730901650359665,
+              "all_scores": {
+                "Loud": 0.7730901650359665,
+                "Smooth": 0.3205731461433555,
+                "Bumpy": 0.37500825592002274,
+                "Soft": 0.6911786403637291
+              },
+              "search_term": "Bumpy car ride interior noise",
+              "title": "Quick suspension check in under 5 minutes! \ud83d\udd27"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_20.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7766430906811932,
+              "all_scores": {
+                "Loud": 0.7766430906811932,
+                "Smooth": 0.7682386674128723,
+                "Bumpy": 0.6007306196214498,
+                "Soft": 0.6694411633797774
+              },
+              "search_term": "Bumpy car ride interior noise",
+              "title": "Customer states put in new struts and now it clunks. #autorepair"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_26.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7354075675138922,
+              "all_scores": {
+                "Loud": 0.7354075675138922,
+                "Smooth": 0.22069033453762313,
+                "Bumpy": 0.5803380456735145,
+                "Soft": 0.29919503603112085
+              },
+              "search_term": "Bumpy train track clatter",
+              "title": "Engine noise on a Chevy Equinox bad timing chain"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_10.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7588756186509762,
+              "all_scores": {
+                "Loud": 0.7588756186509762,
+                "Smooth": 0.24923934360534136,
+                "Bumpy": 0.2065277987215551,
+                "Soft": 0.5249893436918351
+              },
+              "search_term": "Bumpy wooden roller coaster",
+              "title": "Thundercoaster Front Row POV Tusenfryd Vekoma Wooden Roller Coaster"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_29.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7560290030572585,
+              "all_scores": {
+                "Loud": 0.7560290030572585,
+                "Smooth": 0.6709703028244841,
+                "Bumpy": 0.536873935337847,
+                "Soft": 0.41356474344569116
+              },
+              "search_term": "Bumpy train track clatter",
+              "title": "Clunking in the Front? What's That Noise in My Car, SUV, or Truck?"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_09.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7869616140846081,
+              "all_scores": {
+                "Loud": 0.7869616140846081,
+                "Smooth": 0.21932781477082414,
+                "Bumpy": 0.638313506032036,
+                "Soft": 0.4804271082012848
+              },
+              "search_term": "Bumpy wooden roller coaster",
+              "title": "Bumpy wooden roller coaster."
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_24.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.6294856115494936,
+              "all_scores": {
+                "Loud": 0.6294856115494936,
+                "Smooth": 0.3903916093775536,
+                "Bumpy": 0.31681556704453606,
+                "Soft": 0.21633316929945295
+              },
+              "search_term": "Bumpy bus journey ambience",
+              "title": "Vintage Coach Bus Driving on Uneven Road Surface with Large Bumps"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_04.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.702236162309194,
+              "all_scores": {
+                "Loud": 0.702236162309194,
+                "Smooth": 0.5020342704138039,
+                "Bumpy": 0.5493349140798911,
+                "Soft": 0.3960608464089592
+              },
+              "search_term": "Bumpy bus journey ambience",
+              "title": "\u25b6\ufe0f Bumpy Bus Ride! Bus Ride From Hell!  \ud83c\udf0f"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_23.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7045670874409902,
+              "all_scores": {
+                "Loud": 0.7045670874409902,
+                "Smooth": 0.4498891913784946,
+                "Bumpy": 0.3100461401211489,
+                "Soft": 0.5203737796809927
+              },
+              "search_term": "Bumpy bus journey ambience",
+              "title": "Relaxing BUS Ride - Interior Bus Ambience for Sleep, Study - Relax Baby DEEP SLEEP"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_03.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7388940966269106,
+              "all_scores": {
+                "Loud": 0.7388940966269106,
+                "Smooth": 0.5718476253377653,
+                "Bumpy": 0.39587904244062755,
+                "Soft": 0.3207576034958808
+              },
+              "search_term": "Bumpy bus journey ambience",
+              "title": "Top Deck Bumpy Bus Journey. #whitenoise  Sounds that can help with relaxing and more. #ASMR"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_20.wav",
+              "original_theme": "Soft",
+              "best_theme": "Loud",
+              "best_score": 0.7406289607994956,
+              "all_scores": {
+                "Loud": 0.7406289607994956,
+                "Smooth": 0.7305203412428583,
+                "Bumpy": 0.5848981496349014,
+                "Soft": 0.6437781344430533
+              },
+              "search_term": "Gentle thunderstorm ambience",
+              "title": "Rain Sounds for Sleeping No Ads - Heavy Rain and Intense Thunder for Deep Sleep, Energy Restoration"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_08.wav",
+              "original_theme": "Soft",
+              "best_theme": "Loud",
+              "best_score": 0.6573330417087055,
+              "all_scores": {
+                "Loud": 0.6573330417087055,
+                "Smooth": 0.3241098396112786,
+                "Bumpy": 0.4496608564549116,
+                "Soft": 0.329507683612551
+              },
+              "search_term": "Quiet crackling fireplace",
+              "title": "Crackling Fire by the Lake (12 hrs): Cure for Deep Sleep"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_13.wav",
+              "original_theme": "Soft",
+              "best_theme": "Loud",
+              "best_score": 0.6810641108647355,
+              "all_scores": {
+                "Loud": 0.6810641108647355,
+                "Smooth": 0.5242561513735231,
+                "Bumpy": 0.5802560288677772,
+                "Soft": 0.3714577229948508
+              },
+              "search_term": "Subtle Tibetan singing bowls",
+              "title": "Healing Frequencies of Tibetan Bowls#singingbowl#meditationmusic#soundbathssleep"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_14.wav",
+              "original_theme": "Soft",
+              "best_theme": "Loud",
+              "best_score": 0.5212714454638583,
+              "all_scores": {
+                "Loud": 0.5212714454638583,
+                "Smooth": 0.2372800977186323,
+                "Bumpy": 0.41605476386994694,
+                "Soft": 0.4923934047097313
+              },
+              "search_term": "Subtle Tibetan singing bowls",
+              "title": "PARASYMPATHETIC NERVOUS SYSTEM Activation | Tibetan Singing Bowl Sound Bath for Stress Relief"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_22.wav",
+              "original_theme": "Soft",
+              "best_theme": "Loud",
+              "best_score": 0.6768592495138114,
+              "all_scores": {
+                "Loud": 0.6768592495138114,
+                "Smooth": 0.5386214102728775,
+                "Bumpy": 0.5509157764792448,
+                "Soft": 0.3805561114266779
+              },
+              "search_term": "Soft ASMR tapping",
+              "title": "ASMR Sunglasses Collection | Pure Whispers, LOTS of Tapping \ud83d\udd76\ufe0f"
+            }
+          ]
+        },
+        "Smooth": {
+          "passed": [
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_03.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Smooth",
+              "best_score": 0.621304087446713,
+              "all_scores": {
+                "Loud": 0.3697496913746403,
+                "Smooth": 0.621304087446713,
+                "Bumpy": 0.6200781543891019,
+                "Soft": 0.509924660013934
+              },
+              "search_term": "Smooth ocean waves",
+              "title": "The Most Relaxing Waves Ever - Ocean Sounds to Sleep, Study and Chill"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_09.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Smooth",
+              "best_score": 0.7605959297070071,
+              "all_scores": {
+                "Loud": 0.4628081108654661,
+                "Smooth": 0.7605959297070071,
+                "Bumpy": 0.4669906389229461,
+                "Soft": 0.2893179128126167
+              },
+              "search_term": "Smooth driving sounds",
+              "title": "Volkswagen Polo Audio Upgrade | DHC Damping for Better Sound & Smooth Drive"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_04.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Smooth",
+              "best_score": 0.7997967964758632,
+              "all_scores": {
+                "Loud": 0.4757382094089951,
+                "Smooth": 0.7997967964758632,
+                "Bumpy": 0.2900872008560729,
+                "Soft": 0.532812754032258
+              },
+              "search_term": "Smooth ocean waves",
+              "title": "Deep Sleeping with Ocean Sounds - Gentle Waves at Night - 9 Hours of White Noise"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_06.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Smooth",
+              "best_score": 0.7241984893373814,
+              "all_scores": {
+                "Loud": 0.5617762144772744,
+                "Smooth": 0.7241984893373814,
+                "Bumpy": 0.23554448615133616,
+                "Soft": 0.5744438459417603
+              },
+              "search_term": "Smooth driving sounds",
+              "title": "Mastering Heel-Toe Downshifting \u2013 The Key to Smooth Driving!"
+            }
+          ],
+          "failed": [],
+          "cross_assigned": [
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_20.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.7482502428298394,
+              "all_scores": {
+                "Loud": 0.49352145776186246,
+                "Smooth": 0.7482502428298394,
+                "Bumpy": 0.3479445065251128,
+                "Soft": 0.5643362000307759
+              },
+              "search_term": "Sirens blaring",
+              "title": "ANNOYING SIREN!!! I bet you can't last 3 minutes!!!!!"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_17.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.5387920819375935,
+              "all_scores": {
+                "Loud": 0.2818296109809724,
+                "Smooth": 0.5387920819375935,
+                "Bumpy": 0.26147979371411106,
+                "Soft": 0.2941239886638477
+              },
+              "search_term": "Car engine revving",
+              "title": "Lamborghini Huracan Redline Reving Rev Limiter Exhaust Sounds"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_06.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.7890378419014354,
+              "all_scores": {
+                "Loud": 0.2913193319543772,
+                "Smooth": 0.7890378419014354,
+                "Bumpy": 0.22920114859093682,
+                "Soft": 0.480163362419742
+              },
+              "search_term": "Heavy rain on metal roof",
+              "title": "\u25ba10 hours of hard rain on a metal roof (Rain Sleep Sounds) Rain Sounds for Sleeping. Rainfall.lluvia"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_07.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.6173596746731805,
+              "all_scores": {
+                "Loud": 0.49469454650844086,
+                "Smooth": 0.6173596746731805,
+                "Bumpy": 0.21514565861686163,
+                "Soft": 0.2423667819726512
+              },
+              "search_term": "Airplane takeoff roar",
+              "title": "The best airplane engine sound? Airbus A320 roaring takeoff"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_25.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.7708717059626347,
+              "all_scores": {
+                "Loud": 0.6568060054270114,
+                "Smooth": 0.7708717059626347,
+                "Bumpy": 0.40271002692891966,
+                "Soft": 0.26824369911385704
+              },
+              "search_term": "Loud city traffic",
+              "title": "The BEST Sleepy Stories EVER \ud83d\ude34 | 2H Bedtime Tales by Alexandra Turney | Relaxing Storytime for Sleep"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_13.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.3147829246047853,
+              "all_scores": {
+                "Loud": 0.3119052853714657,
+                "Smooth": 0.3147829246047853,
+                "Bumpy": 0.30110997776957693,
+                "Soft": 0.31435710701095737
+              },
+              "search_term": "Loud waterfall",
+              "title": "Large Waterfall 10 Hours | Niagara Falls | Relaxing Nature Sounds"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_02.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.3001344395275545,
+              "all_scores": {
+                "Loud": 0.2899182228306188,
+                "Smooth": 0.3001344395275545,
+                "Bumpy": 0.27628922465953554,
+                "Soft": 0.2544349120747189
+              },
+              "search_term": "Loud city traffic",
+              "title": "City Sounds and Traffic Ambience ASMR for Sleep and Study | Relaxing City at Night"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_15.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.6153214469690111,
+              "all_scores": {
+                "Loud": 0.4205205584258951,
+                "Smooth": 0.6153214469690111,
+                "Bumpy": 0.47169670398671143,
+                "Soft": 0.21033638200870464
+              },
+              "search_term": "Stadium cheering",
+              "title": "How to start a stadium chant..."
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_03.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.6394348929279932,
+              "all_scores": {
+                "Loud": 0.3965671640311742,
+                "Smooth": 0.6394348929279932,
+                "Bumpy": 0.36393737764321576,
+                "Soft": 0.42662541277615695
+              },
+              "search_term": "Rock concert crowd noise",
+              "title": "Rock Concert Applause With Shouts Sound Effect"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_23.wav",
+              "original_theme": "Loud",
+              "best_theme": "Smooth",
+              "best_score": 0.5977737587522476,
+              "all_scores": {
+                "Loud": 0.5667356825419343,
+                "Smooth": 0.5977737587522476,
+                "Bumpy": 0.5247458733422765,
+                "Soft": 0.2820614011984226
+              },
+              "search_term": "Loud city traffic",
+              "title": "Street City Sounds : Traffic, Conversations, and Urban Ambience"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_02.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Bumpy",
+              "best_score": 0.6898958537317701,
+              "all_scores": {
+                "Loud": 0.5403499595665053,
+                "Smooth": 0.2093653362914389,
+                "Bumpy": 0.6898958537317701,
+                "Soft": 0.45527511449779173
+              },
+              "search_term": "Smooth ocean waves",
+              "title": "All You Need To Fall Asleep - Ocean Sounds For Deep Sleeping With A Dark Screen And Rolling Waves"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_05.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Loud",
+              "best_score": 0.680266853662815,
+              "all_scores": {
+                "Loud": 0.680266853662815,
+                "Smooth": 0.2208916269665488,
+                "Bumpy": 0.40314209398193956,
+                "Soft": 0.5103342481509108
+              },
+              "search_term": "Smooth ocean waves",
+              "title": "Sleep For 11 Hours Straight, High Quality Stereo Ocean Sounds Of Rolling Waves For Deep Sleeping"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_08.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Bumpy",
+              "best_score": 0.7004047945306511,
+              "all_scores": {
+                "Loud": 0.35344337455859975,
+                "Smooth": 0.30090883314669786,
+                "Bumpy": 0.7004047945306511,
+                "Soft": 0.2748923521393609
+              },
+              "search_term": "Smooth driving sounds",
+              "title": "How to drive a manual car SMOOTHLY. Driving stick without the kick."
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_07.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Soft",
+              "best_score": 0.7179436023645869,
+              "all_scores": {
+                "Loud": 0.5560636607891325,
+                "Smooth": 0.34993367639196327,
+                "Bumpy": 0.21697407974541882,
+                "Soft": 0.7179436023645869
+              },
+              "search_term": "Smooth driving sounds",
+              "title": "Heel-toe rev matching is a driving technique used to downshift smoothly#racing #race #gear #f1 #race"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_01.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Loud",
+              "best_score": 0.7500590585522224,
+              "all_scores": {
+                "Loud": 0.7500590585522224,
+                "Smooth": 0.4972158270374016,
+                "Bumpy": 0.4350097461637496,
+                "Soft": 0.29715459073066963
+              },
+              "search_term": "Smooth jazz music",
+              "title": "\ud83c\udf41 Autumn Jazz Caf\u00e9 \u2013 Warm Coffee, Falling Leaves & Relaxing Jazz for Study, Work & Chill \ud83c\udfb6\u2615"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_17.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.6207240687044167,
+              "all_scores": {
+                "Loud": 0.3434359464905964,
+                "Smooth": 0.6207240687044167,
+                "Bumpy": 0.5837847952097363,
+                "Soft": 0.21387633995203165
+              },
+              "search_term": "Bumpy horse carriage sounds",
+              "title": "Wagon sound"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_16.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.7939267690147165,
+              "all_scores": {
+                "Loud": 0.32653628872758556,
+                "Smooth": 0.7939267690147165,
+                "Bumpy": 0.7590041436999009,
+                "Soft": 0.2837237124044749
+              },
+              "search_term": "Bumpy wagon on cobblestones",
+              "title": "Trying to write, on a bumpy road, LOL"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_07.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.66960137974266,
+              "all_scores": {
+                "Loud": 0.22958386378706291,
+                "Smooth": 0.66960137974266,
+                "Bumpy": 0.2338683194327839,
+                "Soft": 0.5521679069408902
+              },
+              "search_term": "Bumpy airplane turbulence sounds",
+              "title": "Plane drops 50 feet in turbulence on the approach to Tampa"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_27.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.7349693631853138,
+              "all_scores": {
+                "Loud": 0.29589767857211746,
+                "Smooth": 0.7349693631853138,
+                "Bumpy": 0.2347060180955035,
+                "Soft": 0.5889614794351852
+              },
+              "search_term": "Bumpy bus journey ambience",
+              "title": "Ambient Car Journey on the bumpy UK roads, MV"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_15.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.7682574616124147,
+              "all_scores": {
+                "Loud": 0.38476945730141476,
+                "Smooth": 0.7682574616124147,
+                "Bumpy": 0.3952408698167038,
+                "Soft": 0.6148716507852855
+              },
+              "search_term": "Bumpy stroller ride",
+              "title": "Bumpy rides? Not with the right stroller suspension!"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_02.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.7358929037036868,
+              "all_scores": {
+                "Loud": 0.4470901460433529,
+                "Smooth": 0.7358929037036868,
+                "Bumpy": 0.46173024180080663,
+                "Soft": 0.5212973067837889
+              },
+              "search_term": "Bumpy car ride interior noise",
+              "title": "BEST Spot to add Car Sound deadening Material For ROAD Noise"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_22.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.7780520053233513,
+              "all_scores": {
+                "Loud": 0.7346434706014204,
+                "Smooth": 0.7780520053233513,
+                "Bumpy": 0.3477054893755682,
+                "Soft": 0.4470657689018595
+              },
+              "search_term": "Bumpy dirt road sounds",
+              "title": "A Slow Drive Down A Gravel Road (ASMR Sleep Aid Relaxing Sounds)"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_18.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.7773722662444642,
+              "all_scores": {
+                "Loud": 0.3050018332799831,
+                "Smooth": 0.7773722662444642,
+                "Bumpy": 0.7353001033329853,
+                "Soft": 0.6513870797109583
+              },
+              "search_term": "Bumpy tractor ride in a field",
+              "title": "Tractor\u2019s Bumpy Ride Through the Fields \ud83d\ude9c\ud83c\udf3e\ud83c\udfb6 | Fun Farm Song for Kids"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_11.wav",
+              "original_theme": "Soft",
+              "best_theme": "Smooth",
+              "best_score": 0.6469781538274081,
+              "all_scores": {
+                "Loud": 0.43691024985034776,
+                "Smooth": 0.6469781538274081,
+                "Bumpy": 0.22114106792378588,
+                "Soft": 0.5919357076702538
+              },
+              "search_term": "Soft humming meditation tones",
+              "title": "\ud83c\udf42 Misty Autumnal Humming - Calming Singing for Sleep, Relaxation, Meditation \ud83c\udf42"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_04.wav",
+              "original_theme": "Soft",
+              "best_theme": "Smooth",
+              "best_score": 0.6267823735099551,
+              "all_scores": {
+                "Loud": 0.5420412798671652,
+                "Smooth": 0.6267823735099551,
+                "Bumpy": 0.22291206751693807,
+                "Soft": 0.5250915867175532
+              },
+              "search_term": "Ocean waves softly crashing",
+              "title": "Gentle Waves on a Small White Rock Beach - Relaxing Ocean Sounds"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_12.wav",
+              "original_theme": "Soft",
+              "best_theme": "Smooth",
+              "best_score": 0.7793847596572854,
+              "all_scores": {
+                "Loud": 0.36131490300995256,
+                "Smooth": 0.7793847596572854,
+                "Bumpy": 0.28548800552096154,
+                "Soft": 0.5117349053352077
+              },
+              "search_term": "Soft humming meditation tones",
+              "title": "SHAMANIC DRUMS + DEEP TRANCE HUMMING MEDITATION \u276f Shamanic Meditation Music for Stress Relief"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_03.wav",
+              "original_theme": "Soft",
+              "best_theme": "Smooth",
+              "best_score": 0.6562377260458019,
+              "all_scores": {
+                "Loud": 0.631555691984174,
+                "Smooth": 0.6562377260458019,
+                "Bumpy": 0.487874341756648,
+                "Soft": 0.49374833310256744
+              },
+              "search_term": "Ocean waves softly crashing",
+              "title": "Ocean Waves softly crashing 1 hour"
+            }
+          ]
+        },
+        "Bumpy": {
+          "passed": [
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_01.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Bumpy",
+              "best_score": 0.6572217139135812,
+              "all_scores": {
+                "Loud": 0.3746047688398959,
+                "Smooth": 0.34121381216488134,
+                "Bumpy": 0.6572217139135812,
+                "Soft": 0.5841082660910584
+              },
+              "search_term": "Bumpy car ride interior noise",
+              "title": "Going over speed bumps quickly can damage your car!#bumper #cars #tips #safety"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_06.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Bumpy",
+              "best_score": 0.49855472111311067,
+              "all_scores": {
+                "Loud": 0.35848180137262603,
+                "Smooth": 0.42085398012180963,
+                "Bumpy": 0.49855472111311067,
+                "Soft": 0.2407772033921668
+              },
+              "search_term": "Bumpy train track clatter",
+              "title": "Brake Rotor Grinding Sound Found! EASY Free Fix! #brakes #rotor #acuratl"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_13.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Bumpy",
+              "best_score": 0.6186914141463831,
+              "all_scores": {
+                "Loud": 0.28709813275472024,
+                "Smooth": 0.4057782193060785,
+                "Bumpy": 0.6186914141463831,
+                "Soft": 0.40394512279306694
+              },
+              "search_term": "Bumpy skateboard ride on pavement",
+              "title": "Soft skateboard wheels versus hard wheels"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_08.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Bumpy",
+              "best_score": 0.5800533601154223,
+              "all_scores": {
+                "Loud": 0.3572163622262321,
+                "Smooth": 0.2808481274601031,
+                "Bumpy": 0.5800533601154223,
+                "Soft": 0.23876364501845088
+              },
+              "search_term": "Bumpy airplane turbulence sounds",
+              "title": "How Turbulence Works \ud83d\ude28"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_28.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Bumpy",
+              "best_score": 0.6616093074035614,
+              "all_scores": {
+                "Loud": 0.48056586702915943,
+                "Smooth": 0.4758245475415162,
+                "Bumpy": 0.6616093074035614,
+                "Soft": 0.45226576884399605
+              },
+              "search_term": "Bumpy bus journey ambience",
+              "title": "Night BUS Ride Sound Sleep, Study | Interior BUS Ambience White Noise | White Noise Collections"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_19.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Bumpy",
+              "best_score": 0.5419400474547219,
+              "all_scores": {
+                "Loud": 0.3548154671834097,
+                "Smooth": 0.4707205564277312,
+                "Bumpy": 0.5419400474547219,
+                "Soft": 0.5222840133427716
+              },
+              "search_term": "Bumpy cart on uneven floor",
+              "title": "Strongest Gravel Driveway EVER?! #construction #shorts #diy"
+            }
+          ],
+          "failed": [],
+          "cross_assigned": [
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_16.wav",
+              "original_theme": "Loud",
+              "best_theme": "Bumpy",
+              "best_score": 0.6431517063919319,
+              "all_scores": {
+                "Loud": 0.4572225941286709,
+                "Smooth": 0.22277625106329296,
+                "Bumpy": 0.6431517063919319,
+                "Soft": 0.3416176413186224
+              },
+              "search_term": "Drumline performance",
+              "title": "DRUMLINE  A&T   ATLANTA"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_24.wav",
+              "original_theme": "Loud",
+              "best_theme": "Bumpy",
+              "best_score": 0.7646956436101435,
+              "all_scores": {
+                "Loud": 0.3587631099326719,
+                "Smooth": 0.6016648594905118,
+                "Bumpy": 0.7646956436101435,
+                "Soft": 0.3121457964497231
+              },
+              "search_term": "Loud city traffic",
+              "title": "Cities Aren't Loud: Cars Are Loud"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_08.wav",
+              "original_theme": "Loud",
+              "best_theme": "Bumpy",
+              "best_score": 0.7510650509639345,
+              "all_scores": {
+                "Loud": 0.3225241406121234,
+                "Smooth": 0.41934637054429064,
+                "Bumpy": 0.7510650509639345,
+                "Soft": 0.3743372484594649
+              },
+              "search_term": "Airplane takeoff roar",
+              "title": "GE9X ROAR! Boeing 777X First Takeoff at Everett Paine Field (JAN 25th 2020)"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_09.wav",
+              "original_theme": "Loud",
+              "best_theme": "Bumpy",
+              "best_score": 0.7322797066903417,
+              "all_scores": {
+                "Loud": 0.48421036674613455,
+                "Smooth": 0.36321037418069724,
+                "Bumpy": 0.7322797066903417,
+                "Soft": 0.6111755974234592
+              },
+              "search_term": "Fireworks exploding",
+              "title": "$1 vs $100,000 Firework!"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_19.wav",
+              "original_theme": "Loud",
+              "best_theme": "Bumpy",
+              "best_score": 0.6975642142421608,
+              "all_scores": {
+                "Loud": 0.6623179647407269,
+                "Smooth": 0.352823388043478,
+                "Bumpy": 0.6975642142421608,
+                "Soft": 0.6557437246638114
+              },
+              "search_term": "Gunfire sounds",
+              "title": "AR 15 Gunfire Sound Effect"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_02.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Bumpy",
+              "best_score": 0.6898958537317701,
+              "all_scores": {
+                "Loud": 0.5403499595665053,
+                "Smooth": 0.2093653362914389,
+                "Bumpy": 0.6898958537317701,
+                "Soft": 0.45527511449779173
+              },
+              "search_term": "Smooth ocean waves",
+              "title": "All You Need To Fall Asleep - Ocean Sounds For Deep Sleeping With A Dark Screen And Rolling Waves"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_08.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Bumpy",
+              "best_score": 0.7004047945306511,
+              "all_scores": {
+                "Loud": 0.35344337455859975,
+                "Smooth": 0.30090883314669786,
+                "Bumpy": 0.7004047945306511,
+                "Soft": 0.2748923521393609
+              },
+              "search_term": "Smooth driving sounds",
+              "title": "How to drive a manual car SMOOTHLY. Driving stick without the kick."
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_21.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7730901650359665,
+              "all_scores": {
+                "Loud": 0.7730901650359665,
+                "Smooth": 0.3205731461433555,
+                "Bumpy": 0.37500825592002274,
+                "Soft": 0.6911786403637291
+              },
+              "search_term": "Bumpy car ride interior noise",
+              "title": "Quick suspension check in under 5 minutes! \ud83d\udd27"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_17.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.6207240687044167,
+              "all_scores": {
+                "Loud": 0.3434359464905964,
+                "Smooth": 0.6207240687044167,
+                "Bumpy": 0.5837847952097363,
+                "Soft": 0.21387633995203165
+              },
+              "search_term": "Bumpy horse carriage sounds",
+              "title": "Wagon sound"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_16.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.7939267690147165,
+              "all_scores": {
+                "Loud": 0.32653628872758556,
+                "Smooth": 0.7939267690147165,
+                "Bumpy": 0.7590041436999009,
+                "Soft": 0.2837237124044749
+              },
+              "search_term": "Bumpy wagon on cobblestones",
+              "title": "Trying to write, on a bumpy road, LOL"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_20.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7766430906811932,
+              "all_scores": {
+                "Loud": 0.7766430906811932,
+                "Smooth": 0.7682386674128723,
+                "Bumpy": 0.6007306196214498,
+                "Soft": 0.6694411633797774
+              },
+              "search_term": "Bumpy car ride interior noise",
+              "title": "Customer states put in new struts and now it clunks. #autorepair"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_11.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Soft",
+              "best_score": 0.793234999035384,
+              "all_scores": {
+                "Loud": 0.6221257188170816,
+                "Smooth": 0.22171952902484154,
+                "Bumpy": 0.6679462997198307,
+                "Soft": 0.793234999035384
+              },
+              "search_term": "Bumpy bicycle ride on gravel",
+              "title": "What I Wish I Knew Before I Bought a Gravel Bike"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_07.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.66960137974266,
+              "all_scores": {
+                "Loud": 0.22958386378706291,
+                "Smooth": 0.66960137974266,
+                "Bumpy": 0.2338683194327839,
+                "Soft": 0.5521679069408902
+              },
+              "search_term": "Bumpy airplane turbulence sounds",
+              "title": "Plane drops 50 feet in turbulence on the approach to Tampa"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_27.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.7349693631853138,
+              "all_scores": {
+                "Loud": 0.29589767857211746,
+                "Smooth": 0.7349693631853138,
+                "Bumpy": 0.2347060180955035,
+                "Soft": 0.5889614794351852
+              },
+              "search_term": "Bumpy bus journey ambience",
+              "title": "Ambient Car Journey on the bumpy UK roads, MV"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_26.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7354075675138922,
+              "all_scores": {
+                "Loud": 0.7354075675138922,
+                "Smooth": 0.22069033453762313,
+                "Bumpy": 0.5803380456735145,
+                "Soft": 0.29919503603112085
+              },
+              "search_term": "Bumpy train track clatter",
+              "title": "Engine noise on a Chevy Equinox bad timing chain"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_10.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7588756186509762,
+              "all_scores": {
+                "Loud": 0.7588756186509762,
+                "Smooth": 0.24923934360534136,
+                "Bumpy": 0.2065277987215551,
+                "Soft": 0.5249893436918351
+              },
+              "search_term": "Bumpy wooden roller coaster",
+              "title": "Thundercoaster Front Row POV Tusenfryd Vekoma Wooden Roller Coaster"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_05.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Soft",
+              "best_score": 0.6547335838341095,
+              "all_scores": {
+                "Loud": 0.6294369588284663,
+                "Smooth": 0.30892206990907994,
+                "Bumpy": 0.23223043991811426,
+                "Soft": 0.6547335838341095
+              },
+              "search_term": "Bumpy train track clatter",
+              "title": "Clicking, Tapping Engine Noise? Try This Trick Before Replacing AFM Lifters! #shorts"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_29.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7560290030572585,
+              "all_scores": {
+                "Loud": 0.7560290030572585,
+                "Smooth": 0.6709703028244841,
+                "Bumpy": 0.536873935337847,
+                "Soft": 0.41356474344569116
+              },
+              "search_term": "Bumpy train track clatter",
+              "title": "Clunking in the Front? What's That Noise in My Car, SUV, or Truck?"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_09.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7869616140846081,
+              "all_scores": {
+                "Loud": 0.7869616140846081,
+                "Smooth": 0.21932781477082414,
+                "Bumpy": 0.638313506032036,
+                "Soft": 0.4804271082012848
+              },
+              "search_term": "Bumpy wooden roller coaster",
+              "title": "Bumpy wooden roller coaster."
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_25.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Soft",
+              "best_score": 0.7452089337951273,
+              "all_scores": {
+                "Loud": 0.29912698076332184,
+                "Smooth": 0.6082419407524753,
+                "Bumpy": 0.3533421760020494,
+                "Soft": 0.7452089337951273
+              },
+              "search_term": "Bumpy car ride interior noise",
+              "title": "Why Is the Front End Of My Car Rattling?"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_24.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.6294856115494936,
+              "all_scores": {
+                "Loud": 0.6294856115494936,
+                "Smooth": 0.3903916093775536,
+                "Bumpy": 0.31681556704453606,
+                "Soft": 0.21633316929945295
+              },
+              "search_term": "Bumpy bus journey ambience",
+              "title": "Vintage Coach Bus Driving on Uneven Road Surface with Large Bumps"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_12.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Soft",
+              "best_score": 0.6897331502932897,
+              "all_scores": {
+                "Loud": 0.4569480472551095,
+                "Smooth": 0.6841400514619631,
+                "Bumpy": 0.2820117999219359,
+                "Soft": 0.6897331502932897
+              },
+              "search_term": "Bumpy bicycle ride on gravel",
+              "title": "Mastering Gravel Cycling: Tips for Downhill Riding on Gravel Bikes"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_04.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.702236162309194,
+              "all_scores": {
+                "Loud": 0.702236162309194,
+                "Smooth": 0.5020342704138039,
+                "Bumpy": 0.5493349140798911,
+                "Soft": 0.3960608464089592
+              },
+              "search_term": "Bumpy bus journey ambience",
+              "title": "\u25b6\ufe0f Bumpy Bus Ride! Bus Ride From Hell!  \ud83c\udf0f"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_23.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7045670874409902,
+              "all_scores": {
+                "Loud": 0.7045670874409902,
+                "Smooth": 0.4498891913784946,
+                "Bumpy": 0.3100461401211489,
+                "Soft": 0.5203737796809927
+              },
+              "search_term": "Bumpy bus journey ambience",
+              "title": "Relaxing BUS Ride - Interior Bus Ambience for Sleep, Study - Relax Baby DEEP SLEEP"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_03.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Loud",
+              "best_score": 0.7388940966269106,
+              "all_scores": {
+                "Loud": 0.7388940966269106,
+                "Smooth": 0.5718476253377653,
+                "Bumpy": 0.39587904244062755,
+                "Soft": 0.3207576034958808
+              },
+              "search_term": "Bumpy bus journey ambience",
+              "title": "Top Deck Bumpy Bus Journey. #whitenoise  Sounds that can help with relaxing and more. #ASMR"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_15.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.7682574616124147,
+              "all_scores": {
+                "Loud": 0.38476945730141476,
+                "Smooth": 0.7682574616124147,
+                "Bumpy": 0.3952408698167038,
+                "Soft": 0.6148716507852855
+              },
+              "search_term": "Bumpy stroller ride",
+              "title": "Bumpy rides? Not with the right stroller suspension!"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_14.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Soft",
+              "best_score": 0.5826869286860843,
+              "all_scores": {
+                "Loud": 0.4785270352270054,
+                "Smooth": 0.43697677952438113,
+                "Bumpy": 0.2135828148735671,
+                "Soft": 0.5826869286860843
+              },
+              "search_term": "Bumpy skateboard ride on pavement",
+              "title": "Skating tips for URBAN AREAS"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_02.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.7358929037036868,
+              "all_scores": {
+                "Loud": 0.4470901460433529,
+                "Smooth": 0.7358929037036868,
+                "Bumpy": 0.46173024180080663,
+                "Soft": 0.5212973067837889
+              },
+              "search_term": "Bumpy car ride interior noise",
+              "title": "BEST Spot to add Car Sound deadening Material For ROAD Noise"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_22.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.7780520053233513,
+              "all_scores": {
+                "Loud": 0.7346434706014204,
+                "Smooth": 0.7780520053233513,
+                "Bumpy": 0.3477054893755682,
+                "Soft": 0.4470657689018595
+              },
+              "search_term": "Bumpy dirt road sounds",
+              "title": "A Slow Drive Down A Gravel Road (ASMR Sleep Aid Relaxing Sounds)"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_18.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Smooth",
+              "best_score": 0.7773722662444642,
+              "all_scores": {
+                "Loud": 0.3050018332799831,
+                "Smooth": 0.7773722662444642,
+                "Bumpy": 0.7353001033329853,
+                "Soft": 0.6513870797109583
+              },
+              "search_term": "Bumpy tractor ride in a field",
+              "title": "Tractor\u2019s Bumpy Ride Through the Fields \ud83d\ude9c\ud83c\udf3e\ud83c\udfb6 | Fun Farm Song for Kids"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_16.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.7544051550659929,
+              "all_scores": {
+                "Loud": 0.5091614695348485,
+                "Smooth": 0.7365670681896872,
+                "Bumpy": 0.7544051550659929,
+                "Soft": 0.4234100355583568
+              },
+              "search_term": "Soft lullaby instrumental",
+              "title": "Disney Deep Sleep Piano Collection, Sleep Meditation, Calm Music, Relaxing Music(No Mid-roll Ads)"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_21.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.6948090840738422,
+              "all_scores": {
+                "Loud": 0.38586031916521835,
+                "Smooth": 0.37100837560820854,
+                "Bumpy": 0.6948090840738422,
+                "Soft": 0.3687171737272501
+              },
+              "search_term": "Quiet night forest sounds",
+              "title": "FOREST AT NIGHT - Crickets Owls Rain Wind in Trees - Relax Study Sleep De-Stress \ud83c\udfa7 100% RELAX"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_01.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.7001063496615425,
+              "all_scores": {
+                "Loud": 0.401183147738015,
+                "Smooth": 0.24805587005434032,
+                "Bumpy": 0.7001063496615425,
+                "Soft": 0.213372550603105
+              },
+              "search_term": "Gentle piano melodies",
+              "title": "Music for Studying - piano music, relaxing music, smooth music [1934]"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_17.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.7833698301752192,
+              "all_scores": {
+                "Loud": 0.48715252357334415,
+                "Smooth": 0.7718602894709508,
+                "Bumpy": 0.7833698301752192,
+                "Soft": 0.7109127118439034
+              },
+              "search_term": "Light bird songs in morning",
+              "title": "Relaxing Music with Birds Singing - Beautiful Piano Music & Guitar Music by Soothing Relaxation"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_07.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.7951803658957988,
+              "all_scores": {
+                "Loud": 0.7943476993197855,
+                "Smooth": 0.22124317953423864,
+                "Bumpy": 0.7951803658957988,
+                "Soft": 0.4398544348129755
+              },
+              "search_term": "Quiet crackling fireplace",
+              "title": "Cozy Autumn Fireplace 12 Hrs \ud83d\udd25 Crackling Fire Atmosphere with Burning Logs [No Music]"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_24.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.4364472634072878,
+              "all_scores": {
+                "Loud": 0.2152075984521213,
+                "Smooth": 0.2889298294305286,
+                "Bumpy": 0.4364472634072878,
+                "Soft": 0.32599976841663114
+              },
+              "search_term": "Gentle piano melodies",
+              "title": "Serenity in Every Note \ud83c\udf3f Gentle Piano Melodies for Healing, Comfort, and Tranquility"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_05.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.7369227917888239,
+              "all_scores": {
+                "Loud": 0.4802600003580902,
+                "Smooth": 0.26510752486358946,
+                "Bumpy": 0.7369227917888239,
+                "Soft": 0.21289128043122144
+              },
+              "search_term": "Calm wind in trees",
+              "title": "Wind Blowing Peacefully Through Trees   Sound"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_09.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.7773919998907897,
+              "all_scores": {
+                "Loud": 0.6919157779740169,
+                "Smooth": 0.36196523016117554,
+                "Bumpy": 0.7773919998907897,
+                "Soft": 0.6511115835683108
+              },
+              "search_term": "Whispering stream sounds",
+              "title": "Bob Ross - Whispering Stream (Season 6 Episode 4)"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_02.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.7549894963154058,
+              "all_scores": {
+                "Loud": 0.6744805864330317,
+                "Smooth": 0.5347405978251505,
+                "Bumpy": 0.7549894963154058,
+                "Soft": 0.7536644274245274
+              },
+              "search_term": "Gentle piano melodies",
+              "title": "Relaxing Piano Music: Romantic Music, Beautiful Relaxing Music, Sleep Music, Stress Relief \u2605122"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_19.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.6745375045841113,
+              "all_scores": {
+                "Loud": 0.6457433335155114,
+                "Smooth": 0.3599359803586961,
+                "Bumpy": 0.6745375045841113,
+                "Soft": 0.5518961069012077
+              },
+              "search_term": "Soft flute music",
+              "title": "Relaxing Flute Music | Calmness"
+            }
+          ]
+        },
+        "Soft": {
+          "passed": [
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_10.wav",
+              "original_theme": "Soft",
+              "best_theme": "Soft",
+              "best_score": 0.7771483848218896,
+              "all_scores": {
+                "Loud": 0.4964633624532249,
+                "Smooth": 0.6872433101437407,
+                "Bumpy": 0.39990330677557506,
+                "Soft": 0.7771483848218896
+              },
+              "search_term": "Whispering stream sounds",
+              "title": "Subtle Whispering of Water in a Forest Creek - 10 Hours ASMR"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_06.wav",
+              "original_theme": "Soft",
+              "best_theme": "Soft",
+              "best_score": 0.7190491668986518,
+              "all_scores": {
+                "Loud": 0.6152740923617248,
+                "Smooth": 0.4940614126990724,
+                "Bumpy": 0.24720003261239093,
+                "Soft": 0.7190491668986518
+              },
+              "search_term": "Calm wind in trees",
+              "title": "The Wind in the Trees ( 10 Hours of Natural White Noise )"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_18.wav",
+              "original_theme": "Soft",
+              "best_theme": "Soft",
+              "best_score": 0.6847645757682256,
+              "all_scores": {
+                "Loud": 0.538065290601369,
+                "Smooth": 0.6458650241872131,
+                "Bumpy": 0.2698786669111043,
+                "Soft": 0.6847645757682256
+              },
+              "search_term": "Calm heartbeat sound",
+              "title": "SOFTENED BROWN NOISE AND SLOW HEARTBEAT SOUND EFFECT"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_23.wav",
+              "original_theme": "Soft",
+              "best_theme": "Soft",
+              "best_score": 0.681875278658864,
+              "all_scores": {
+                "Loud": 0.3787246130561078,
+                "Smooth": 0.38738321171948714,
+                "Bumpy": 0.30282380514279994,
+                "Soft": 0.681875278658864
+              },
+              "search_term": "Gentle piano melodies",
+              "title": "500 Most Famous Beautiful Piano Melodies - The Best Relaxing Piano Instrumental Love Songs Playlist"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_15.wav",
+              "original_theme": "Soft",
+              "best_theme": "Soft",
+              "best_score": 0.544726675778409,
+              "all_scores": {
+                "Loud": 0.4503903101871307,
+                "Smooth": 0.45462381439367205,
+                "Bumpy": 0.47602674258070804,
+                "Soft": 0.544726675778409
+              },
+              "search_term": "Gentle white noise for sleep",
+              "title": "White Noise - Black Screen - No Ads - 10 hours - Perfect Baby Sleep Aid"
+            }
+          ],
+          "failed": [],
+          "cross_assigned": [
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_01.wav",
+              "original_theme": "Loud",
+              "best_theme": "Soft",
+              "best_score": 0.6540877700723451,
+              "all_scores": {
+                "Loud": 0.23746129024882728,
+                "Smooth": 0.6436979685614297,
+                "Bumpy": 0.36697316102110933,
+                "Soft": 0.6540877700723451
+              },
+              "search_term": "Loud city traffic",
+              "title": "City Sounds - Mega City - Traffic, Horns, People, Ambience"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_21.wav",
+              "original_theme": "Loud",
+              "best_theme": "Soft",
+              "best_score": 0.7149978904459637,
+              "all_scores": {
+                "Loud": 0.2713217107945802,
+                "Smooth": 0.5038281918914331,
+                "Bumpy": 0.6756547474530521,
+                "Soft": 0.7149978904459637
+              },
+              "search_term": "Industrial factory noise",
+              "title": "Industrial Factory Ambience | 10 Hours Industrial White Noise and Machine Sounds"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_10.wav",
+              "original_theme": "Loud",
+              "best_theme": "Soft",
+              "best_score": 0.6379005070265398,
+              "all_scores": {
+                "Loud": 0.3652820064091351,
+                "Smooth": 0.4032747473248622,
+                "Bumpy": 0.27122198957295,
+                "Soft": 0.6379005070265398
+              },
+              "search_term": "Fireworks exploding",
+              "title": "How Fireworks Explode \ud83e\udd28"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_26.wav",
+              "original_theme": "Loud",
+              "best_theme": "Soft",
+              "best_score": 0.735283571243059,
+              "all_scores": {
+                "Loud": 0.6274160934521928,
+                "Smooth": 0.7346313158029885,
+                "Bumpy": 0.38600557543864533,
+                "Soft": 0.735283571243059
+              },
+              "search_term": "Loud city traffic",
+              "title": "Open Window New York City Soundscape at Night (Midtown Manhattan City Sounds) 4k"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_04.wav",
+              "original_theme": "Loud",
+              "best_theme": "Soft",
+              "best_score": 0.7396598416751972,
+              "all_scores": {
+                "Loud": 0.4494545173665029,
+                "Smooth": 0.5166264591833176,
+                "Bumpy": 0.5635221238989093,
+                "Soft": 0.7396598416751972
+              },
+              "search_term": "Rock concert crowd noise",
+              "title": "Stadium Crowd Sound Effects | One Hour | HQ"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_22.wav",
+              "original_theme": "Loud",
+              "best_theme": "Soft",
+              "best_score": 0.7466684561143087,
+              "all_scores": {
+                "Loud": 0.2575143558601862,
+                "Smooth": 0.62826203291863,
+                "Bumpy": 0.6273172633528836,
+                "Soft": 0.7466684561143087
+              },
+              "search_term": "Ocean waves crashing hard",
+              "title": "Sleep to Big Ocean Waves Crashing | Stormy White Noise Water Sounds 10 Hours"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_07.wav",
+              "original_theme": "Smooth",
+              "best_theme": "Soft",
+              "best_score": 0.7179436023645869,
+              "all_scores": {
+                "Loud": 0.5560636607891325,
+                "Smooth": 0.34993367639196327,
+                "Bumpy": 0.21697407974541882,
+                "Soft": 0.7179436023645869
+              },
+              "search_term": "Smooth driving sounds",
+              "title": "Heel-toe rev matching is a driving technique used to downshift smoothly#racing #race #gear #f1 #race"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_11.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Soft",
+              "best_score": 0.793234999035384,
+              "all_scores": {
+                "Loud": 0.6221257188170816,
+                "Smooth": 0.22171952902484154,
+                "Bumpy": 0.6679462997198307,
+                "Soft": 0.793234999035384
+              },
+              "search_term": "Bumpy bicycle ride on gravel",
+              "title": "What I Wish I Knew Before I Bought a Gravel Bike"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_05.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Soft",
+              "best_score": 0.6547335838341095,
+              "all_scores": {
+                "Loud": 0.6294369588284663,
+                "Smooth": 0.30892206990907994,
+                "Bumpy": 0.23223043991811426,
+                "Soft": 0.6547335838341095
+              },
+              "search_term": "Bumpy train track clatter",
+              "title": "Clicking, Tapping Engine Noise? Try This Trick Before Replacing AFM Lifters! #shorts"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_25.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Soft",
+              "best_score": 0.7452089337951273,
+              "all_scores": {
+                "Loud": 0.29912698076332184,
+                "Smooth": 0.6082419407524753,
+                "Bumpy": 0.3533421760020494,
+                "Soft": 0.7452089337951273
+              },
+              "search_term": "Bumpy car ride interior noise",
+              "title": "Why Is the Front End Of My Car Rattling?"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_12.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Soft",
+              "best_score": 0.6897331502932897,
+              "all_scores": {
+                "Loud": 0.4569480472551095,
+                "Smooth": 0.6841400514619631,
+                "Bumpy": 0.2820117999219359,
+                "Soft": 0.6897331502932897
+              },
+              "search_term": "Bumpy bicycle ride on gravel",
+              "title": "Mastering Gravel Cycling: Tips for Downhill Riding on Gravel Bikes"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_14.wav",
+              "original_theme": "Bumpy",
+              "best_theme": "Soft",
+              "best_score": 0.5826869286860843,
+              "all_scores": {
+                "Loud": 0.4785270352270054,
+                "Smooth": 0.43697677952438113,
+                "Bumpy": 0.2135828148735671,
+                "Soft": 0.5826869286860843
+              },
+              "search_term": "Bumpy skateboard ride on pavement",
+              "title": "Skating tips for URBAN AREAS"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_16.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.7544051550659929,
+              "all_scores": {
+                "Loud": 0.5091614695348485,
+                "Smooth": 0.7365670681896872,
+                "Bumpy": 0.7544051550659929,
+                "Soft": 0.4234100355583568
+              },
+              "search_term": "Soft lullaby instrumental",
+              "title": "Disney Deep Sleep Piano Collection, Sleep Meditation, Calm Music, Relaxing Music(No Mid-roll Ads)"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_20.wav",
+              "original_theme": "Soft",
+              "best_theme": "Loud",
+              "best_score": 0.7406289607994956,
+              "all_scores": {
+                "Loud": 0.7406289607994956,
+                "Smooth": 0.7305203412428583,
+                "Bumpy": 0.5848981496349014,
+                "Soft": 0.6437781344430533
+              },
+              "search_term": "Gentle thunderstorm ambience",
+              "title": "Rain Sounds for Sleeping No Ads - Heavy Rain and Intense Thunder for Deep Sleep, Energy Restoration"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_21.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.6948090840738422,
+              "all_scores": {
+                "Loud": 0.38586031916521835,
+                "Smooth": 0.37100837560820854,
+                "Bumpy": 0.6948090840738422,
+                "Soft": 0.3687171737272501
+              },
+              "search_term": "Quiet night forest sounds",
+              "title": "FOREST AT NIGHT - Crickets Owls Rain Wind in Trees - Relax Study Sleep De-Stress \ud83c\udfa7 100% RELAX"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_01.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.7001063496615425,
+              "all_scores": {
+                "Loud": 0.401183147738015,
+                "Smooth": 0.24805587005434032,
+                "Bumpy": 0.7001063496615425,
+                "Soft": 0.213372550603105
+              },
+              "search_term": "Gentle piano melodies",
+              "title": "Music for Studying - piano music, relaxing music, smooth music [1934]"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_17.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.7833698301752192,
+              "all_scores": {
+                "Loud": 0.48715252357334415,
+                "Smooth": 0.7718602894709508,
+                "Bumpy": 0.7833698301752192,
+                "Soft": 0.7109127118439034
+              },
+              "search_term": "Light bird songs in morning",
+              "title": "Relaxing Music with Birds Singing - Beautiful Piano Music & Guitar Music by Soothing Relaxation"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_07.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.7951803658957988,
+              "all_scores": {
+                "Loud": 0.7943476993197855,
+                "Smooth": 0.22124317953423864,
+                "Bumpy": 0.7951803658957988,
+                "Soft": 0.4398544348129755
+              },
+              "search_term": "Quiet crackling fireplace",
+              "title": "Cozy Autumn Fireplace 12 Hrs \ud83d\udd25 Crackling Fire Atmosphere with Burning Logs [No Music]"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_11.wav",
+              "original_theme": "Soft",
+              "best_theme": "Smooth",
+              "best_score": 0.6469781538274081,
+              "all_scores": {
+                "Loud": 0.43691024985034776,
+                "Smooth": 0.6469781538274081,
+                "Bumpy": 0.22114106792378588,
+                "Soft": 0.5919357076702538
+              },
+              "search_term": "Soft humming meditation tones",
+              "title": "\ud83c\udf42 Misty Autumnal Humming - Calming Singing for Sleep, Relaxation, Meditation \ud83c\udf42"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_08.wav",
+              "original_theme": "Soft",
+              "best_theme": "Loud",
+              "best_score": 0.6573330417087055,
+              "all_scores": {
+                "Loud": 0.6573330417087055,
+                "Smooth": 0.3241098396112786,
+                "Bumpy": 0.4496608564549116,
+                "Soft": 0.329507683612551
+              },
+              "search_term": "Quiet crackling fireplace",
+              "title": "Crackling Fire by the Lake (12 hrs): Cure for Deep Sleep"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_24.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.4364472634072878,
+              "all_scores": {
+                "Loud": 0.2152075984521213,
+                "Smooth": 0.2889298294305286,
+                "Bumpy": 0.4364472634072878,
+                "Soft": 0.32599976841663114
+              },
+              "search_term": "Gentle piano melodies",
+              "title": "Serenity in Every Note \ud83c\udf3f Gentle Piano Melodies for Healing, Comfort, and Tranquility"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_04.wav",
+              "original_theme": "Soft",
+              "best_theme": "Smooth",
+              "best_score": 0.6267823735099551,
+              "all_scores": {
+                "Loud": 0.5420412798671652,
+                "Smooth": 0.6267823735099551,
+                "Bumpy": 0.22291206751693807,
+                "Soft": 0.5250915867175532
+              },
+              "search_term": "Ocean waves softly crashing",
+              "title": "Gentle Waves on a Small White Rock Beach - Relaxing Ocean Sounds"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_12.wav",
+              "original_theme": "Soft",
+              "best_theme": "Smooth",
+              "best_score": 0.7793847596572854,
+              "all_scores": {
+                "Loud": 0.36131490300995256,
+                "Smooth": 0.7793847596572854,
+                "Bumpy": 0.28548800552096154,
+                "Soft": 0.5117349053352077
+              },
+              "search_term": "Soft humming meditation tones",
+              "title": "SHAMANIC DRUMS + DEEP TRANCE HUMMING MEDITATION \u276f Shamanic Meditation Music for Stress Relief"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_13.wav",
+              "original_theme": "Soft",
+              "best_theme": "Loud",
+              "best_score": 0.6810641108647355,
+              "all_scores": {
+                "Loud": 0.6810641108647355,
+                "Smooth": 0.5242561513735231,
+                "Bumpy": 0.5802560288677772,
+                "Soft": 0.3714577229948508
+              },
+              "search_term": "Subtle Tibetan singing bowls",
+              "title": "Healing Frequencies of Tibetan Bowls#singingbowl#meditationmusic#soundbathssleep"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_05.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.7369227917888239,
+              "all_scores": {
+                "Loud": 0.4802600003580902,
+                "Smooth": 0.26510752486358946,
+                "Bumpy": 0.7369227917888239,
+                "Soft": 0.21289128043122144
+              },
+              "search_term": "Calm wind in trees",
+              "title": "Wind Blowing Peacefully Through Trees   Sound"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_09.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.7773919998907897,
+              "all_scores": {
+                "Loud": 0.6919157779740169,
+                "Smooth": 0.36196523016117554,
+                "Bumpy": 0.7773919998907897,
+                "Soft": 0.6511115835683108
+              },
+              "search_term": "Whispering stream sounds",
+              "title": "Bob Ross - Whispering Stream (Season 6 Episode 4)"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_02.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.7549894963154058,
+              "all_scores": {
+                "Loud": 0.6744805864330317,
+                "Smooth": 0.5347405978251505,
+                "Bumpy": 0.7549894963154058,
+                "Soft": 0.7536644274245274
+              },
+              "search_term": "Gentle piano melodies",
+              "title": "Relaxing Piano Music: Romantic Music, Beautiful Relaxing Music, Sleep Music, Stress Relief \u2605122"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_14.wav",
+              "original_theme": "Soft",
+              "best_theme": "Loud",
+              "best_score": 0.5212714454638583,
+              "all_scores": {
+                "Loud": 0.5212714454638583,
+                "Smooth": 0.2372800977186323,
+                "Bumpy": 0.41605476386994694,
+                "Soft": 0.4923934047097313
+              },
+              "search_term": "Subtle Tibetan singing bowls",
+              "title": "PARASYMPATHETIC NERVOUS SYSTEM Activation | Tibetan Singing Bowl Sound Bath for Stress Relief"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_22.wav",
+              "original_theme": "Soft",
+              "best_theme": "Loud",
+              "best_score": 0.6768592495138114,
+              "all_scores": {
+                "Loud": 0.6768592495138114,
+                "Smooth": 0.5386214102728775,
+                "Bumpy": 0.5509157764792448,
+                "Soft": 0.3805561114266779
+              },
+              "search_term": "Soft ASMR tapping",
+              "title": "ASMR Sunglasses Collection | Pure Whispers, LOTS of Tapping \ud83d\udd76\ufe0f"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_19.wav",
+              "original_theme": "Soft",
+              "best_theme": "Bumpy",
+              "best_score": 0.6745375045841113,
+              "all_scores": {
+                "Loud": 0.6457433335155114,
+                "Smooth": 0.3599359803586961,
+                "Bumpy": 0.6745375045841113,
+                "Soft": 0.5518961069012077
+              },
+              "search_term": "Soft flute music",
+              "title": "Relaxing Flute Music | Calmness"
+            },
+            {
+              "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_03.wav",
+              "original_theme": "Soft",
+              "best_theme": "Smooth",
+              "best_score": 0.6562377260458019,
+              "all_scores": {
+                "Loud": 0.631555691984174,
+                "Smooth": 0.6562377260458019,
+                "Bumpy": 0.487874341756648,
+                "Soft": 0.49374833310256744
+              },
+              "search_term": "Ocean waves softly crashing",
+              "title": "Ocean Waves softly crashing 1 hour"
+            }
+          ]
+        }
+      },
+      "statistics": {
+        "Loud": {
+          "total": 43,
+          "passed": 4,
+          "failed": 1,
+          "cross_assigned": 38,
+          "pass_rate": 0.09302325581395349,
+          "avg_score": 0.7321089812563902
+        },
+        "Smooth": {
+          "total": 31,
+          "passed": 4,
+          "failed": 0,
+          "cross_assigned": 27,
+          "pass_rate": 0.12903225806451613,
+          "avg_score": 0.7264738257417411
+        },
+        "Bumpy": {
+          "total": 46,
+          "passed": 6,
+          "failed": 0,
+          "cross_assigned": 40,
+          "pass_rate": 0.13043478260869565,
+          "avg_score": 0.59301176069113
+        },
+        "Soft": {
+          "total": 36,
+          "passed": 5,
+          "failed": 0,
+          "cross_assigned": 31,
+          "pass_rate": 0.1388888888888889,
+          "avg_score": 0.681512816385208
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "session_id": "20250917_185054_l4rq",
+    "themes": {
+      "Loud": {
+        "sample_count": 26,
+        "original_prompt": "Loud explosive booming powerful sound",
+        "samples": [
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_20.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_20.json",
+            "search_term": "Sirens blaring",
+            "url": "https://www.youtube.com/watch?v=Cm-LyRgTYe0",
+            "title": "ANNOYING SIREN!!! I bet you can't last 3 minutes!!!!!",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "piercing siren blaring loudly",
+            "generated_clap_prompts": [
+              "piercing siren blaring loudly",
+              "high-pitched emergency siren noise",
+              "continuous loud siren wailing"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_16.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_16.json",
+            "search_term": "Drumline performance",
+            "url": "https://www.youtube.com/watch?v=mCwnJ7tlWCc",
+            "title": "DRUMLINE  A&T   ATLANTA",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "thundering drum beats reverberating",
+            "generated_clap_prompts": [
+              "thundering drum beats reverberating",
+              "syncopated rhythm of drumline performance",
+              "powerful drums thumping loudly"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_01.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_01.json",
+            "search_term": "Loud city traffic",
+            "url": "https://www.youtube.com/watch?v=cDWZkXjDYsc",
+            "title": "City Sounds - Mega City - Traffic, Horns, People, Ambience",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "chaotic city traffic sounds",
+            "generated_clap_prompts": [
+              "chaotic city traffic sounds",
+              "honking horns and bustling voices",
+              "background noise of a busy metropolis"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_17.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_17.json",
+            "search_term": "Car engine revving",
+            "url": "https://www.youtube.com/watch?v=COatgd8Nna4",
+            "title": "Lamborghini Huracan Redline Reving Rev Limiter Exhaust Sounds",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "roaring car engine revving sound",
+            "generated_clap_prompts": [
+              "roaring car engine revving sound",
+              "deep growl of high-performance exhaust",
+              "intense rev limiter sound"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_21.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_21.json",
+            "search_term": "Industrial factory noise",
+            "url": "https://www.youtube.com/watch?v=9GAxL1gXG5I",
+            "title": "Industrial Factory Ambience | 10 Hours Industrial White Noise and Machine Sounds",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "machinery clanking and whirring",
+            "generated_clap_prompts": [
+              "machinery clanking and whirring",
+              "steady hum of industrial equipment",
+              "white noise of factory ambience"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_10.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_10.json",
+            "search_term": "Fireworks exploding",
+            "url": "https://www.youtube.com/shorts/Jgcf9-KjO8Y",
+            "title": "How Fireworks Explode \ud83e\udd28",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "explosive fireworks bursting loudly",
+            "generated_clap_prompts": [
+              "explosive fireworks bursting loudly",
+              "crackling and popping of fireworks",
+              "bright bangs and colorful explosions"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_06.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_06.json",
+            "search_term": "Heavy rain on metal roof",
+            "url": "https://www.youtube.com/watch?v=s61TmfE3zY4",
+            "title": "\u25ba10 hours of hard rain on a metal roof (Rain Sleep Sounds) Rain Sounds for Sleeping. Rainfall.lluvia",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "heavy rain pounding on metal roof",
+            "generated_clap_prompts": [
+              "heavy rain pounding on metal roof",
+              "intense rainfall creating rhythmic drumming",
+              "soothing sound of rain hitting tin"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_26.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_26.json",
+            "search_term": "Loud city traffic",
+            "url": "https://www.youtube.com/watch?v=Vg1mpD1BICI",
+            "title": "Open Window New York City Soundscape at Night (Midtown Manhattan City Sounds) 4k",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "urban soundscape of bustling traffic",
+            "generated_clap_prompts": [
+              "urban soundscape of bustling traffic",
+              "cars and people creating city noise",
+              "nighttime ambiance of New York City"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_07.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_07.json",
+            "search_term": "Airplane takeoff roar",
+            "url": "https://www.youtube.com/shorts/G6aLRk6LvOw",
+            "title": "The best airplane engine sound? Airbus A320 roaring takeoff",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "roaring sound of airplane engines",
+            "generated_clap_prompts": [
+              "roaring sound of airplane engines",
+              "powerful takeoff roar of Airbus A320",
+              "thundering jet engine noise"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_11.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_11.json",
+            "search_term": "Train passing by",
+            "url": "https://www.youtube.com/watch?v=GSffoeVH9JM",
+            "title": "70 MPH BNSF Z TRAIN!!!",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "loud train passing by quickly",
+            "generated_clap_prompts": [
+              "loud train passing by quickly",
+              "rumbling sound of speeding locomotive",
+              "powerful whoosh of train movement"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_04.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_04.json",
+            "search_term": "Rock concert crowd noise",
+            "url": "https://www.youtube.com/watch?v=-FLgShtdxQ8",
+            "title": "Stadium Crowd Sound Effects | One Hour | HQ",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "loud cheering stadium crowd noise",
+            "generated_clap_prompts": [
+              "loud cheering stadium crowd noise",
+              "hushed whispers among crowd",
+              "boisterous clapping and shouting"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_12.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_12.json",
+            "search_term": "Train passing by",
+            "url": "https://www.youtube.com/watch?v=V0DiM2LW2sE",
+            "title": "Amtraks Acela Express at top speed! | Acela express train 2252 at 150 MPH @ Mansfield,MA(4/22/23)",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "fast train whooshing by",
+            "generated_clap_prompts": [
+              "fast train whooshing by",
+              "loud engine roar of train",
+              "metal wheels clattering on tracks"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_24.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_24.json",
+            "search_term": "Loud city traffic",
+            "url": "https://www.youtube.com/watch?v=CTV-wwszGw8",
+            "title": "Cities Aren't Loud: Cars Are Loud",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "constant honking city traffic",
+            "generated_clap_prompts": [
+              "constant honking city traffic",
+              "engine revving of cars",
+              "loud urban noise chaos"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_08.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_08.json",
+            "search_term": "Airplane takeoff roar",
+            "url": "https://www.youtube.com/watch?v=OBQD5RhCSuE",
+            "title": "GE9X ROAR! Boeing 777X First Takeoff at Everett Paine Field (JAN 25th 2020)",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "roaring airplane takeoff sound",
+            "generated_clap_prompts": [
+              "roaring airplane takeoff sound",
+              "thundering jet engine blast",
+              "powerful aircraft roaring overhead"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_09.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_09.json",
+            "search_term": "Fireworks exploding",
+            "url": "https://www.youtube.com/watch?v=erQ_9yEz0ls",
+            "title": "$1 vs $100,000 Firework!",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "explosive firework blast sound",
+            "generated_clap_prompts": [
+              "explosive firework blast sound",
+              "bright crackling fireworks bursting",
+              "loud pops and booms of fireworks"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_25.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_25.json",
+            "search_term": "Loud city traffic",
+            "url": "https://www.youtube.com/watch?v=UrQrnbZpArY",
+            "title": "The BEST Sleepy Stories EVER \ud83d\ude34 | 2H Bedtime Tales by Alexandra Turney | Relaxing Storytime for Sleep",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "soft whispers of bedtime stories",
+            "generated_clap_prompts": [
+              "soft whispers of bedtime stories",
+              "gentle storytelling voice",
+              "calm soft-spoken narration"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_13.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_13.json",
+            "search_term": "Loud waterfall",
+            "url": "https://www.youtube.com/watch?v=JAqVJzHqrzg",
+            "title": "Large Waterfall 10 Hours | Niagara Falls | Relaxing Nature Sounds",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "thundering sound of waterfall",
+            "generated_clap_prompts": [
+              "thundering sound of waterfall",
+              "crashing water hitting rocks",
+              "roaring rush of falling water"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_05.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_05.json",
+            "search_term": "Heavy rain on metal roof",
+            "url": "https://www.youtube.com/watch?v=foODQy-3zQo",
+            "title": "\u25ba Hard Pouring Rain on a Tin Roof Metal Roof ~Heavy Rain Sounds for Sleeping 10 hours Lluvia",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "heavy rain pounding on metal roof",
+            "generated_clap_prompts": [
+              "heavy rain pounding on metal roof",
+              "constant drip and splash of rain",
+              "drenching downpour sound effect"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_22.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_22.json",
+            "search_term": "Ocean waves crashing hard",
+            "url": "https://www.youtube.com/watch?v=m3v9Rj7-QAk",
+            "title": "Sleep to Big Ocean Waves Crashing | Stormy White Noise Water Sounds 10 Hours",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "crashing ocean waves sound",
+            "generated_clap_prompts": [
+              "crashing ocean waves sound",
+              "thundering surf hitting shore",
+              "roaring sound of stormy waves"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_18.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_18.json",
+            "search_term": "Chainsaw cutting wood",
+            "url": "https://www.youtube.com/shorts/8K-HdnrV5jg",
+            "title": "Chainsaw Mill On Sassafras with A 2x6-Part 2",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "chainsaw roaring through wood",
+            "generated_clap_prompts": [
+              "chainsaw roaring through wood",
+              "loud cutting noise of chainsaw",
+              "high-pitched whine of saw engine"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_02.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_02.json",
+            "search_term": "Loud city traffic",
+            "url": "https://www.youtube.com/watch?v=Z7uN2talyQE",
+            "title": "City Sounds and Traffic Ambience ASMR for Sleep and Study | Relaxing City at Night",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "loud city traffic honking sounds",
+            "generated_clap_prompts": [
+              "loud city traffic honking sounds",
+              "distant sirens wailing echo",
+              "busy street chatter ambiance"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_14.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_14.json",
+            "search_term": "Loud waterfall",
+            "url": "https://www.youtube.com/watch?v=RTYe1MO9-10",
+            "title": "Roaring Waterfall White Noise | Study, Relax or Sleep with Relaxing Water Sounds",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "thundering waterfall rushing water",
+            "generated_clap_prompts": [
+              "thundering waterfall rushing water",
+              "constant water flow crashing sound",
+              "powerful white noise from nature"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_15.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_15.json",
+            "search_term": "Stadium cheering",
+            "url": "https://www.youtube.com/watch?v=mprd0oUR1iA",
+            "title": "How to start a stadium chant...",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "crowd roaring in stadium",
+            "generated_clap_prompts": [
+              "crowd roaring in stadium",
+              "chanting fans shouting loudly",
+              "excited sports audience clapping"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_03.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_03.json",
+            "search_term": "Rock concert crowd noise",
+            "url": "https://www.youtube.com/watch?v=eJU_wmzmCVU",
+            "title": "Rock Concert Applause With Shouts Sound Effect",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "applause erupting from crowd",
+            "generated_clap_prompts": [
+              "applause erupting from crowd",
+              "shouts of excitement filling air",
+              "cheers echoing in concert"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_19.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_19.json",
+            "search_term": "Gunfire sounds",
+            "url": "https://www.youtube.com/watch?v=H0AP0nSS7gI",
+            "title": "AR 15 Gunfire Sound Effect",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "sharp gunfire sound echoing",
+            "generated_clap_prompts": [
+              "sharp gunfire sound echoing",
+              "loud gunshots cracking air",
+              "rapid fire bursts ringing out"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_23.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Loud/Loud_23.json",
+            "search_term": "Loud city traffic",
+            "url": "https://www.youtube.com/watch?v=Ix1SY_k0MOo",
+            "title": "Street City Sounds : Traffic, Conversations, and Urban Ambience",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "busy street traffic noise",
+            "generated_clap_prompts": [
+              "busy street traffic noise",
+              "conversations blending in urban sound",
+              "distant vehicle engines revving"
+            ]
+          }
+        ]
+      },
+      "Smooth": {
+        "sample_count": 9,
+        "original_prompt": "Smooth flowing water continuous stream",
+        "samples": [
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_03.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_03.json",
+            "search_term": "Smooth ocean waves",
+            "url": "https://www.youtube.com/watch?v=vPhg6sc1Mk4",
+            "title": "The Most Relaxing Waves Ever - Ocean Sounds to Sleep, Study and Chill",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "gentle ocean waves rolling",
+            "generated_clap_prompts": [
+              "gentle ocean waves rolling",
+              "soft wave sounds crashing",
+              "calming beach ambiance flowing"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_02.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_02.json",
+            "search_term": "Smooth ocean waves",
+            "url": "https://www.youtube.com/watch?v=AMNyQds2ABQ",
+            "title": "All You Need To Fall Asleep - Ocean Sounds For Deep Sleeping With A Dark Screen And Rolling Waves",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "soothing ocean waves lapping",
+            "generated_clap_prompts": [
+              "soothing ocean waves lapping",
+              "soft tide sounds whispering",
+              "relaxing water rolling gently"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_05.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_05.json",
+            "search_term": "Smooth ocean waves",
+            "url": "https://www.youtube.com/watch?v=bn9F19Hi1Lk",
+            "title": "Sleep For 11 Hours Straight, High Quality Stereo Ocean Sounds Of Rolling Waves For Deep Sleeping",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "continuous ocean waves crashing",
+            "generated_clap_prompts": [
+              "continuous ocean waves crashing",
+              "soft rolling waves soothing",
+              "gentle surf sounds for sleeping"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_09.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_09.json",
+            "search_term": "Smooth driving sounds",
+            "url": "https://www.youtube.com/shorts/XGo_EsE2PaY",
+            "title": "Volkswagen Polo Audio Upgrade | DHC Damping for Better Sound & Smooth Drive",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "smooth driving sounds inside car",
+            "generated_clap_prompts": [
+              "smooth driving sounds inside car",
+              "soft engine hum while driving",
+              "gentle road noise during travel"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_08.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_08.json",
+            "search_term": "Smooth driving sounds",
+            "url": "https://www.youtube.com/watch?v=CjPj4Yo6mh4",
+            "title": "How to drive a manual car SMOOTHLY. Driving stick without the kick.",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "gentle engine revs shifting smoothly",
+            "generated_clap_prompts": [
+              "gentle engine revs shifting smoothly",
+              "soft clutch engagement sound",
+              "quiet gear transition noise"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_04.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_04.json",
+            "search_term": "Smooth ocean waves",
+            "url": "https://www.youtube.com/watch?v=PfQWMrLO3hQ",
+            "title": "Deep Sleeping with Ocean Sounds - Gentle Waves at Night - 9 Hours of White Noise",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "calm ocean waves gently rolling",
+            "generated_clap_prompts": [
+              "calm ocean waves gently rolling",
+              "soft white noise of water",
+              "whispering tide ebbing and flowing"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_07.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_07.json",
+            "search_term": "Smooth driving sounds",
+            "url": "https://www.youtube.com/watch?v=mtEYWF1uW5k",
+            "title": "Heel-toe rev matching is a driving technique used to downshift smoothly#racing #race #gear #f1 #race",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "engine revs smoothly downshifting",
+            "generated_clap_prompts": [
+              "engine revs smoothly downshifting",
+              "soft brake pedal pressure sound",
+              "gentle throttle blip during shifting"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_06.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_06.json",
+            "search_term": "Smooth driving sounds",
+            "url": "https://www.youtube.com/watch?v=p0o0Sn5qeTU",
+            "title": "Mastering Heel-Toe Downshifting \u2013 The Key to Smooth Driving!",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "engine purring during heel-toe",
+            "generated_clap_prompts": [
+              "engine purring during heel-toe",
+              "smooth gear change sound",
+              "subtle tire grip on pavement"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_01.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Smooth/Smooth_01.json",
+            "search_term": "Smooth jazz music",
+            "url": "https://www.youtube.com/watch?v=s3JQG743sns",
+            "title": "\ud83c\udf41 Autumn Jazz Caf\u00e9 \u2013 Warm Coffee, Falling Leaves & Relaxing Jazz for Study, Work & Chill \ud83c\udfb6\u2615",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "smooth jazz melodies playing softly",
+            "generated_clap_prompts": [
+              "smooth jazz melodies playing softly",
+              "gentle piano notes flowing",
+              "warm saxophone tones relaxing"
+            ]
+          }
+        ]
+      },
+      "Bumpy": {
+        "sample_count": 29,
+        "original_prompt": "Bumpy train on tracks irregular rattling sound",
+        "samples": [
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_21.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_21.json",
+            "search_term": "Bumpy car ride interior noise",
+            "url": "https://www.youtube.com/shorts/NXJQWWRVEAU",
+            "title": "Quick suspension check in under 5 minutes! \ud83d\udd27",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "loud thud of suspension bumps",
+            "generated_clap_prompts": [
+              "loud thud of suspension bumps",
+              "shaky interior noise in vehicle",
+              "crunching gravel under tires"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_17.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_17.json",
+            "search_term": "Bumpy horse carriage sounds",
+            "url": "https://www.youtube.com/watch?v=mGXeStsB_0g",
+            "title": "Wagon sound",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "creaking wood of horse wagon",
+            "generated_clap_prompts": [
+              "creaking wood of horse wagon",
+              "bumpy wheels hitting cobblestones",
+              "clattering of metal parts moving"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_01.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_01.json",
+            "search_term": "Bumpy car ride interior noise",
+            "url": "https://www.youtube.com/shorts/paESPwNE8-Q",
+            "title": "Going over speed bumps quickly can damage your car!#bumper #cars #tips #safety",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "sharp impact of speed bumps",
+            "generated_clap_prompts": [
+              "sharp impact of speed bumps",
+              "interior rattling noise during bumps",
+              "jarring suspension sounds from car"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_16.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_16.json",
+            "search_term": "Bumpy wagon on cobblestones",
+            "url": "https://www.youtube.com/watch?v=XuBy9U7bDJ8",
+            "title": "Trying to write, on a bumpy road, LOL",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "bumpy wagon rolling on stones",
+            "generated_clap_prompts": [
+              "bumpy wagon rolling on stones",
+              "jolting motion on uneven road",
+              "rattling cargo shifting in wagon"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_20.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_20.json",
+            "search_term": "Bumpy car ride interior noise",
+            "url": "https://www.youtube.com/shorts/rgMvuxTevaQ",
+            "title": "Customer states put in new struts and now it clunks. #autorepair",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "clunking noise from struts",
+            "generated_clap_prompts": [
+              "clunking noise from struts",
+              "heavy thud from bumpy ride",
+              "sudden jolt of car over bumps"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_11.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_11.json",
+            "search_term": "Bumpy bicycle ride on gravel",
+            "url": "https://www.youtube.com/watch?v=vjQaV3cGs8E",
+            "title": "What I Wish I Knew Before I Bought a Gravel Bike",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "bicycle tires crunching on gravel",
+            "generated_clap_prompts": [
+              "bicycle tires crunching on gravel",
+              "repetitive bumping bicycle sound",
+              "gravel crunch under wheels"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_07.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_07.json",
+            "search_term": "Bumpy airplane turbulence sounds",
+            "url": "https://www.youtube.com/watch?v=4iUkq-2fInI",
+            "title": "Plane drops 50 feet in turbulence on the approach to Tampa",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "airplane turbulence rattling cabin",
+            "generated_clap_prompts": [
+              "airplane turbulence rattling cabin",
+              "loud drops and jolts during flight",
+              "heavy thuds from turbulence"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_27.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_27.json",
+            "search_term": "Bumpy bus journey ambience",
+            "url": "https://www.youtube.com/watch?v=fopMHWpoXpA",
+            "title": "Ambient Car Journey on the bumpy UK roads, MV",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "ambient bumps on UK road",
+            "generated_clap_prompts": [
+              "ambient bumps on UK road",
+              "soft thumping car ride noise",
+              "repeated jolts from bumpy road"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_26.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_26.json",
+            "search_term": "Bumpy train track clatter",
+            "url": "https://www.youtube.com/shorts/lYMQ7osn7KY",
+            "title": "Engine noise on a Chevy Equinox bad timing chain",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "engine rattling with clattering noise",
+            "generated_clap_prompts": [
+              "engine rattling with clattering noise",
+              "grinding sounds from Chevy Equinox",
+              "mechanical clatter during engine diagnosis"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_06.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_06.json",
+            "search_term": "Bumpy train track clatter",
+            "url": "https://www.youtube.com/shorts/rp-QaP8xgJ0",
+            "title": "Brake Rotor Grinding Sound Found! EASY Free Fix! #brakes #rotor #acuratl",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "clattering on bumpy train tracks",
+            "generated_clap_prompts": [
+              "clattering on bumpy train tracks",
+              "grinding noise from brake rotors",
+              "metal scraping sound from brakes"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_10.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_10.json",
+            "search_term": "Bumpy wooden roller coaster",
+            "url": "https://www.youtube.com/watch?v=pGicRQvxxGE",
+            "title": "Thundercoaster Front Row POV Tusenfryd Vekoma Wooden Roller Coaster",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "wooden coaster creaking and bumping",
+            "generated_clap_prompts": [
+              "wooden coaster creaking and bumping",
+              "thrilling rattling of roller coaster",
+              "sharp jolts from wooden ride"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_05.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_05.json",
+            "search_term": "Bumpy train track clatter",
+            "url": "https://www.youtube.com/shorts/fK57namo59A",
+            "title": "Clicking, Tapping Engine Noise? Try This Trick Before Replacing AFM Lifters! #shorts",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "tapping noise from engine clatter",
+            "generated_clap_prompts": [
+              "tapping noise from engine clatter",
+              "light rattling sound while driving",
+              "mechanical clicking in engine"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_13.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_13.json",
+            "search_term": "Bumpy skateboard ride on pavement",
+            "url": "https://www.youtube.com/shorts/71f9o8-bGGs",
+            "title": "Soft skateboard wheels versus hard wheels",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "soft wheels rolling on pavement",
+            "generated_clap_prompts": [
+              "soft wheels rolling on pavement",
+              "gentle bumps from skateboard ride",
+              "soft thuds of skateboard on ground"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_29.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_29.json",
+            "search_term": "Bumpy train track clatter",
+            "url": "https://www.youtube.com/watch?v=unymiLsB2F0",
+            "title": "Clunking in the Front? What's That Noise in My Car, SUV, or Truck?",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "clunking noises from front end",
+            "generated_clap_prompts": [
+              "clunking noises from front end",
+              "mechanical thuds while driving",
+              "repeated clunks from vehicle joints"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_09.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_09.json",
+            "search_term": "Bumpy wooden roller coaster",
+            "url": "https://www.youtube.com/watch?v=QYJkiwnHlek",
+            "title": "Bumpy wooden roller coaster.",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "bumpy ride on wooden coaster",
+            "generated_clap_prompts": [
+              "bumpy ride on wooden coaster",
+              "jarring noises from roller coaster",
+              "sharp jolts and rattles during ride"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_25.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_25.json",
+            "search_term": "Bumpy car ride interior noise",
+            "url": "https://www.youtube.com/watch?v=qAPocEt1ay0",
+            "title": "Why Is the Front End Of My Car Rattling?",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "rattling interior noise of a car",
+            "generated_clap_prompts": [
+              "rattling interior noise of a car",
+              "bumpy road vibrations inside vehicle",
+              "soft thumping of uneven surfaces"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_24.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_24.json",
+            "search_term": "Bumpy bus journey ambience",
+            "url": "https://www.youtube.com/watch?v=1SwugJgWmr0",
+            "title": "Vintage Coach Bus Driving on Uneven Road Surface with Large Bumps",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "bus rolling over large bumps",
+            "generated_clap_prompts": [
+              "bus rolling over large bumps",
+              "thudding sounds of uneven road",
+              "metallic clanks from bus suspension"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_08.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_08.json",
+            "search_term": "Bumpy airplane turbulence sounds",
+            "url": "https://www.youtube.com/shorts/9n4DPaEAOxo",
+            "title": "How Turbulence Works \ud83d\ude28",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "airplane turbulence shaking sounds",
+            "generated_clap_prompts": [
+              "airplane turbulence shaking sounds",
+              "intermittent rattles with engine noise",
+              "shifts in cabin pressure during flight"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_28.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_28.json",
+            "search_term": "Bumpy bus journey ambience",
+            "url": "https://www.youtube.com/watch?v=Kd_fOsBEVEA",
+            "title": "Night BUS Ride Sound Sleep, Study | Interior BUS Ambience White Noise | White Noise Collections",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "soft rumble of bus on road",
+            "generated_clap_prompts": [
+              "soft rumble of bus on road",
+              "gentle thuds from bus movement",
+              "ambient noise of wheels on pavement"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_12.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_12.json",
+            "search_term": "Bumpy bicycle ride on gravel",
+            "url": "https://www.youtube.com/watch?v=Je-NTGf0S50",
+            "title": "Mastering Gravel Cycling: Tips for Downhill Riding on Gravel Bikes",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "gravel crunching under bicycle tires",
+            "generated_clap_prompts": [
+              "gravel crunching under bicycle tires",
+              "bumpy ride sounds on gravel path",
+              "vibrations from riding downhill"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_04.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_04.json",
+            "search_term": "Bumpy bus journey ambience",
+            "url": "https://www.youtube.com/watch?v=Dexms-CvD90",
+            "title": "\u25b6\ufe0f Bumpy Bus Ride! Bus Ride From Hell!  \ud83c\udf0f",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "loud bumps from bus ride",
+            "generated_clap_prompts": [
+              "loud bumps from bus ride",
+              "jarring shakes of public transport",
+              "constant thud of wheels on rough road"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_19.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_19.json",
+            "search_term": "Bumpy cart on uneven floor",
+            "url": "https://www.youtube.com/shorts/egnsDg7kb3k",
+            "title": "Strongest Gravel Driveway EVER?! #construction #shorts #diy",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "cart rattling on uneven floor",
+            "generated_clap_prompts": [
+              "cart rattling on uneven floor",
+              "heavy thumps from cart movement",
+              "gravel crunching beneath wheels"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_23.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_23.json",
+            "search_term": "Bumpy bus journey ambience",
+            "url": "https://www.youtube.com/watch?v=L3hdvPmwjL4",
+            "title": "Relaxing BUS Ride - Interior Bus Ambience for Sleep, Study - Relax Baby DEEP SLEEP",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "soothing bus ambience with gentle thumps",
+            "generated_clap_prompts": [
+              "soothing bus ambience with gentle thumps",
+              "soft rolling sounds of bus wheels",
+              "quiet road noise for relaxation"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_03.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_03.json",
+            "search_term": "Bumpy bus journey ambience",
+            "url": "https://www.youtube.com/watch?v=SinTiwnRGww",
+            "title": "Top Deck Bumpy Bus Journey. #whitenoise  Sounds that can help with relaxing and more. #ASMR",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "gentle bus vibrations on road",
+            "generated_clap_prompts": [
+              "gentle bus vibrations on road",
+              "soft thuds from bus movements",
+              "ambient noise of traveling bus"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_15.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_15.json",
+            "search_term": "Bumpy stroller ride",
+            "url": "https://www.youtube.com/shorts/nVPFWYsX9jI",
+            "title": "Bumpy rides? Not with the right stroller suspension!",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "stroller wheels bumping over terrain",
+            "generated_clap_prompts": [
+              "stroller wheels bumping over terrain",
+              "soft thuds from stroller suspension",
+              "gentle rattles while moving"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_14.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_14.json",
+            "search_term": "Bumpy skateboard ride on pavement",
+            "url": "https://www.youtube.com/watch?v=rHONvyUgc1g",
+            "title": "Skating tips for URBAN AREAS",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "skateboard wheels rolling on pavement",
+            "generated_clap_prompts": [
+              "skateboard wheels rolling on pavement",
+              "bumpy ride over urban concrete",
+              "clattering sound of cruising board"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_02.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_02.json",
+            "search_term": "Bumpy car ride interior noise",
+            "url": "https://www.youtube.com/shorts/3Gz4h5S2VME",
+            "title": "BEST Spot to add Car Sound deadening Material For ROAD Noise",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "road noise inside car cabin",
+            "generated_clap_prompts": [
+              "road noise inside car cabin",
+              "droning hum of tires on pavement",
+              "bumpy vibrations from rough surfaces"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_22.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_22.json",
+            "search_term": "Bumpy dirt road sounds",
+            "url": "https://www.youtube.com/watch?v=PRbGgtKJpAI",
+            "title": "A Slow Drive Down A Gravel Road (ASMR Sleep Aid Relaxing Sounds)",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "gravel crunching under tires",
+            "generated_clap_prompts": [
+              "gravel crunching under tires",
+              "soft thud of bumps on dirt road",
+              "whispering wind through open windows"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_18.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Bumpy/Bumpy_18.json",
+            "search_term": "Bumpy tractor ride in a field",
+            "url": "https://www.youtube.com/watch?v=Bm2E5B2ImVw",
+            "title": "Tractor\u2019s Bumpy Ride Through the Fields \ud83d\ude9c\ud83c\udf3e\ud83c\udfb6 | Fun Farm Song for Kids",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "tractor bouncing over uneven fields",
+            "generated_clap_prompts": [
+              "tractor bouncing over uneven fields",
+              "loud thumping of tractor wheels",
+              "soft rumble of engine on rough terrain"
+            ]
+          }
+        ]
+      },
+      "Soft": {
+        "sample_count": 24,
+        "original_prompt": "Quiet gentle whisper voice speaking softly",
+        "samples": [
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_16.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_16.json",
+            "search_term": "Soft lullaby instrumental",
+            "url": "https://www.youtube.com/watch?v=2Mu7LAhxyp8",
+            "title": "Disney Deep Sleep Piano Collection, Sleep Meditation, Calm Music, Relaxing Music(No Mid-roll Ads)",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "gentle piano notes playing softly",
+            "generated_clap_prompts": [
+              "gentle piano notes playing softly",
+              "smooth melodic chords flowing",
+              "calm instrumental lullaby sounds"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_20.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_20.json",
+            "search_term": "Gentle thunderstorm ambience",
+            "url": "https://www.youtube.com/watch?v=1D2GGf5eAmw",
+            "title": "Rain Sounds for Sleeping No Ads - Heavy Rain and Intense Thunder for Deep Sleep, Energy Restoration",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "heavy rain pattering on leaves",
+            "generated_clap_prompts": [
+              "heavy rain pattering on leaves",
+              "distant rumble of thunder",
+              "soft drumming of rain on roof"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_21.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_21.json",
+            "search_term": "Quiet night forest sounds",
+            "url": "https://www.youtube.com/watch?v=3TNK916Pjto",
+            "title": "FOREST AT NIGHT - Crickets Owls Rain Wind in Trees - Relax Study Sleep De-Stress \ud83c\udfa7 100% RELAX",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "soft rustling of leaves in wind",
+            "generated_clap_prompts": [
+              "soft rustling of leaves in wind",
+              "gentle hooting of an owl",
+              "whispering crickets chirping at night"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_01.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_01.json",
+            "search_term": "Gentle piano melodies",
+            "url": "https://www.youtube.com/watch?v=kMAOey45mJI",
+            "title": "Music for Studying - piano music, relaxing music, smooth music [1934]",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "delicate piano melodies floating",
+            "generated_clap_prompts": [
+              "delicate piano melodies floating",
+              "smooth chords creating calm atmosphere",
+              "soft background music for studying"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_17.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_17.json",
+            "search_term": "Light bird songs in morning",
+            "url": "https://www.youtube.com/watch?v=FMrtSHAAPhM",
+            "title": "Relaxing Music with Birds Singing - Beautiful Piano Music & Guitar Music by Soothing Relaxation",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "light birds singing in morning",
+            "generated_clap_prompts": [
+              "light birds singing in morning",
+              "gentle chirping harmonizing with piano",
+              "soft melodies of nature and music"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_10.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_10.json",
+            "search_term": "Whispering stream sounds",
+            "url": "https://www.youtube.com/watch?v=ymIjQRZhmOw",
+            "title": "Subtle Whispering of Water in a Forest Creek - 10 Hours ASMR",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "whispering stream flowing gently",
+            "generated_clap_prompts": [
+              "whispering stream flowing gently",
+              "soft trickle of water in creek",
+              "ambient sounds of nature's water flow"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_06.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_06.json",
+            "search_term": "Calm wind in trees",
+            "url": "https://www.youtube.com/watch?v=4KzFe50RQkQ",
+            "title": "The Wind in the Trees ( 10 Hours of Natural White Noise )",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "gentle wind rustling leaves",
+            "generated_clap_prompts": [
+              "gentle wind rustling leaves",
+              "soft bird chirping sounds",
+              "occasional creaking branches"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_07.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_07.json",
+            "search_term": "Quiet crackling fireplace",
+            "url": "https://www.youtube.com/watch?v=TfXOHN2nBLI",
+            "title": "Cozy Autumn Fireplace 12 Hrs \ud83d\udd25 Crackling Fire Atmosphere with Burning Logs [No Music]",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "crackling firewood popping",
+            "generated_clap_prompts": [
+              "crackling firewood popping",
+              "gentle flames flickering sound",
+              "soft logs burning ambiance"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_11.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_11.json",
+            "search_term": "Soft humming meditation tones",
+            "url": "https://www.youtube.com/watch?v=33ShtKuuzR0",
+            "title": "\ud83c\udf42 Misty Autumnal Humming - Calming Singing for Sleep, Relaxation, Meditation \ud83c\udf42",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "soothing female humming tones",
+            "generated_clap_prompts": [
+              "soothing female humming tones",
+              "gentle lullaby-like singing",
+              "calm melodic vocalizations"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_08.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_08.json",
+            "search_term": "Quiet crackling fireplace",
+            "url": "https://www.youtube.com/watch?v=mwf1vgCgMLw",
+            "title": "Crackling Fire by the Lake (12 hrs): Cure for Deep Sleep",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "crackling fire by water",
+            "generated_clap_prompts": [
+              "crackling fire by water",
+              "soft embers popping gently",
+              "peaceful lake ambiance"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_24.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_24.json",
+            "search_term": "Gentle piano melodies",
+            "url": "https://www.youtube.com/watch?v=xaSI4RxWVDk",
+            "title": "Serenity in Every Note \ud83c\udf3f Gentle Piano Melodies for Healing, Comfort, and Tranquility",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "soft piano melodies playing",
+            "generated_clap_prompts": [
+              "soft piano melodies playing",
+              "gentle notes creating calm",
+              "tranquil piano soundscape"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_04.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_04.json",
+            "search_term": "Ocean waves softly crashing",
+            "url": "https://www.youtube.com/watch?v=gEQLKmQ5uss",
+            "title": "Gentle Waves on a Small White Rock Beach - Relaxing Ocean Sounds",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "gentle ocean waves crashing",
+            "generated_clap_prompts": [
+              "gentle ocean waves crashing",
+              "soft water lapping sounds",
+              "calm beach ambiance"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_12.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_12.json",
+            "search_term": "Soft humming meditation tones",
+            "url": "https://www.youtube.com/watch?v=ivCOrc1HWxI",
+            "title": "SHAMANIC DRUMS + DEEP TRANCE HUMMING MEDITATION \u276f Shamanic Meditation Music for Stress Relief",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "deep shamanic drum beats",
+            "generated_clap_prompts": [
+              "deep shamanic drum beats",
+              "soft humming resonating sound",
+              "calming rhythmic vibrations"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_13.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_13.json",
+            "search_term": "Subtle Tibetan singing bowls",
+            "url": "https://www.youtube.com/watch?v=b1iq8y9Tvd4",
+            "title": "Healing Frequencies of Tibetan Bowls#singingbowl#meditationmusic#soundbathssleep",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "subtle Tibetan bowl ringing",
+            "generated_clap_prompts": [
+              "subtle Tibetan bowl ringing",
+              "soft singing bowl hum",
+              "healing frequencies resonating"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_05.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_05.json",
+            "search_term": "Calm wind in trees",
+            "url": "https://www.youtube.com/watch?v=ObfJ9OYME-s",
+            "title": "Wind Blowing Peacefully Through Trees   Sound",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "peaceful wind flowing through trees",
+            "generated_clap_prompts": [
+              "peaceful wind flowing through trees",
+              "gentle rustling branches sound",
+              "calm nature sounds"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_09.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_09.json",
+            "search_term": "Whispering stream sounds",
+            "url": "https://www.youtube.com/watch?v=QglIjlqsUdU",
+            "title": "Bob Ross - Whispering Stream (Season 6 Episode 4)",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "whispering stream flowing",
+            "generated_clap_prompts": [
+              "whispering stream flowing",
+              "soft water trickling sound",
+              "gentle creek ambiance"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_02.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_02.json",
+            "search_term": "Gentle piano melodies",
+            "url": "https://www.youtube.com/watch?v=3NycM9lYdRI",
+            "title": "Relaxing Piano Music: Romantic Music, Beautiful Relaxing Music, Sleep Music, Stress Relief \u2605122",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "gentle piano melodies flowing softly",
+            "generated_clap_prompts": [
+              "gentle piano melodies flowing softly",
+              "calming piano notes echoing lightly",
+              "soothing piano chords creating ambiance"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_14.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_14.json",
+            "search_term": "Subtle Tibetan singing bowls",
+            "url": "https://www.youtube.com/watch?v=6Kj-ye-aYBA",
+            "title": "PARASYMPATHETIC NERVOUS SYSTEM Activation | Tibetan Singing Bowl Sound Bath for Stress Relief",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "soft Tibetan singing bowls resonating",
+            "generated_clap_prompts": [
+              "soft Tibetan singing bowls resonating",
+              "gentle bowl sounds vibrating slowly",
+              "calm water flow with bowl tones"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_18.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_18.json",
+            "search_term": "Calm heartbeat sound",
+            "url": "https://www.youtube.com/watch?v=6MriANZDoMk",
+            "title": "SOFTENED BROWN NOISE AND SLOW HEARTBEAT SOUND EFFECT",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "softened brown noise humming gently",
+            "generated_clap_prompts": [
+              "softened brown noise humming gently",
+              "slow heartbeat thumping rhythmically",
+              "quiet heartbeat and soft noise blend"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_22.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_22.json",
+            "search_term": "Soft ASMR tapping",
+            "url": "https://www.youtube.com/watch?v=xGR4kc3ObC4",
+            "title": "ASMR Sunglasses Collection | Pure Whispers, LOTS of Tapping \ud83d\udd76\ufe0f",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "soft tapping sounds gently echoing",
+            "generated_clap_prompts": [
+              "soft tapping sounds gently echoing",
+              "whispers and light tapping combined",
+              "subtle ASMR tapping and murmurs"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_23.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_23.json",
+            "search_term": "Gentle piano melodies",
+            "url": "https://www.youtube.com/watch?v=cKxRFlXYquo",
+            "title": "500 Most Famous Beautiful Piano Melodies - The Best Relaxing Piano Instrumental Love Songs Playlist",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "gentle piano melodies playing softly",
+            "generated_clap_prompts": [
+              "gentle piano melodies playing softly",
+              "calming instrumental piano tunes flowing",
+              "soothing piano music creating tranquility"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_19.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_19.json",
+            "search_term": "Soft flute music",
+            "url": "https://www.youtube.com/watch?v=GN5q747x1zI",
+            "title": "Relaxing Flute Music | Calmness",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "soft flute notes floating gently",
+            "generated_clap_prompts": [
+              "soft flute notes floating gently",
+              "calm flute melodies whispering softly",
+              "gentle flute sounds creating peace"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_15.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_15.json",
+            "search_term": "Gentle white noise for sleep",
+            "url": "https://www.youtube.com/watch?v=HiolzmflGEU",
+            "title": "White Noise - Black Screen - No Ads - 10 hours - Perfect Baby Sleep Aid",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "gentle white noise humming continuously",
+            "generated_clap_prompts": [
+              "gentle white noise humming continuously",
+              "soft white noise creating a blanket",
+              "calming white noise flowing softly"
+            ]
+          },
+          {
+            "wav_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_03.wav",
+            "json_path": "/Users/danielraffel/Code/RadioStation/wavs/sessions/20250917_185054_l4rq/themes/Soft/Soft_03.json",
+            "search_term": "Ocean waves softly crashing",
+            "url": "https://www.youtube.com/watch?v=c3LHE_cg3nQ",
+            "title": "Ocean Waves softly crashing 1 hour",
+            "tags": [],
+            "categories": [],
+            "best_clap_prompt": "ocean waves gently crashing rhythmically",
+            "generated_clap_prompts": [
+              "ocean waves gently crashing rhythmically",
+              "soft waves lapping against the shore",
+              "calm ocean sounds flowing peacefully"
+            ]
+          }
+        ]
+      }
+    },
+    "total_samples": 88
+  }
+}

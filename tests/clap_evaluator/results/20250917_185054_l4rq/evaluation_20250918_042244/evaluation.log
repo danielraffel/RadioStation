@@ -1,0 +1,26 @@
+Evaluation Log - Session: 20250917_185054_l4rq
+Timestamp: 20250918_042244
+Configuration: {
+  "test_runs": [
+    {
+      "name": "Configuration 1",
+      "threshold": 0.3,
+      "prompts": {
+        "Loud": "Loud explosive booming powerful sound",
+        "Smooth": "Smooth flowing water continuous stream",
+        "Bumpy": "Bumpy train on tracks irregular rattling sound",
+        "Soft": "Quiet gentle whisper voice speaking softly"
+      }
+    }
+  ]
+}
+
+Total samples evaluated: 88
+Test runs: 1
+
+
+Configuration 1 (threshold: 0.3):
+  Loud: 4/43 passed (9.3%)
+  Smooth: 4/31 passed (12.9%)
+  Bumpy: 6/46 passed (13.0%)
+  Soft: 5/36 passed (13.9%)

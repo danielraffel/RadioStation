@@ -1,0 +1,14 @@
+{
+  "test_runs": [
+    {
+      "name": "Configuration 1",
+      "threshold": 0.3,
+      "prompts": {
+        "Loud": "Loud explosive booming powerful sound",
+        "Smooth": "Smooth flowing water continuous stream",
+        "Bumpy": "Bumpy train on tracks irregular rattling sound",
+        "Soft": "Quiet gentle whisper voice speaking softly"
+      }
+    }
+  ]
+}

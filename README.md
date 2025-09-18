@@ -309,6 +309,99 @@ export SCORING_ENABLED=1
 # ensure a .pt checkpoint exists in models/ or set CLAP_MODEL_PATH
 ```
 
+## CLAP Evaluation Tool
+
+RadioStation includes a standalone evaluation tool for testing and optimizing CLAP (Contrastive Language-Audio Pretraining) prompts and similarity thresholds. This helps you fine-tune the audio classification without modifying the main application.
+
+### Quick Start
+
+#### 1. List Available Sessions
+```bash
+python tests/clap_evaluator/evaluator.py --list
+```
+
+#### 2. Run Evaluation (Command Line)
+```bash
+# Evaluate with default test configurations
+python tests/clap_evaluator/evaluator.py --session 20250917_185054_l4rq
+
+# Use custom configuration file
+python tests/clap_evaluator/evaluator.py --session 20250917_185054_l4rq --config my_config.json
+```
+
+#### 3. Web Interface (Recommended)
+```bash
+# Start the browser interface on port 8001
+python tests/clap_evaluator/sessions_browser.py
+```
+Then navigate to http://localhost:8001 to:
+- Browse all your sessions visually
+- Configure multiple test variations
+- Adjust prompts and thresholds interactively
+- View results in an interactive report
+
+### What It Does
+
+The evaluator helps you:
+- **Test different CLAP prompts**: Try various phrasings to see what works best
+- **Find optimal thresholds**: Test similarity thresholds from 0.30 to 0.60
+- **Compare strategies**: Run multiple configurations side-by-side
+- **Visualize results**: See exactly which samples pass/fail with each configuration
+- **Iterate quickly**: Make adjustments based on what you hear and see
+
+### Configuration Format
+
+Create a JSON file to test specific configurations:
+```json
+{
+  "test_runs": [
+    {
+      "name": "Original Prompts",
+      "prompts": {
+        "Soft": "Quiet gentle whisper voice speaking softly",
+        "Loud": "Loud intense shouting noise harsh sounds"
+      },
+      "threshold": 0.40
+    },
+    {
+      "name": "Enhanced Descriptive",
+      "prompts": {
+        "Soft": "Quiet peaceful calm serene gentle soft audio",
+        "Loud": "Loud aggressive harsh noisy intense audio"
+      },
+      "threshold": 0.45
+    }
+  ]
+}
+```
+
+### Understanding Results
+
+- **Pass Rate**: % of samples correctly assigned to their original theme
+- **Cross-assigned**: Samples that matched a different theme (confusion)
+- **Failed**: Samples below threshold (would be discarded)
+
+Results are saved in `tests/clap_evaluator/results/[session_id]/evaluation_[timestamp]/` with:
+- Interactive HTML report
+- Detailed JSON data
+- Test configuration used
+
+### Tips for Optimization
+
+1. Start with your original prompts as baseline
+2. Listen to failed samples to understand why they didn't match
+3. Try adding descriptive audio characteristics to prompts
+4. Test multiple thresholds (0.30, 0.40, 0.50) to find the sweet spot
+5. Check cross-assignments to identify prompt confusion
+
+### Note on CLAP Model
+
+If you don't have the CLAP model installed, the evaluator will run in simulation mode with random scores. To use actual CLAP scoring:
+1. Install the model: `models/music_speech_audioset_epoch_15_esc_89.98.pt`
+2. The evaluator will automatically enable scoring when the model is found
+
+For more details, see `tests/clap_evaluator/README.md`.
+
 ## Troubleshooting
 
 - ModuleNotFoundError (e.g., `yt_dlp`): run the CLI via `uv` (`uv run python3 manage.py run`) or activate `.venv` first. Running `python3 manage.py run` with the system Python can't see the project's venv packages.

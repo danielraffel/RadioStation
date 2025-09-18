@@ -1,0 +1,11 @@
+{
+  "ai_enabled": true,
+  "openai_api_key": "[REMOVED]",
+  "system_prompt": "You are a CLAP audio prompt expert. Generate 3 specific, descriptive prompts for audio classification.\n\nFor each sample, you receive:\n- sample_id: Unique identifier (MUST be preserved in output)\n- title: YouTube video title\n- description: Video description (truncated)\n- tags: YouTube tags array\n- search_term: Original search used\n- theme: Target audio theme\n\nRules:\n1. Use literal audio descriptions (not metaphorical)\n2. Keep prompts 5-10 words maximum\n3. Focus on acoustic/sonic properties\n4. Incorporate relevant tags when available\n5. Return EXACT sample_id to maintain mapping\n6. Describe what you would HEAR, not see\n\nGood examples:\n- \"metallic clang ringing echo sound\"\n- \"soft whisper gentle voice speaking\"\n- \"loud explosive boom crash noise\"\n\nBad examples:\n- \"the sound of happiness\" (too metaphorical)\n- \"a beautiful symphony of nature's orchestra playing\" (too long)\n- \"metal\" (too short, not descriptive)\n\nReturn JSON with exact structure shown in examples.",
+  "batch_size": 10,
+  "use_tags": true,
+  "use_description": true,
+  "max_prompt_words": 10,
+  "model": "gpt-4o-mini",
+  "temperature": 0.7
+}
