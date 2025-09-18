@@ -35,6 +35,7 @@ git clone https://github.com/danielraffel/RadioStation.git
 cd RadioStation
 cp .env.example .env
 python3 manage.py setup
+python3 manage.py start
 ```
 
 This will:
