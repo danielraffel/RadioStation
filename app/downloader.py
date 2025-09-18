@@ -298,16 +298,18 @@ def _process_to_candidate_slices(path: Path, clip_ms: int, slices_per_video: int
         # Check and register slice hash atomically
         if not hash_manager.add_hash(slice_hash, str(out_path)):
             if log_cb:
-                log_cb(f"Removing duplicate slice: {out_path.name}")
+                log_cb(f"Duplicate detected: {out_path.name} (skipping to next slice position)")
             try:
                 out_path.unlink()
+                # Move to next slice position after removing duplicate
+                start += stride_ms
+                continue
             except Exception as e:
                 if log_cb:
                     log_cb(f"Failed to remove duplicate {out_path.name}: {e}")
                 # IMPORTANT: Break the loop to prevent infinite retries on same file
                 # The hash is already in the database, so this file is a duplicate
                 break
-            continue
         
         # Create slice metadata
         slice_metadata = (metadata or {}).copy()
@@ -452,7 +454,7 @@ def _process_to_best_candidate_slices(path: Path, clip_ms: int, slices_per_video
             # Check and register slice hash atomically
             if not hash_manager.add_hash(slice_hash, str(final_path)):
                 if log_cb:
-                    log_cb(f"Removing duplicate slice: {final_path.name}")
+                    log_cb(f"Duplicate detected: {final_path.name} (skipping this segment)")
                 try:
                     final_path.unlink()
                 except Exception as e:
