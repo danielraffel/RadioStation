@@ -1,0 +1,15 @@
+.venv/
+models/
+!models/.gitkeep
+wavs/
+!wavs/**/.gitkeep
+.server_pid
+__pycache__/
+*.pyc
+.env
+.DS_Store
+
+# Test files in root (should be in tests/ folder)
+/test_*.py
+/@*.md
+/@@*.md
