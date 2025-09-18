@@ -393,8 +393,14 @@
 
       function renderThemes() {
         const container = document.getElementById('themesList');
+        if (!container) {
+          console.error('ThemesList container not found!');
+          return;
+        }
+
+        console.log('Rendering themes:', currentThemes.length, 'themes');
         container.innerHTML = '';
-        
+
         const useWordsList = document.getElementById('USE_WORDS_LIST').checked;
         
         currentThemes.forEach((theme, idx) => {
@@ -636,88 +642,96 @@
       }
 
       async function load() {
-        const resp = await fetch('/config');
-        const cfg = await resp.json();
+        try {
+          console.log('Loading configuration...');
+          const resp = await fetch('/config');
+          const cfg = await resp.json();
+          console.log('Config loaded:', cfg);
 
-        // Add info icons dynamically
-        // Basic Settings tooltips
-        document.getElementById('clip-duration-info').innerHTML = infoIcon('Length of each audio sample in seconds. Used for final output regardless of download method.');
-        document.getElementById('segment-size-info').innerHTML = infoIcon('Controls two things: (1) How much to download when using segments, and (2) The threshold for Smart mode - videos longer than this will use segment downloading, shorter videos will be downloaded entirely. Default is 10 seconds. Automatically adjusted to be at least as long as your clip duration. Example: With 10-second segments, you can extract multiple 2-second clips from different positions.');
-        document.getElementById('samples-per-theme-info').innerHTML = infoIcon('Number of audio samples to collect for each theme/bank.');
-        document.getElementById('num-themes-info').innerHTML = infoIcon('Total number of theme categories to generate samples for.');
-        document.getElementById('search-results-info').innerHTML = infoIcon('Maximum YouTube search results to process per theme.');
-        document.getElementById('max-retries-info').innerHTML = infoIcon('Number of retry attempts if a theme doesn\'t get enough samples. 0 = no retries, 1+ = retry that many times with new searches.');
+          // Add info icons dynamically
+          // Basic Settings tooltips
+          document.getElementById('clip-duration-info').innerHTML = infoIcon('Length of each audio sample in seconds. Used for final output regardless of download method.');
+          document.getElementById('segment-size-info').innerHTML = infoIcon('Controls two things: (1) How much to download when using segments, and (2) The threshold for Smart mode - videos longer than this will use segment downloading, shorter videos will be downloaded entirely. Default is 10 seconds. Automatically adjusted to be at least as long as your clip duration. Example: With 10-second segments, you can extract multiple 2-second clips from different positions.');
+          document.getElementById('samples-per-theme-info').innerHTML = infoIcon('Number of audio samples to collect for each theme/bank.');
+          document.getElementById('num-themes-info').innerHTML = infoIcon('Total number of theme categories to generate samples for.');
+          document.getElementById('search-results-info').innerHTML = infoIcon('Maximum YouTube search results to process per theme.');
+          document.getElementById('max-retries-info').innerHTML = infoIcon('Number of retry attempts if a theme doesn\'t get enough samples. 0 = no retries, 1+ = retry that many times with new searches.');
 
-        // Processing Settings tooltips
-        document.getElementById('download-workers-info').innerHTML = infoIcon('Number of parallel download threads. Applies to all download methods. Higher = faster but more resource intensive. Max: 10, Recommended: 4.');
-        document.getElementById('slices-per-video-info').innerHTML = infoIcon('Number of segments to extract from each video. Applies to all methods. Creates multiple samples (e.g., _s1, _s2) from same video for variety. Max: 20.');
-        document.getElementById('slice-stride-info').innerHTML = infoIcon('Time offset between slice start positions in seconds. Applies to all methods. Controls overlap between segments.');
-        document.getElementById('audio-quality-info').innerHTML = infoIcon('Audio quality affects file size. Best: higher quality, Worst: smaller files but lower quality.');
+          // Processing Settings tooltips
+          document.getElementById('download-workers-info').innerHTML = infoIcon('Number of parallel download threads. Applies to all download methods. Higher = faster but more resource intensive. Max: 10, Recommended: 4.');
+          document.getElementById('slices-per-video-info').innerHTML = infoIcon('Number of segments to extract from each video. Applies to all methods. Creates multiple samples (e.g., _s1, _s2) from same video for variety. Max: 20.');
+          document.getElementById('slice-stride-info').innerHTML = infoIcon('Time offset between slice start positions in seconds. Applies to all methods. Controls overlap between segments.');
+          document.getElementById('audio-quality-info').innerHTML = infoIcon('Audio quality affects file size. Best: higher quality, Worst: smaller files but lower quality.');
 
-        // Words List tooltip
-        document.getElementById('words-list-info').innerHTML = infoIcon('Uses a file with 466,550+ search terms that are randomly selected. Edit app/words.txt to customize the word list.');
+          // Words List tooltip
+          document.getElementById('words-list-info').innerHTML = infoIcon('Uses a file with 466,550+ search terms that are randomly selected. Edit app/words.txt to customize the word list.');
 
-        // CLAP and OpenAI tooltips
-        document.getElementById('clap-info').innerHTML = infoIcon('CLAP (Contrastive Language-Audio Pretraining) scores how well audio matches text descriptions. Higher scores = better match.');
-        document.getElementById('model-path-info').innerHTML = infoIcon('Path to CLAP model file. Default: models/music_speech_audioset_epoch_15_esc_89.98.pt. Leave empty to use default.');
-        document.getElementById('min-sim-info').innerHTML = infoIcon('Score threshold (0-1). Clips scoring BELOW this are discarded. 0 = keep all, 0.2 = light filtering (default), 0.5 = moderate filtering, 1 = impossible to match.');
-        document.getElementById('openai-expand-info').innerHTML = infoIcon('Uses OpenAI to generate variations of search terms for better results.');
-        document.getElementById('openai-key-info').innerHTML = infoIcon('OpenAI API key. If empty, uses OPENAI_API_KEY from shell environment.');
+          // CLAP and OpenAI tooltips
+          document.getElementById('clap-info').innerHTML = infoIcon('CLAP (Contrastive Language-Audio Pretraining) scores how well audio matches text descriptions. Higher scores = better match.');
+          document.getElementById('model-path-info').innerHTML = infoIcon('Path to CLAP model file. Default: models/music_speech_audioset_epoch_15_esc_89.98.pt. Leave empty to use default.');
+          document.getElementById('min-sim-info').innerHTML = infoIcon('Score threshold (0-1). Clips scoring BELOW this are discarded. 0 = keep all, 0.2 = light filtering (default), 0.5 = moderate filtering, 1 = impossible to match.');
+          document.getElementById('openai-expand-info').innerHTML = infoIcon('Uses OpenAI to generate variations of search terms for better results.');
+          document.getElementById('openai-key-info').innerHTML = infoIcon('OpenAI API key. If empty, uses OPENAI_API_KEY from shell environment.');
 
-        // Add aria2c info icons
-        document.getElementById('aria2c-conn-info').innerHTML = infoIcon('Max connections to each server. Default: 4 (aria2c max: 16). Set to 4 to balance speed with safety - avoids triggering YouTube rate limiting while maintaining reasonable download speeds.');
-        document.getElementById('aria2c-split-info').innerHTML = infoIcon('Parallel connections per file. Default: 4 (aria2c max: 16). Set to 4 to minimize concurrent connections - prevents detection as automated traffic while still enabling acceleration.');
-        document.getElementById('aria2c-chunk-info').innerHTML = infoIcon('Download chunk size. Default: 10M (aria2c default: 1M). Larger chunks (10M) mean fewer server requests, reducing the chance of being flagged as a bot while improving efficiency.');
-        
-        // Load basic settings
-        const numericKeys = ['CLIP_SECONDS','SAMPLES_PER_BANK','NUM_BANKS','MAX_RETRIES_PER_THEME','SEARCH_RESULTS_PER_THEME','DOWNLOAD_WORKERS','SLICES_PER_VIDEO','SLICE_STRIDE_SECONDS','ARIA2C_CONN_PER_SERVER','ARIA2C_SPLIT','SCORING_MIN_SIMILARITY'];
-        for (const key of numericKeys) {
-          const el = document.getElementById(key);
-          if (el) el.value = cfg[key];
+          // Add aria2c info icons
+          document.getElementById('aria2c-conn-info').innerHTML = infoIcon('Max connections to each server. Default: 4 (aria2c max: 16). Set to 4 to balance speed with safety - avoids triggering YouTube rate limiting while maintaining reasonable download speeds.');
+          document.getElementById('aria2c-split-info').innerHTML = infoIcon('Parallel connections per file. Default: 4 (aria2c max: 16). Set to 4 to minimize concurrent connections - prevents detection as automated traffic while still enabling acceleration.');
+          document.getElementById('aria2c-chunk-info').innerHTML = infoIcon('Download chunk size. Default: 10M (aria2c default: 1M). Larger chunks (10M) mean fewer server requests, reducing the chance of being flagged as a bot while improving efficiency.');
+
+          // Load basic settings
+          const numericKeys = ['CLIP_SECONDS','SAMPLES_PER_BANK','NUM_BANKS','MAX_RETRIES_PER_THEME','SEARCH_RESULTS_PER_THEME','DOWNLOAD_WORKERS','SLICES_PER_VIDEO','SLICE_STRIDE_SECONDS','ARIA2C_CONN_PER_SERVER','ARIA2C_SPLIT','SCORING_MIN_SIMILARITY'];
+          for (const key of numericKeys) {
+            const el = document.getElementById(key);
+            if (el) el.value = cfg[key];
+          }
+
+          // Load text fields
+          document.getElementById('ARIA2C_CHUNK_SIZE').value = cfg['ARIA2C_CHUNK_SIZE'];
+          document.getElementById('CLAP_MODEL_PATH').value = cfg['CLAP_MODEL_PATH'] || 'models/music_speech_audioset_epoch_15_esc_89.98.pt';
+          document.getElementById('SESSION_ID').value = cfg['SESSION_ID'] || '';
+          document.getElementById('OPENAI_API_KEY').value = cfg['OPENAI_API_KEY'] || '';
+
+          // Load new fields
+          document.getElementById('AUDIO_QUALITY').value = cfg['AUDIO_QUALITY'] || 'best';
+          document.getElementById('DOWNLOAD_METHOD').value = cfg['DOWNLOAD_METHOD'] || 'smart';
+          document.getElementById('DOWNLOAD_CHUNK_SECONDS').value = cfg['DOWNLOAD_CHUNK_SECONDS'] || '10';
+          updateAudioQualityInfo();  // Update audio quality size info
+
+          // Set default for minimum similarity if not set
+          if (!cfg['SCORING_MIN_SIMILARITY']) {
+            document.getElementById('SCORING_MIN_SIMILARITY').value = '0.2';
+          }
+
+          // Load checkboxes
+          document.getElementById('ARIA2C_ENABLED').checked = cfg['ARIA2C_ENABLED'] === '1';
+          document.getElementById('SCORING_ENABLED').checked = cfg['SCORING_ENABLED'] === '1';
+          document.getElementById('USE_OPENAI_EXPANSION').checked = cfg['USE_OPENAI_EXPANSION'] === '1';
+
+          // Validate chunk size and update displays AFTER checkboxes are loaded
+          validateChunkSize();
+
+          // Update tooltip when aria2c checkbox changes
+          document.getElementById('ARIA2C_ENABLED').addEventListener('change', updateDownloaderInfo);
+
+          // Load words list settings
+          document.getElementById('USE_WORDS_LIST').checked = cfg['USE_WORDS_LIST'] === '1';
+          if (cfg['WORDS_MODE']) {
+            document.querySelector(`input[name="wordsMode"][value="${cfg['WORDS_MODE']}"]`).checked = true;
+          }
+          if (cfg['USE_WORDS_LIST'] === '1') {
+            toggleWordsListMode();
+          }
+
+          // Load themes with new structure support
+          currentThemes = cfg.themes || [];
+          console.log('Themes loaded:', currentThemes.length);
+          renderThemes();
+
+          refreshStatus();
+        } catch (error) {
+          console.error('Error loading config:', error);
+          alert('Failed to load configuration. Please check if the server is running.');
         }
-        
-        // Load text fields
-        document.getElementById('ARIA2C_CHUNK_SIZE').value = cfg['ARIA2C_CHUNK_SIZE'];
-        document.getElementById('CLAP_MODEL_PATH').value = cfg['CLAP_MODEL_PATH'] || 'models/music_speech_audioset_epoch_15_esc_89.98.pt';
-        document.getElementById('SESSION_ID').value = cfg['SESSION_ID'] || '';
-        document.getElementById('OPENAI_API_KEY').value = cfg['OPENAI_API_KEY'] || '';
-
-        // Load new fields
-        document.getElementById('AUDIO_QUALITY').value = cfg['AUDIO_QUALITY'] || 'best';
-        document.getElementById('DOWNLOAD_METHOD').value = cfg['DOWNLOAD_METHOD'] || 'smart';
-        document.getElementById('DOWNLOAD_CHUNK_SECONDS').value = cfg['DOWNLOAD_CHUNK_SECONDS'] || '10';
-        updateAudioQualityInfo();  // Update audio quality size info
-
-        // Set default for minimum similarity if not set
-        if (!cfg['SCORING_MIN_SIMILARITY']) {
-          document.getElementById('SCORING_MIN_SIMILARITY').value = '0.2';
-        }
-
-        // Load checkboxes
-        document.getElementById('ARIA2C_ENABLED').checked = cfg['ARIA2C_ENABLED'] === '1';
-        document.getElementById('SCORING_ENABLED').checked = cfg['SCORING_ENABLED'] === '1';
-        document.getElementById('USE_OPENAI_EXPANSION').checked = cfg['USE_OPENAI_EXPANSION'] === '1';
-
-        // Validate chunk size and update displays AFTER checkboxes are loaded
-        validateChunkSize();
-
-        // Update tooltip when aria2c checkbox changes
-        document.getElementById('ARIA2C_ENABLED').addEventListener('change', updateDownloaderInfo);
-        
-        // Load words list settings
-        document.getElementById('USE_WORDS_LIST').checked = cfg['USE_WORDS_LIST'] === '1';
-        if (cfg['WORDS_MODE']) {
-          document.querySelector(`input[name="wordsMode"][value="${cfg['WORDS_MODE']}"]`).checked = true;
-        }
-        if (cfg['USE_WORDS_LIST'] === '1') {
-          toggleWordsListMode();
-        }
-        
-        // Load themes with new structure support
-        currentThemes = cfg.themes || [];
-        renderThemes();
-        
-        refreshStatus();
       }
 
       async function save() {
@@ -943,8 +957,17 @@
         }
       });
 
-      load();
-      updateThemeButton();
+      // Ensure DOM is loaded before initializing
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          load();
+          updateThemeButton();
+        });
+      } else {
+        // DOM already loaded
+        load();
+        updateThemeButton();
+      }
 
       // Handle initial URL hash
       window.addEventListener('DOMContentLoaded', () => {
